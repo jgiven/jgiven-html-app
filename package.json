@@ -55,7 +55,7 @@
     "acceptance testing"
   ],
   "author": "Jan Schäfer <janschaefer@gmx.de",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "repository": {
     "url": "https://github.com/jgiven/jgiven-html-app",
