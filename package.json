@@ -1,8 +1,8 @@
 {
   "name": "jgiven-html-app",
-  "version": "0.15.0",
-  "description": "The HTML App of JGiven",
-  "homepage": "http://jgiven.org",
+  "version": "0.16.0",
+  "description": "The HTML App of JGiven and JsGiven",
+  "homepage": "http://github.com/jgiven/jgiven-html-app",
   "main": "src/entry.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors",
@@ -44,7 +44,7 @@
     "webpack": "^1.13.2",
     "webpack-bundle-size-analyzer": "^2.2.0",
     "webpack-dev-server": "^1.16.2",
-    "yarn": "^0.18.1"
+    "yarn": "^0.27.5"
   },
   "keywords": [
     "jgiven",
@@ -63,11 +63,11 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "repository": {
-    "url": "https://github.com/TNG/JGiven",
+    "url": "https://github.com/jgiven/jgiven-html-app",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/TNG/JGiven/issues"
+    "url": "https://github.com/jgiven/jgiven-html-app/issues"
   },
   "dependencies": {
     "angular": "1.5.8",
