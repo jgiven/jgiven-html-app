@@ -9,15 +9,10 @@
     "debug": "webpack-dev-server -d --progress --colors",
     "test": "karma start --debug --single-run --browsers PhantomJS",
     "test-watch": "karma start --debug",
-    "build": "mkdir -p build/dist && webpack --progress --colors",
-    "integration-test": "yarn build && rm -rf build/integration && cp -r build/dist build/integration && cp -r data build/integration",
+    "build": "mkdir -p dist && webpack --progress --colors",
+    "integration-test": "yarn build && rm -rf integration && cp -r dist integration && cp -r data integration",
     "analyze-bundle": "webpack --json | webpack-bundle-size-analyzer"
   },
-  "files": [
-    "package.json",
-    "src",
-    "build/dist/**"
-  ],
   "devDependencies": {
     "angular-mocks": "1.5.8",
     "babel-core": "^6.17.0",

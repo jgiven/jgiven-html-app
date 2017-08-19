@@ -16,7 +16,7 @@ module.exports = function webPackConfig() {
     }
 
     config.output = {
-        path: __dirname + '/build/dist',
+        path: __dirname + '/dist',
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js'
     }
