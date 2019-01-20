@@ -1,6 +1,6 @@
 {
   "name": "jgiven-html-app",
-  "version": "0.17.0",
+  "version": "0.16.2",
   "description": "The HTML App of JGiven and JsGiven",
   "homepage": "http://github.com/jgiven/jgiven-html-app",
   "main": "src/entry.js",
