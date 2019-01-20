@@ -1,6 +1,6 @@
 {
   "name": "jgiven-html-app",
-  "version": "0.16.2",
+  "version": "0.17.0",
   "description": "The HTML App of JGiven and JsGiven",
   "homepage": "http://github.com/jgiven/jgiven-html-app",
   "main": "src/entry.js",
@@ -39,7 +39,7 @@
     "webpack": "^1.13.2",
     "webpack-bundle-size-analyzer": "^2.2.0",
     "webpack-dev-server": "^1.16.2",
-    "yarn": "^0.27.5"
+    "yarn": "^1.13.0"
   },
   "keywords": [
     "jgiven",
