@@ -2,3 +2,5 @@
 /data
 /dist
 /yarn-error.log
+.idea
+integration/
