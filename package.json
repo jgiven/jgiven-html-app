@@ -5,7 +5,7 @@
   "homepage": "http://github.com/jgiven/jgiven-html-app",
   "main": "src/entry.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors",
+    "start": "webpack-dev-server --progress --colors --port 8085",
     "debug": "webpack-dev-server -d --progress --colors",
     "test": "karma start --debug --single-run --browsers PhantomJS",
     "test-watch": "karma start --debug",
@@ -54,7 +54,7 @@
     "ATDD",
     "acceptance testing"
   ],
-  "author": "Jan Schäfer <janschaefer@gmx.de",
+  "author": "Jan Schäfer <janschaefer@gmx.de>",
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "repository": {

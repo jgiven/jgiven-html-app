@@ -881,6 +881,12 @@ a.show-tree-link:hover {
     padding-left: 0;
 }
 
+.fa-fws {
+    width: 0.7em;
+    text-align: center;
+}
+
+
 @media only screen and (max-width: 64em) {
     #scenario-container {
         margin-left: 0 !important;
