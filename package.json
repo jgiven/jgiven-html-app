@@ -64,7 +64,7 @@
     "url": "https://github.com/jgiven/jgiven-html-app/issues"
   },
   "dependencies": {
-    "angular": "1.5.8",
+    "angular": "1.7.9",
     "angular-bindonce": "0.3.1",
     "angular-chart.js": "1.0.3",
     "angular-foundation": "0.8.0",
