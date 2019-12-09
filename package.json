@@ -4,6 +4,11 @@
   "description": "The HTML App of JGiven and JsGiven",
   "homepage": "http://github.com/jgiven/jgiven-html-app",
   "main": "src/entry.js",
+  "files": [
+    "src",
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "start": "webpack-dev-server --progress --colors --port 8085",
     "debug": "webpack-dev-server -d --progress --colors",

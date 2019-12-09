@@ -4,3 +4,5 @@
 /yarn-error.log
 .idea
 integration/
+/integration
+.idea
