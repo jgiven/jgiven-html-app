@@ -60,7 +60,7 @@ jgivenReportApp.controller('CasesTableCtrl', function ($scope) {
       canGroup: true,
       isStatus: true,
       getValue: function (aCase) {
-        return aCase.success;
+        return aCase.status !== 'FAILED';
       }
     });
 

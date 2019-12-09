@@ -13,6 +13,9 @@ window.jgivenReportApp = angular.module('jgivenReportApp', ['ngSanitize', 'mm.fo
         '$compileProvider', function ($compileProvider) {
             $compileProvider.aHrefSanitizationWhitelist(/.*/)
         }])
+    .config(function ($locationProvider) {
+       $locationProvider.hashPrefix('');
+    })
 
 jgivenReportApp.filter('encodeUri', function ($window) {
     return $window.encodeURIComponent;

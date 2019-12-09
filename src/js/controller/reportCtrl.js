@@ -47,7 +47,6 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
   $scope.customNavigationLinks = dataService.getCustomNavigationLinks();
 
   $scope.init = function () {
-
     $scope.bookmarks = localStorageService.get('bookmarks') || [];
     $scope.$watch('bookmarks', function () {
       localStorageService.set('bookmarks', $scope.bookmarks);
@@ -608,7 +607,7 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
     var failedCases = 0;
 
     _.forEach(scenario.scenarioCases, function (aCase) {
-      if (!aCase.success) {
+      if (aCase.status === 'FAILED') {
         failedCases++;
       }
     });
@@ -621,7 +620,7 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
   };
 
   $scope.getScenarioCaseTitleStatusClass = function (scenarioCase) {
-    return scenarioCase.success ? '' : 'failed';
+    return scenarioCase.status === 'FAILED' ? 'failed' : '';
   };
 
   $scope.isHeaderCell = function (rowIndex, columnIndex, headerType) {
