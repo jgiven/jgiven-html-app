@@ -79,7 +79,7 @@
     "font-awesome": "4.6.3",
     "foundation-sites": "5.5.3",
     "jquery": "3.4.0",
-    "lodash": "4.17.12",
+    "lodash": "4.17.19",
     "modernizr": "^3.8.0",
     "pako": "^1.0.3"
   }
