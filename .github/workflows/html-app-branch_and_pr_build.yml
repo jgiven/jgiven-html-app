@@ -1,0 +1,18 @@
+name: JavaScript CI with Gradle
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    name: Build JGiven-HTML-App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+         cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+         cmd: build
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+         cmd: test
