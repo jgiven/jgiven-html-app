@@ -1,0 +1,15 @@
+name: Yarn CI Cyle
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    name: Build JGiven-HTML-App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test
