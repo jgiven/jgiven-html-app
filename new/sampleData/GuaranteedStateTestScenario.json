@@ -1,0 +1,165 @@
+{
+  "className": "com.tngtech.jgiven.impl.GuaranteedStateTest",
+  "name": "Guaranteed State",
+  "scenarios": [
+    {
+      "className": "com.tngtech.jgiven.impl.GuaranteedStateTest",
+      "testMethodName": "assure_before_method_of_second_test_is_executed_after_guaranteed_fields_validation",
+      "description": "assure before method of second test is executed after guaranteed fields validation",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "a Jgiven test with a guaranteed null state",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "a Jgiven test with a guaranteed null state"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 11459900,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "the test is executed",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "the test is executed"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 396471800,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "the report contains $ exception",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "the report contains"
+                },
+                {
+                  "value": "class com.tngtech.jgiven.exception.JGivenMissingGuaranteedScenarioStateException",
+                  "argumentInfo": {
+                    "argumentName": "givenException",
+                    "formattedValue": "class com.tngtech.jgiven.exception.JGivenMissingGuaranteedScenarioStateException"
+                  }
+                },
+                {
+                  "value": "exception"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 117221500,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 550997100
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 550997100
+    },
+    {
+      "className": "com.tngtech.jgiven.impl.GuaranteedStateTest",
+      "testMethodName": "assure_before_method_of_second_test_is_executed_if_guaranteed_initialized",
+      "description": "assure before method of second test is executed if guaranteed initialized",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "a Jgiven test with a guaranteed state",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "a Jgiven test with a guaranteed state"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2701600,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "the test is executed",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "the test is executed"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 28915300,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "the report contains $ exception",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "the report contains"
+                },
+                {
+                  "value": "class java.lang.ClassNotFoundException",
+                  "argumentInfo": {
+                    "argumentName": "givenException",
+                    "formattedValue": "class java.lang.ClassNotFoundException"
+                  }
+                },
+                {
+                  "value": "exception"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 5258700,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 37376500
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 37376500
+    }
+  ],
+  "tagMap": {}
+}
