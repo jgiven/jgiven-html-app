@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {CasesTable} from "./components/casesTable/CasesTable";
+//import {CasesTable} from "./components/casesTable/CasesTable";
 import type {ScenarioCaseModel} from './reportModel';
+import guaranteedStatScenario from '../sampleData/GuaranteedStateTestScenario.json'
+import {ScenarioCase} from "./components/Scenario";
 
 const cases: ScenarioCaseModel[] = [
     {
@@ -32,7 +34,8 @@ function App() {
                     Learn React
                 </a>
             </header>
-            <CasesTable cases={cases}/>
+            <ScenarioCase scenarioCase={guaranteedStatScenario.scenarios[0].scenarioCases[0]}/>
+            {/*<CasesTable cases={cases} */}
         </div>
     );
 }
