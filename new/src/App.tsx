@@ -3,7 +3,7 @@ import './App.css';
 import type ReportModel from './reportModel';
 import type {ScenarioCaseModel} from './reportModel';
 import guaranteedStateScenario from './sampleData/GuaranteedStateTestScenario.json'
-import {ScenarioCase} from "./components/ScenarioCase";
+import {Scenario} from "./components/Scenario";
 
 const cases: ScenarioCaseModel[] = [
     {
@@ -24,7 +24,7 @@ function App() {
     a = a;
     return (
         <div className="App">
-            <ScenarioCase scenarioCase={guaranteedStateReport.scenarios[0].scenarioCases[0]}/>
+            <Scenario scenario={guaranteedStateReport.scenarios[0]}/>
             {/*<CasesTable cases={cases} */}
         </div>
     );
