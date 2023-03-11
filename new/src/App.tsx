@@ -3,7 +3,7 @@ import './App.css';
 import type ReportModel from './reportModel';
 import type {ScenarioCaseModel} from './reportModel';
 import guaranteedStateScenario from './sampleData/GuaranteedStateTestScenario.json'
-import {Scenario} from "./components/Scenario";
+import {Scenario} from "./components/Scenario/Scenario";
 
 const cases: ScenarioCaseModel[] = [
     {

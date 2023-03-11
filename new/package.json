@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.10",
     "@mui/x-data-grid": "^5.17.25",
     "@testing-library/jest-dom": "^5.16.5",
