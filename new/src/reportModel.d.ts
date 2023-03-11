@@ -1,5 +1,9 @@
 export default interface ReportModel {
-
+    className: string,
+    name: string,
+    description: string,
+    scenarios: ScenarioModel[],
+    tagMap: Map<string, Tag>,
 }
 interface ArgumentInfo {
     parameterName: string,
@@ -88,7 +92,7 @@ interface StepFormatter {
 interface StepModel {
     name: string,
     words: Word[],
-    nestedSteps: StepModel[],
+    nestedSteps?: StepModel[],
     status: StepStatus
     durationInNanos: number,
     extendedDescription?: string,
