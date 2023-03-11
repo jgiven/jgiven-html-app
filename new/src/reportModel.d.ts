@@ -6,8 +6,8 @@ export default interface ReportModel {
     tagMap: Map<string, Tag>,
 }
 interface ArgumentInfo {
-    parameterName: string,
-    argumentName: string,
+    parameterName?: string,
+    argumentName?: string,
     formattedValue?: string,
     dataTable?: DataTable,
 }
@@ -16,7 +16,8 @@ interface AttachmentModel {
     value:string,
     fileName:string,
     mediaType: string,
-    binary: boolean
+    binary: boolean,
+    showDirectly?: boolean
 }
 interface CompleteReportModel {
     models: ReportModelFile[],
@@ -93,7 +94,7 @@ interface StepModel {
     name: string,
     words: Word[],
     nestedSteps?: StepModel[],
-    status: StepStatus
+    status: StepStatus,
     durationInNanos: number,
     extendedDescription?: string,
     attachments?: AttachmentModel[],
@@ -108,13 +109,13 @@ interface Tag {
     name: string,
     value: object,
     description: string,
-    prependType: boolean,
+    prependType?: boolean,
     color: string,
-    cssClass: string,
-    style: string,
-    tags: string[],
-    href: string,
-    hideInNav: boolean,
+    cssClass?: string,
+    style?: string,
+    tags?: string[],
+    href?: string,
+    hideInNav?: boolean,
 }
 interface Word {
     value: string,
@@ -125,4 +126,4 @@ interface Word {
 type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
 type HeaderType = "NONE"| "HORIZONTAL"|"VERTICAL" | "BOTH";
 type InvocationMode = "NORMAL" |"NESTED" | "FAILED"| "SKIPPED" | "PENDING";
-type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING";
+type StepStatus = "SUCCESS" | "PASSED" | "FAILED" | "SKIPPED" | "PENDING";
