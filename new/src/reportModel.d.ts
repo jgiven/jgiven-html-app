@@ -1,7 +1,7 @@
 export default interface ReportModel {
     className: string,
     name: string,
-    description: string,
+    description?: string,
     scenarios: ScenarioModel[],
     tagMap: Map<string, Tag>,
 }
@@ -126,4 +126,4 @@ interface Word {
 type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
 type HeaderType = "NONE"| "HORIZONTAL"|"VERTICAL" | "BOTH";
 type InvocationMode = "NORMAL" |"NESTED" | "FAILED"| "SKIPPED" | "PENDING";
-type StepStatus = "SUCCESS" | "PASSED" | "FAILED" | "SKIPPED" | "PENDING";
+type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING";
