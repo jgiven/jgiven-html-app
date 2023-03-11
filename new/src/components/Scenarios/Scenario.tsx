@@ -1,5 +1,5 @@
-import type {ScenarioCaseModel, ScenarioModel, StepModel, StepStatus, ExecutionStatus} from "../../reportModel";
-import {Accordion, AccordionDetails, Box, SxProps, Theme, Typography} from "@mui/material";
+import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
+import {Accordion, AccordionDetails, Box, Link, Typography} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionSummary, {
@@ -7,9 +7,7 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import {PropsWithChildren} from "react";
 import {addRuntime} from "../utils"
-import {FontSizes, GreenCheckbox} from "../Icons/CheckMarks";
-import ErrorIcon from "@mui/icons-material/Error";
-import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
+import {StatusIcon} from "../StatusIconSelector";
 
 
 export function Scenario(props: { scenario: ScenarioModel, expanded?: boolean }) {
@@ -18,12 +16,13 @@ export function Scenario(props: { scenario: ScenarioModel, expanded?: boolean })
                 scenarioCase={props.scenario.scenarioCases[0]}
                 summary={props.scenario.description}
                 expanded={props.expanded ?? false}
+                className={props.scenario.className}
             />
         )
         : (<div></div>);
 }
 
-function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: boolean, summary: string }) {
+function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: boolean, summary: string, className: string }) {
     const AccordionSummary = styled((props: AccordionSummaryProps) => (
         <MuiAccordionSummary
             expandIcon={<ArrowForwardIosSharpIcon sx={{fontSize: '0.9rem'}}/>}
@@ -42,36 +41,26 @@ function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: 
             marginLeft: theme.spacing(1),
         },
     }));
+
     return (
         <Accordion>
             <AccordionSummary>
                 <Typography>{props.summary}</Typography>
-                <StatusIcon model={props.scenarioCase} />
+                <StatusIcon model={props.scenarioCase}/>
                 <Caption>{addRuntime(props.scenarioCase)}</Caption>
             </AccordionSummary>
             <AccordionDetails>
                 <Box sx={{"margin-left": '2em'}}>
                     {props.scenarioCase.steps.map((step: StepModel) => (<ScenarioStep step={step}></ScenarioStep>))}
+                    <Typography align='right' variant='body2'>
+                        <Link href={`#class/${props.className}`}  variant="inherit" color='inherit' underline='none'>
+                            {props.className}
+                        </Link>
+                    </Typography>
                 </Box>
             </AccordionDetails>
         </Accordion>
     );
-}
-
-function StatusIcon(props: { model: {status: StepStatus | ExecutionStatus} ,sx?:SxProps<Theme>, fontSize?:FontSizes},) {
-    switch (props.model.status) {
-        case "SUCCESS":
-        case "PASSED":
-            return (<GreenCheckbox sx={{mr: 0.5, ...props.sx}} fontSize={props.fontSize ??  "small"}/>)
-        case "FAILED":
-            return (<ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />);
-        case "SCENARIO_PENDING":
-        case "SOME_STEPS_PENDING":
-        case "PENDING":
-            return <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />;
-        case "SKIPPED":
-            return null;
-    }
 }
 
 function ScenarioStep(props: { step: StepModel }) {
