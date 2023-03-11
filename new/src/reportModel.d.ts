@@ -118,7 +118,7 @@ interface Tag {
 }
 interface Word {
     value: string,
-    isIntroWord: boolean,
+    isIntroWord?: boolean,
     argumentInfo?: ArgumentInfo,
 
 }
