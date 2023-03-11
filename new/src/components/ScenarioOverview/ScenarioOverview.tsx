@@ -24,7 +24,7 @@ export function ScenarioOverview(props: { statistic: ReportStatistics }) {
                 {props.statistic.numScenarios} Total
             </Typography>
             <Typography color={"text.primary"}>
-                {addRuntime(props.statistic.durationInNanos)}
+                {addRuntime(props.statistic)}
             </Typography>
         </Breadcrumbs>
     )
