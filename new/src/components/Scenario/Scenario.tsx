@@ -5,10 +5,11 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionSummary, {
     AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
+import {PropsWithChildren} from "react";
 
 
 export function Scenario(props: { scenario: ScenarioModel, expanded?: boolean }) {
-    return props.scenario.scenarioCases.length == 1 ?
+    return props.scenario.scenarioCases.length === 1 ?
         (<SingleCaseScenario
                 scenarioCase={props.scenario.scenarioCases[0]}
                 summary={props.scenario.description}
@@ -43,7 +44,7 @@ function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: 
                     <Typography>{props.summary}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Box sx={{ "margin-left":'2em', "text-align":'left'}}>
+                    <Box sx={{"margin-left":'2em'}}>
                         {props.scenarioCase.steps.map((step: StepModel) => (<ScenarioStep step={step}></ScenarioStep>))}
                     </Box>
                 </AccordionDetails>
@@ -53,12 +54,19 @@ function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: 
 
 function ScenarioStep(props: { step: StepModel }) {
     return (
-        <Typography>
-            {props.step.words.map(word => word.value).join(" ")} <Typography>{addRuntime(props.step)}</Typography>
+        <Typography align={'left'} >
+            {props.step.words.map(word => word.value).join(" ")} <Caption>{addRuntime(props.step)}</Caption>
         </Typography>
-    )
+    );
 }
 
+function Caption(props: PropsWithChildren){
+    return (
+        <Typography display='inline' variant='caption' paragraph={false}>
+            {props.children}
+        </Typography>
+    );
+}
 function addRuntime(input: {durationInNanos:number}):string{
-   return input.durationInNanos > 1e7 ? `(${Math.round(input.durationInNanos/1e6)}ms)` : "";
+   return input.durationInNanos >= 1e7 ? `(${Math.round(input.durationInNanos/1e6)}ms)` : "";
 }
