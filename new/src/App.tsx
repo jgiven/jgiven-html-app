@@ -1,6 +1,8 @@
 import './App.css';
-import {ReportStatistics} from './reportModel';
+import ReportModel, {ReportStatistics} from './reportModel';
 import {ScenarioOverview} from "./components/ScenarioOverview/ScenarioOverview";
+import { Scenario } from './components/Scenario/Scenario';
+import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json"
 
 const statistics: ReportStatistics[] = [
     {
@@ -16,13 +18,13 @@ const statistics: ReportStatistics[] = [
     }
 ]
 
-//const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as ReportModel;
+const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as ReportModel;
 
 function App() {
     return (
         <div className="App">
             <ScenarioOverview statistic={statistics[0]}/>
-            {/*<Scenario scenario={guaranteedStateReport.scenarios[0]}/>*/}
+            <Scenario scenario={guaranteedStateReport.scenarios[0]}/>
             {/*<CasesTable cases={cases} */}
         </div>
     );
