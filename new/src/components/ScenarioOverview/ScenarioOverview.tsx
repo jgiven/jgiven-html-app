@@ -10,7 +10,13 @@ export function ScenarioOverview(props: { statistic: ReportStatistics }) {
     return (
         <List sx={undefined} component="nav" aria-label="jgiven-overview">
             <ListItem button>
-                <ListItemText primary={createReportCircle(props)} />
+                <ListItemText primary={getTopLevel()}
+                              secondary={
+                                  <Typography textAlign={'right'}>
+                                      {createReportCircle(props)}
+                                  </Typography>
+                              }
+                />
             </ListItem>
             <Divider />
             <ListItem button>
@@ -20,23 +26,24 @@ export function ScenarioOverview(props: { statistic: ReportStatistics }) {
     )
 }
 
-// function getTopLevel() {
-//     return (
-//         <Typography variant="h4">All Scenarios</Typography>
-//     )
-// }
+function getTopLevel() {
+    return (
+        <Typography variant="h4">All Scenarios</Typography>
+    )
+}
+
 
 function createReportCircle(props: {statistic: ReportStatistics}) {
     const reactDonutChartdata = [
         {
             label: "Success: ",
             value: props.statistic.numSuccessfulScenarios,
-            color: "#00E396"
+            color: "#009600"
         },
         {
             label: "Failed: ",
             value: props.statistic.numFailedScenarios,
-            color: "#FEB019"
+            color: "#f7464a"
         }
     ];
     return (
@@ -44,12 +51,14 @@ function createReportCircle(props: {statistic: ReportStatistics}) {
             width={120}
             height={120}
             data={reactDonutChartdata}
-            colors={["green", "red"]}
-            innerRadius={0.55}
+            colors={["#009600", "#f7464a"]}
+            innerRadius={0.5}
             selectedOffset={0}
             legend={false}
+            strokeColor={"#ffffff00"}
             clickToggle={false}
             interactive={false}
+            /* TODO Tooltip component? */
         />
     );
 }
