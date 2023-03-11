@@ -1,5 +1,5 @@
 import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
-import {Accordion, AccordionDetails, Typography} from "@mui/material";
+import {Accordion, AccordionDetails, Box, Typography} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionSummary, {
@@ -38,25 +38,27 @@ function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: 
         },
     }));
     return (
-        <div>
             <Accordion>
                 <AccordionSummary>
                     <Typography>{props.summary}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Box sx={{ "margin-left":'2em', "text-align":'left'}}>
                         {props.scenarioCase.steps.map((step: StepModel) => (<ScenarioStep step={step}></ScenarioStep>))}
-                    </Typography>
+                    </Box>
                 </AccordionDetails>
             </Accordion>
-        </div>
     );
 }
 
 function ScenarioStep(props: { step: StepModel }) {
     return (
-        <div>
-            {props.step.words.map(word => word.value).join(" ")}
-        </div>
+        <Typography>
+            {props.step.words.map(word => word.value).join(" ")} <Typography>{addRuntime(props.step)}</Typography>
+        </Typography>
     )
+}
+
+function addRuntime(input: {durationInNanos:number}):string{
+   return input.durationInNanos > 1e7 ? `(${Math.round(input.durationInNanos/1e6)}ms)` : "";
 }
