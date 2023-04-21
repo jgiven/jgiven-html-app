@@ -1,22 +1,27 @@
 import type {ReportStatistics} from "../../reportModel";
-import {Breadcrumbs, Divider, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
 import CheckIcon from '@mui/icons-material/CheckBox';
 import ErrorIcon from '@mui/icons-material/Error';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import {addRuntime} from "../utils";
-import DonutChart from "react-donut-chart";
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+
 
 export function ScenarioOverview(props: { statistic: ReportStatistics }) {
     return (
-        <List sx={undefined} component="nav" aria-label="jgiven-overview">
+        <List component="nav" aria-label="jgiven-overview">
             <ListItem button>
-                <ListItemText primary={getTopLevel()}
-                              secondary={
-                                  <Typography textAlign={'right'}>
-                                      {createReportCircle(props)}
-                                  </Typography>
-                              }
-                />
+                <Grid container>
+                    <Grid item>
+                        {getTopLevel()}
+                    </Grid>
+                    <Grid item xs>
+                        <Grid container direction={"row-reverse"}>
+                            {createReportCircle(props)}
+                        </Grid>
+                    </Grid>
+                </Grid>
             </ListItem>
             <Divider />
             <ListItem button>
@@ -34,32 +39,23 @@ function getTopLevel() {
 
 
 function createReportCircle(props: {statistic: ReportStatistics}) {
-    const reactDonutChartdata = [
-        {
-            label: "Success: ",
-            value: props.statistic.numSuccessfulScenarios,
-            color: "#009600"
-        },
-        {
-            label: "Failed: ",
-            value: props.statistic.numFailedScenarios,
-            color: "#f7464a"
-        }
-    ];
+    ChartJS.register(ArcElement, Tooltip, Legend);
+    const data = {
+        labels: ['Successful', 'Failed'],
+        datasets: [
+            {
+                data: [props.statistic.numSuccessfulScenarios, props.statistic.numFailedScenarios],
+                backgroundColor: [
+                    'rgba(60, 179, 113)',
+                    'rgba(255, 0, 0)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
     return (
-        <DonutChart
-            width={120}
-            height={120}
-            data={reactDonutChartdata}
-            colors={["#009600", "#f7464a"]}
-            innerRadius={0.5}
-            selectedOffset={0}
-            legend={false}
-            strokeColor={"#ffffff00"}
-            clickToggle={false}
-            interactive={false}
-            /* TODO Tooltip component? */
-        />
+        <Doughnut data={data} />
+        // TODO: make size of donut fitting
     );
 }
 
