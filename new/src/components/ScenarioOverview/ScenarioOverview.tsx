@@ -7,7 +7,6 @@ import {addRuntime} from "../utils";
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-
 export function ScenarioOverview(props: { statistic: ReportStatistics }) {
     return (
         <List component="nav" aria-label="jgiven-overview">
@@ -16,10 +15,9 @@ export function ScenarioOverview(props: { statistic: ReportStatistics }) {
                     <Grid item>
                         {getTopLevel()}
                     </Grid>
-                    <Grid item xs>
-                        <Grid container direction={"row-reverse"}>
-                            {createReportCircle(props)}
-                        </Grid>
+                    <Grid item sx={{ flexGrow: 1 }} />
+                    <Grid item>
+                        {createReportCircle(props)}
                     </Grid>
                 </Grid>
             </ListItem>
@@ -40,6 +38,10 @@ function getTopLevel() {
 
 function createReportCircle(props: {statistic: ReportStatistics}) {
     ChartJS.register(ArcElement, Tooltip, Legend);
+
+    const width = 240; // set default width to 100 if none is provided via props
+    const height = 120; // set default height to 100 if none is provided via props
+
     const data = {
         labels: ['Successful', 'Failed'],
         datasets: [
@@ -53,9 +55,32 @@ function createReportCircle(props: {statistic: ReportStatistics}) {
             },
         ],
     };
+
+    const options = {
+        aspectRatio: 2,
+        cutoutPercentage: 70    ,
+        plugins: {
+            legend: {
+                display: false,
+            },
+        },
+        tooltips: {
+            enabled: true,
+            intersect: true,
+            mode: "nearest",
+            callbacks: {
+                label: (tooltipItem: any, data: any) => {
+                    const label = data.labels[tooltipItem.index];
+                    const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                    return `${label}: ${value}`;
+                },
+            },
+        },
+
+    }
+
     return (
-        <Doughnut data={data} />
-        // TODO: make size of donut fitting
+        <Doughnut data={data} width={width} height={height} options={options}  />
     );
 }
 
