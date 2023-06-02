@@ -52,6 +52,10 @@ function createReportCircle(props: {statistic: ReportStatistics}) {
                     'rgba(255, 0, 0)',
                 ],
                 borderWidth: 1,
+                hoverBackgroundColor: [
+                    'rgba(60,179,113,0.62)',
+                    'rgba(255,20,20,0.63)',
+                ],
             },
         ],
     };
