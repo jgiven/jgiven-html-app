@@ -4,10 +4,14 @@ import CheckIcon from '@mui/icons-material/CheckBox';
 import ErrorIcon from '@mui/icons-material/Error';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import {addRuntime} from "../utils";
-import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import {createReportCircle} from "./DonutChart";
+import {renderSymbols} from "./OverviewSymbols";
+import {useEffect} from "react";
 
 export function ScenarioOverview(props: { statistic: ReportStatistics }) {
+    useEffect(() => {
+        componentDidMount();
+    }, []);
     return (
         <List component="nav" aria-label="jgiven-overview">
             <ListItem button>
@@ -25,6 +29,9 @@ export function ScenarioOverview(props: { statistic: ReportStatistics }) {
             <ListItem button>
                 <ListItemText primary={getBreadcrumbs(props)} />
             </ListItem>
+            <Grid container justifyContent={"flex-end"} alignItems={"center"}>
+                <canvas id={"symbol-canvas"} width={"50"} height={"2"}/>
+            </Grid>
         </List>
     )
 }
@@ -35,70 +42,6 @@ function getTopLevel() {
     )
 }
 
-
-function createReportCircle(props: {statistic: ReportStatistics}) {
-    ChartJS.register(ArcElement, Tooltip, Legend);
-
-    const width = 240; // set default width to 100 if none is provided via props
-    const height = 120; // set default height to 100 if none is provided via props
-
-    const data = {
-        labels: ['Successful', 'Failed'],
-        datasets: [
-            {
-                data: [props.statistic.numSuccessfulScenarios, props.statistic.numFailedScenarios],
-                backgroundColor: [
-                    'rgba(60, 179, 113)',
-                    'rgba(255, 0, 0)',
-                ],
-                borderWidth: 1,
-                onClick: (event: MouseEvent, elements: any[], chart: any) => {
-                    if (elements.length === 0) {
-                        return; // user did not click on a chart element
-                    }
-                    const label = chart.data.labels[elements[0].index];
-                    if (label === 'Successful') {
-                        window.location.href = '/successful';
-                    } else if (label === 'Failed') {
-                        window.location.href = '/failed';
-                    }
-                },
-                hoverBackgroundColor: [
-                    'rgba(60,179,113,0.63)',
-                    'rgba(255,20,20,0.63)',
-                ],
-            },
-
-        ],
-    };
-
-    const options = {
-        aspectRatio: 2,
-        cutoutPercentage: 70    ,
-        plugins: {
-            legend: {
-                display: false,
-            },
-        },
-        tooltips: {
-            enabled: true,
-            intersect: true,
-            mode: "nearest",
-            callbacks: {
-                label: (tooltipItem: any, data: any) => {
-                    const label = data.labels[tooltipItem.index];
-                    const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                    return `${label}: ${value}`;
-                },
-            },
-        },
-
-    }
-
-    return (
-        <Doughnut data={data} width={width} height={height} options={options}  />
-    );
-}
 
 function getBreadcrumbs(props: { statistic: ReportStatistics}) {
     return (
@@ -123,4 +66,12 @@ function getBreadcrumbs(props: { statistic: ReportStatistics}) {
             </Typography>
         </Breadcrumbs>
     )
+}
+
+function componentDidMount() {
+    const canvas = document.getElementById("symbol-canvas") as HTMLCanvasElement
+    const ctx = canvas.getContext("2d")
+    if (ctx) {
+        renderSymbols(ctx, canvas);
+    }
 }
