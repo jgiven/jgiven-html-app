@@ -52,11 +52,23 @@ function createReportCircle(props: {statistic: ReportStatistics}) {
                     'rgba(255, 0, 0)',
                 ],
                 borderWidth: 1,
+                onClick: (event: MouseEvent, elements: any[], chart: any) => {
+                    if (elements.length === 0) {
+                        return; // user did not click on a chart element
+                    }
+                    const label = chart.data.labels[elements[0].index];
+                    if (label === 'Successful') {
+                        window.location.href = '/successful';
+                    } else if (label === 'Failed') {
+                        window.location.href = '/failed';
+                    }
+                },
                 hoverBackgroundColor: [
-                    'rgba(60,179,113,0.62)',
+                    'rgba(60,179,113,0.63)',
                     'rgba(255,20,20,0.63)',
                 ],
             },
+
         ],
     };
 
