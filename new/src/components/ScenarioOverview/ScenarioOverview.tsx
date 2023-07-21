@@ -5,13 +5,13 @@ import ErrorIcon from '@mui/icons-material/Error';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import {addRuntime} from "../utils";
 import {createReportCircle} from "./DonutChart";
-import {renderSymbols} from "./OverviewSymbols";
-import {useEffect} from "react";
+import { Box } from "@mui/material";
+import RemoveIcon from '@mui/icons-material/Remove';
+import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
+import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
+
 
 export function ScenarioOverview(props: { statistic: ReportStatistics }) {
-    useEffect(() => {
-        componentDidMount();
-    }, []);
     return (
         <List component="nav" aria-label="jgiven-overview">
             <ListItem button>
@@ -23,9 +23,87 @@ export function ScenarioOverview(props: { statistic: ReportStatistics }) {
                     <Grid item>
                         {createReportCircle(props)}
                     </Grid>
+                    <Grid item>
+                      <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
+                            <Box
+                                sx={{
+                                    width: '12px',  // or some other value
+                                    height: '12px', // same as width
+                                    p: 0.01,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    border: '1px solid grey',
+                                    borderRadius: 1,
+                                    marginRight: '5px',
+                                }}
+                                component="span"
+                            >
+                                <RemoveIcon fontSize="inherit" />
+                            </Box>
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
+                            <Box
+                                sx={{
+                                    width: '12px',  // or some other value
+                                    height: '12px', // same as width
+                                    p: 0.01,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    border: '1px solid grey',
+                                    borderRadius: 1,
+                                    marginRight: '5px'
+                                }}
+                                component="span"
+                            >
+                                <Typography>+</Typography>
+                            </Box>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
+                            <Box
+                                sx={{
+                                    width: '12px',  // or some other value
+                                    height: '12px', // same as width
+                                    p: 0.01,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: 1,
+                                    marginRight: '5px'
+                                }}
+                                component="span"
+                            >
+                                <PrintOutlinedIcon fontSize="inherit" />
+                            </Box>
+                        </Link>
+                    </Grid>
+                    <Grid item>
+                        <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
+                            <Box
+                                sx={{
+                                    width: '12px',  // or some other value
+                                    height: '12px', // same as width
+                                    p: 0.01,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: 1,
+                                }}
+                                component="span"
+                            >
+                                <BookmarkOutlinedIcon fontSize="inherit" />
+                            </Box>
+                        </Link>
+                    </Grid>
                 </Grid>
             </ListItem>
             <Divider />
+
             <ListItem button>
                 <ListItemText primary={getBreadcrumbs(props)} />
             </ListItem>
@@ -66,12 +144,4 @@ function getBreadcrumbs(props: { statistic: ReportStatistics}) {
             </Typography>
         </Breadcrumbs>
     )
-}
-
-function componentDidMount() {
-    const canvas = document.getElementById("symbol-canvas") as HTMLCanvasElement
-    const ctx = canvas.getContext("2d")
-    if (ctx) {
-        renderSymbols(ctx, canvas);
-    }
 }
