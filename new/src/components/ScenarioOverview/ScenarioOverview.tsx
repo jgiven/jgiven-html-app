@@ -46,7 +46,7 @@ function getTopLevel() {
 function getBreadcrumbs(props: { statistic: ReportStatistics}) {
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
-            <Link underline="hover" color={"inherit"} href={"/TODO"}>
+            <Link underline="hover" color={"black"} href={"/TODO"}>
                 <CheckIcon sx={{ mr: 0.5}} fontSize={"small"} />
                 {props.statistic.numSuccessfulScenarios} Successful,
             </Link>
