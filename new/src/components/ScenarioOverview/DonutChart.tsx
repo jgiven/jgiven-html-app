@@ -9,7 +9,7 @@ export function createReportCircle(props: { statistic: ReportStatistics }) {
     const height = 120; // set default height to 100 if none is provided via props
 
     const data = {
-        labels: ['Successful', 'Failed'],
+        labels: ['Successful:', 'Failed:'],
         datasets: [
             {
                 data: [props.statistic.numSuccessfulScenarios, props.statistic.numFailedScenarios],
