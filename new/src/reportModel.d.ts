@@ -81,9 +81,8 @@ interface ScenarioModel {
     scenarioCases: ScenarioCaseModel[],
     casesAsTable: boolean,
     durationInNanos: number,
-    executionStatus: ExecutionStatus,
-
 }
+
 interface StepFormatter {
     stepDescription: string,
     arguments: NamedArgument[],
