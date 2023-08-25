@@ -1,139 +1,140 @@
 import type {ReportStatistics} from "../../reportModel";
-import {Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Box, Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
 import CheckIcon from '@mui/icons-material/CheckBox';
 import ErrorIcon from '@mui/icons-material/Error';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import {addRuntime} from "../utils";
-import {createReportCircle} from "./DonutChart";
-import { Box } from "@mui/material";
 import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
+import {createReportCircle} from "./DonutChart";
 
 
-export function ScenarioOverview(props: { statistic: ReportStatistics }) {
+export interface ScenarioOverviewProps {
+    statistic: ReportStatistics;
+    targets: ActionButtonTargets;
+    headers: Headers;
+}
+
+interface ActionButtonTargets {
+    minusButtonTarget: string;
+    plusButtonTarget: string;
+    printButtonTarget: string;
+    bookmarkButtonTarget: string;
+}
+
+interface Headers{
+    aboveHeader?:string;
+    header:string;
+    belowHeader?:string;
+}
+
+export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
-        <List component="nav" aria-label="jgiven-overview">
-            <ListItem button>
-                <Grid container>
+        <List>
+            <ListItem>
+                <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
                     <Grid item>
-                        {getTopLevel()}
+                        <ScenarioTitles headers={props.headers}/>
                     </Grid>
-                    <Grid item sx={{ flexGrow: 1 }} />
+                    <Grid item sx={{flexGrow: 1}}/>
                     <Grid item>
                         {createReportCircle(props)}
                     </Grid>
                     <Grid item>
-                      <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
-                            <Box
-                                sx={{
-                                    width: '12px',  // or some other value
-                                    height: '12px', // same as width
-                                    p: 0.01,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    border: '1px solid grey',
-                                    borderRadius: 1,
-                                    marginRight: '5px',
-                                }}
-                                component="span"
-                            >
-                                <RemoveIcon fontSize="inherit" />
-                            </Box>
-                      </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
-                            <Box
-                                sx={{
-                                    width: '12px',  // or some other value
-                                    height: '12px', // same as width
-                                    p: 0.01,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    border: '1px solid grey',
-                                    borderRadius: 1,
-                                    marginRight: '5px'
-                                }}
-                                component="span"
-                            >
-                                <Typography>+</Typography>
-                            </Box>
-                        </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
-                            <Box
-                                sx={{
-                                    width: '12px',  // or some other value
-                                    height: '12px', // same as width
-                                    p: 0.01,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    borderRadius: 1,
-                                    marginRight: '5px'
-                                }}
-                                component="span"
-                            >
-                                <PrintOutlinedIcon fontSize="inherit" />
-                            </Box>
-                        </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link underline="none" color="inherit" sx={{ '&:hover': { textDecoration: 'none', color: 'inherit' } }}href="/TODO">
-                            <Box
-                                sx={{
-                                    width: '12px',  // or some other value
-                                    height: '12px', // same as width
-                                    p: 0.01,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    borderRadius: 1,
-                                }}
-                                component="span"
-                            >
-                                <BookmarkOutlinedIcon fontSize="inherit" />
-                            </Box>
-                        </Link>
+                        <ScenarioActionButtons targets={props.targets}/>
                     </Grid>
                 </Grid>
             </ListItem>
-            <Divider />
-
-            <ListItem button>
-                <ListItemText primary={getBreadcrumbs(props)} />
+            <Divider/>
+            <ListItem>
+                <ListItemText primary={StatisticBreadcrumbs(props)}/>
             </ListItem>
-            <Grid container justifyContent={"flex-end"} alignItems={"center"}>
+            <ListItem>
                 <canvas id={"symbol-canvas"} width={"50"} height={"2"}/>
-            </Grid>
-        </List>
-    )
+            </ListItem>
+        </List>)
 }
 
-function getTopLevel() {
+function ScenarioTitles(props: { headers: Headers}) {
     return (
-        <Typography variant="h4">All Scenarios</Typography>
-    )
+        <Grid container>
+            <Grid item xs={12}>
+                <Typography variant="h6" color="grey">{props.headers.aboveHeader}</Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="h4">{props.headers.header}</Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="h6" color="grey">{props.headers.belowHeader}</Typography>
+            </Grid>
+        </Grid>
+    );
 }
 
+function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
+    return (
+        <Grid container>
+            <Grid item>
+                <ScenarioOverviewItem link={props.targets.minusButtonTarget}>
+                    <RemoveIcon fontSize="inherit"/>
+                </ScenarioOverviewItem>
+            </Grid>
+            <Grid item>
+                <ScenarioOverviewItem link={props.targets.plusButtonTarget}>
+                    <AddIcon></AddIcon>
+                </ScenarioOverviewItem>
+            </Grid>
+            <Grid item>
+                <ScenarioOverviewItem link={props.targets.printButtonTarget}>
+                    <PrintOutlinedIcon fontSize="inherit"/>
+                </ScenarioOverviewItem>
+            </Grid>
+            <Grid item>
+                <ScenarioOverviewItem link={props.targets.bookmarkButtonTarget}>
+                    <BookmarkOutlinedIcon fontSize="inherit"/>
+                </ScenarioOverviewItem>
+            </Grid>
+        </Grid>
+    );
+}
 
-function getBreadcrumbs(props: { statistic: ReportStatistics}) {
+function ScenarioOverviewItem(props: { children: React.ReactNode, link: string }) {
+    return (<Link underline="none" color="inherit"
+                  sx={{'&:hover': {textDecoration: 'none', color: 'inherit'}}} href={props.link}>
+        <Box
+            sx={{
+                width: '12px',  // or some other value
+                height: '12px', // same as width
+                p: 0.01,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid grey',
+                borderRadius: 1,
+                marginRight: '5px',
+            }}
+            component="span"
+        >
+            {props.children}
+        </Box>
+    </Link>)
+}
+
+function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
             <Link underline="hover" color={"black"} href={"/TODO"}>
-                <CheckIcon sx={{ mr: 0.5}} fontSize={"small"} />
+                <CheckIcon sx={{mr: 0.5}} fontSize={"small"}/>
                 {props.statistic.numSuccessfulScenarios} Successful,
             </Link>
             <Link underline="hover" color={"red"} href={"/TODO"}>
-                <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
+                <ErrorIcon sx={{mr: 0.5}} fontSize={"small"}/>
                 {props.statistic.numFailedScenarios} failed,
             </Link>
             <Link underline="hover" color={"grey"} href={"/"}>
-                <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
+                <DoNotDisturbAltIcon sx={{mr: 0.5}} fontSize={"small"}/>
                 {props.statistic.numPendingScenarios} pending,
             </Link>
             <Typography color="text.primary">
