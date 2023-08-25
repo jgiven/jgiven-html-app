@@ -1,10 +1,9 @@
 import './App.css';
 import ReportModel, {ReportStatistics} from './reportModel';
-import {ScenarioOverview} from "./components/ScenarioOverview/ScenarioOverview";
 import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json"
-import {ScenarioClass} from "./components/Scenarios/ScenarioClass";
+import {SingleScenarioView} from "./components/Scenarios/SingleScenarioView";
 
-const statistics: ReportStatistics[] = [
+export const statistics: ReportStatistics[] = [
     {
         numClasses: 3,
         numScenarios: 5,
@@ -23,17 +22,7 @@ const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as
 function App() {
     return (
         <div className="App">
-            <ScenarioOverview
-                statistic={statistics[0]}
-                targets={{
-                    minusButtonTarget: "/TODO",
-                    plusButtonTarget: "/TODO",
-                    printButtonTarget: "/TODO",
-                    bookmarkButtonTarget: "/TODO"
-                }}
-                headers={{header:"All Scenarios"}}
-            />
-            <ScenarioClass scenarios={guaranteedStateReport.scenarios}/>
+            <SingleScenarioView reportName={guaranteedStateReport.name} scenario={guaranteedStateReport.scenarios[0]}/>
         </div>
     );
 }

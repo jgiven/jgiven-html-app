@@ -1,5 +1,5 @@
 import type {ReportStatistics} from "../../reportModel";
-import {Box, Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Box, Breadcrumbs, Button, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
 import CheckIcon from '@mui/icons-material/CheckBox';
 import ErrorIcon from '@mui/icons-material/Error';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import {createReportCircle} from "./DonutChart";
+import React, {MouseEventHandler} from "react";
 
 
 export interface ScenarioOverviewProps {
@@ -18,16 +19,16 @@ export interface ScenarioOverviewProps {
 }
 
 interface ActionButtonTargets {
-    minusButtonTarget: string;
-    plusButtonTarget: string;
-    printButtonTarget: string;
-    bookmarkButtonTarget: string;
+    minusButtonTarget: MouseEventHandler;
+    plusButtonTarget: MouseEventHandler;
+    printButtonTarget: MouseEventHandler;
+    bookmarkButtonTarget: MouseEventHandler;
 }
 
-interface Headers{
-    aboveHeader?:string;
-    header:string;
-    belowHeader?:string;
+interface Headers {
+    aboveHeader?: string;
+    header: string;
+    belowHeader?: string;
 }
 
 export function ScenarioOverview(props: ScenarioOverviewProps) {
@@ -35,7 +36,7 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
         <List>
             <ListItem>
                 <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
-                    <Grid item>
+                    <Grid item xs={12} sm={8}>
                         <ScenarioTitles headers={props.headers}/>
                     </Grid>
                     <Grid item sx={{flexGrow: 1}}/>
@@ -57,7 +58,7 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
         </List>)
 }
 
-function ScenarioTitles(props: { headers: Headers}) {
+function ScenarioTitles(props: { headers: Headers }) {
     return (
         <Grid container>
             <Grid item xs={12}>
@@ -77,22 +78,22 @@ function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
     return (
         <Grid container>
             <Grid item>
-                <ScenarioOverviewItem link={props.targets.minusButtonTarget}>
+                <ScenarioOverviewItem action={props.targets.minusButtonTarget}>
                     <RemoveIcon fontSize="inherit"/>
                 </ScenarioOverviewItem>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem link={props.targets.plusButtonTarget}>
+                <ScenarioOverviewItem action={props.targets.plusButtonTarget}>
                     <AddIcon></AddIcon>
                 </ScenarioOverviewItem>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem link={props.targets.printButtonTarget}>
+                <ScenarioOverviewItem action={props.targets.printButtonTarget}>
                     <PrintOutlinedIcon fontSize="inherit"/>
                 </ScenarioOverviewItem>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem link={props.targets.bookmarkButtonTarget}>
+                <ScenarioOverviewItem action={props.targets.bookmarkButtonTarget}>
                     <BookmarkOutlinedIcon fontSize="inherit"/>
                 </ScenarioOverviewItem>
             </Grid>
@@ -100,9 +101,8 @@ function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
     );
 }
 
-function ScenarioOverviewItem(props: { children: React.ReactNode, link: string }) {
-    return (<Link underline="none" color="inherit"
-                  sx={{'&:hover': {textDecoration: 'none', color: 'inherit'}}} href={props.link}>
+function ScenarioOverviewItem(props: { children: React.ReactNode, action: MouseEventHandler }) {
+    return (
         <Box
             sx={{
                 width: '12px',  // or some other value
@@ -117,9 +117,11 @@ function ScenarioOverviewItem(props: { children: React.ReactNode, link: string }
             }}
             component="span"
         >
-            {props.children}
-        </Box>
-    </Link>)
+            <Button color="inherit"
+                    sx={{'&:hover': {textDecoration: 'none', color: 'inherit'}}} onClick={props.action}>
+                {props.children}
+            </Button>
+        </Box>)
 }
 
 function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
