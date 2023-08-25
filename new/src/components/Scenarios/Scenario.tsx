@@ -1,19 +1,21 @@
 import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
-import {Accordion, AccordionDetails, Box, Link, Typography} from "@mui/material";
+import {Accordion, AccordionDetails, Box, Grid, Link, Typography} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordionSummary, {
     AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
-import {PropsWithChildren} from "react";
+import {PropsWithChildren, useState} from "react";
 import {addRuntime} from "../utils"
 import {StatusIcon} from "../StatusIconSelector";
 
 
-export function Scenario(props: { scenario: ScenarioModel, expanded?: boolean }) {
+
+export function Scenario(props: { scenario: ScenarioModel, reportName?:string, expanded?: boolean }) {
     return props.scenario.scenarioCases.length === 1 ?
         (<SingleCaseScenario
                 scenarioCase={props.scenario.scenarioCases[0]}
+                reportName={props.reportName}
                 summary={props.scenario.description}
                 expanded={props.expanded ?? false}
                 className={props.scenario.className}
@@ -21,8 +23,8 @@ export function Scenario(props: { scenario: ScenarioModel, expanded?: boolean })
         )
         : (<div></div>);
 }
-
-function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: boolean, summary: string, className: string }) {
+export function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: boolean, reportName?:string, summary: string, className: string }) {
+    const [expanded, setExpanded] = useState(props.expanded);
     const AccordionSummary = styled((props: AccordionSummaryProps) => (
         <MuiAccordionSummary
             expandIcon={<ArrowForwardIosSharpIcon sx={{fontSize: '0.9rem'}}/>}
@@ -43,11 +45,14 @@ function SingleCaseScenario(props: { scenarioCase: ScenarioCaseModel, expanded: 
     }));
 
     return (
-        <Accordion>
-            <AccordionSummary>
-                <Typography>{props.summary}</Typography>
-                <StatusIcon model={props.scenarioCase}/>
-                <Caption>{addRuntime(props.scenarioCase)}</Caption>
+        <Accordion expanded={expanded} >
+            <AccordionSummary onClick={()=>{setExpanded(!expanded)}}>
+                <Grid container columnSpacing={1}>
+                    <Grid item><Typography color={"grey"}>{props.reportName}</Typography></Grid>
+                    <Grid item><Typography>{props.summary}</Typography></Grid>
+                    <Grid><StatusIcon model={props.scenarioCase}/></Grid>
+                    <Grid><Caption>{addRuntime(props.scenarioCase)}</Caption></Grid>
+                </Grid>
             </AccordionSummary>
             <AccordionDetails>
                 <Box sx={{"margin-left": '2em'}}>
