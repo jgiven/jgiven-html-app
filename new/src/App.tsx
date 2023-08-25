@@ -23,7 +23,16 @@ const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as
 function App() {
     return (
         <div className="App">
-            <ScenarioOverview statistic={statistics[0]}/>
+            <ScenarioOverview
+                statistic={statistics[0]}
+                targets={{
+                    minusButtonTarget: "/TODO",
+                    plusButtonTarget: "/TODO",
+                    printButtonTarget: "/TODO",
+                    bookmarkButtonTarget: "/TODO"
+                }}
+                headers={{header:"All Scenarios"}}
+            />
             <ScenarioClass scenarios={guaranteedStateReport.scenarios}/>
         </div>
     );
