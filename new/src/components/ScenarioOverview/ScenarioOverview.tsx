@@ -102,23 +102,24 @@ function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
 }
 
 function ScenarioOverviewItem(props: { children: React.ReactNode, action: MouseEventHandler }) {
+    const sx = {
+        width: '12px',  // or some other value
+        height: '12px', // same as width
+        p: 0.01,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: '1px solid grey',
+        borderRadius: 1,
+        marginRight: '5px',
+    };
     return (
         <Box
-            sx={{
-                width: '12px',  // or some other value
-                height: '12px', // same as width
-                p: 0.01,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '1px solid grey',
-                borderRadius: 1,
-                marginRight: '5px',
-            }}
+            sx={sx}
             component="span"
         >
-            <Button color="inherit"
-                    sx={{'&:hover': {textDecoration: 'none', color: 'inherit'}}} onClick={props.action}>
+            <Button className="actionPanelButton" color="inherit"
+                sx={{'&:hover': {textDecoration: 'none', color: 'inherit'}, "min-width":'1px', "min-height":'1px', height:sx.height}} onClick={props.action}>
                 {props.children}
             </Button>
         </Box>)
