@@ -15,9 +15,11 @@ export function SingleScenarioView(props: { reportName: string, scenario: Scenar
                 statistic={createStatistics(props.scenario)}
                 targets={{
                     minusButtonTarget: () => {
+                        console.log("Collapsing stuff");
                         setExpanded(false)
                     },
                     plusButtonTarget: () => {
+                        console.log("Expanding stuff");
                         setExpanded(true)
                     },
                     printButtonTarget: () => {
@@ -27,7 +29,7 @@ export function SingleScenarioView(props: { reportName: string, scenario: Scenar
                         console.error("bookmark not implemented");
                     },
                 }}/>
-            <Scenario reportName={props.reportName} scenario={props.scenario} expanded={expanded}></Scenario>
+            <Scenario reportName={props.reportName} scenario={props.scenario} accordeonExpansion={{expanded:expanded, setExpanded:setExpanded}}></Scenario>
         </>
     )
 }
