@@ -29,7 +29,7 @@ export function SingleScenarioView(props: { reportName: string, scenario: Scenar
                         console.error("bookmark not implemented");
                     },
                 }}/>
-            <Scenario reportName={props.reportName} scenario={props.scenario} accordeonExpansion={{expanded:expanded, setExpanded:setExpanded}}></Scenario>
+            <Scenario reportName={props.reportName} scenario={props.scenario} accordionExpansion={{expanded:expanded, setExpanded:setExpanded}}></Scenario>
         </>
     )
 }

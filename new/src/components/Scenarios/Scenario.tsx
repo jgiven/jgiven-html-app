@@ -1,4 +1,4 @@
-import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
+import type {ScenarioCaseModel, ScenarioModel, StepModel } from "../../reportModel";
 import {Accordion, AccordionDetails, Box, Grid, Link, Typography} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
@@ -6,11 +6,12 @@ import MuiAccordionSummary, {AccordionSummaryProps,} from '@mui/material/Accordi
 import {PropsWithChildren} from "react";
 import {addRuntime} from "../utils"
 import {StatusIcon} from "../StatusIconSelector";
+import {processWords} from "../../wordProcessor";
 
-interface ScenarioProps {
+export interface ScenarioProps {
     scenario: ScenarioModel;
     reportName?: string;
-    accordeonExpansion: {
+    accordionExpansion: {
         expanded: boolean;
         setExpanded: (expanded: boolean) => void;
     }
@@ -18,19 +19,23 @@ interface ScenarioProps {
 
 export function Scenario(props: ScenarioProps) {
     return props.scenario.scenarioCases.length === 1 ?
-        (<SingleCaseScenario
-                scenarioCase={props.scenario.scenarioCases[0]}
-                reportName={props.reportName}
-                summary={props.scenario.description}
-                expanded={props.accordeonExpansion.expanded}
-                setExpanded={props.accordeonExpansion.setExpanded}
-                className={props.scenario.className}
-            />
+        (<div
+                id={`${props.scenario.className}#${props.scenario.testMethodName}`}
+                aria-label={`Scenario ${props.scenario.description}`}>
+                <SingleCaseScenario
+                    scenarioCase={props.scenario.scenarioCases[0]}
+                    reportName={props.reportName}
+                    summary={props.scenario.description}
+                    expanded={props.accordionExpansion.expanded}
+                    setExpanded={props.accordionExpansion.setExpanded}
+                    className={props.scenario.className}
+                />
+            </div>
         )
         : (<div></div>);
 }
 
-export function SingleCaseScenario(props: {
+function SingleCaseScenario(props: {
     scenarioCase: ScenarioCaseModel,
     expanded: boolean,
     setExpanded: (expanded: boolean) => void,
@@ -59,19 +64,19 @@ export function SingleCaseScenario(props: {
 
     return (
         <Accordion expanded={props.expanded}>
-            <AccordionSummary onClick={() => {
+            <AccordionSummary aria-label="Scenario Overview" onClick={() => {
                 props.setExpanded(!props.expanded)
             }}>
                 <Grid container columnSpacing={1}>
                     <Grid item><Typography color={"grey"}>{props.reportName}</Typography></Grid>
-                    <Grid item><Typography>{props.summary}</Typography></Grid>
+                    <Grid item><Typography>{processWords(props.summary)}</Typography></Grid>
                     <Grid><StatusIcon model={props.scenarioCase}/></Grid>
                     <Grid><Caption>{addRuntime(props.scenarioCase)}</Caption></Grid>
                 </Grid>
             </AccordionSummary>
-            <AccordionDetails>
-                <Box sx={{"margin-left": '2em'}}>
-                    {props.scenarioCase.steps.map((step: StepModel) => (<ScenarioStep step={step}></ScenarioStep>))}
+            <AccordionDetails aria-label="Scenario Steps">
+                <Box sx={{"marginLeft": '2em'}}>
+                    {props.scenarioCase.steps.map((step: StepModel,index) => (<ScenarioStep key={index} step={step}></ScenarioStep>))}
                     <Typography align='right' variant='body2'>
                         <Link href={`#class/${props.className}`} variant="inherit" color='inherit' underline='none'>
                             {props.className}
@@ -84,9 +89,10 @@ export function SingleCaseScenario(props: {
 }
 
 function ScenarioStep(props: { step: StepModel }) {
+    const stepDescription =  processWords(props.step.words);
     return (
         <Typography align={'left'}>
-            {props.step.words.map(word => word.value).join(" ")} <Caption>{addRuntime(props.step)}</Caption>
+            {stepDescription} <Caption>{addRuntime(props.step)}</Caption>
         </Typography>
     );
 }

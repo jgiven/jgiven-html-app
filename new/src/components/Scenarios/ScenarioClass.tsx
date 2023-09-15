@@ -10,7 +10,7 @@ export function ScenarioClass(props: {scenarios: ScenarioModel[]}){
     });
     return (
         <div>
-        {props.scenarios.map(scenario => ((<Scenario scenario={scenario} accordeonExpansion={accordionExpansion.get(scenario.testMethodName) as {expanded:boolean, setExpanded: (expanded:boolean) => void}}/>)))}
+        {props.scenarios.map(scenario => ((<Scenario scenario={scenario} accordionExpansion={accordionExpansion.get(scenario.testMethodName) as {expanded:boolean, setExpanded: (expanded:boolean) => void}}/>)))}
         </div>
     )
 }

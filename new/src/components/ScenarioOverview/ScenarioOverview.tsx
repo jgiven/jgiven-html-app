@@ -10,6 +10,7 @@ import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import {createReportCircle} from "./DonutChart";
 import React, {MouseEventHandler} from "react";
+import { processWords } from "../../wordProcessor";
 
 
 export interface ScenarioOverviewProps {
@@ -62,13 +63,14 @@ function ScenarioTitles(props: { headers: Headers }) {
     return (
         <Grid container>
             <Grid item xs={12}>
+                {/*TODO: may there be cases, where we should capitalize?*/}
                 <Typography variant="h6" color="grey">{props.headers.aboveHeader}</Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant="h4">{props.headers.header}</Typography>
+                <Typography variant="h4">{processWords(props.headers.header)}</Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant="h6" color="grey">{props.headers.belowHeader}</Typography>
+                <Typography variant="h6" color="grey">{processWords(props.headers.belowHeader)}</Typography>
             </Grid>
         </Grid>
     );
