@@ -1,12 +1,12 @@
-import {Word} from "./reportModel";
+import { Word } from "./reportModel";
 
 export function processWords(words: Word[] | string | Word | undefined) {
     if (words === undefined) {
         return "";
     } else if (Array.isArray(words)) {
         return processArray(words);
-    } else if (typeof words === 'string') {
-        return capitaliseFirstLetter(words)
+    } else if (typeof words === "string") {
+        return capitaliseFirstLetter(words);
     } else {
         return processWord(words);
     }

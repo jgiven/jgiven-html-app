@@ -40,6 +40,26 @@
     "test": "bash -c \"tsc && react-scripts test\"",
     "eject": "react-scripts eject"
   },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "requirePragma": false,
+    "insertPragma": false,
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "vueIndentScriptAndStyle": false,
+    "endOfLine": "lf",
+    "embeddedLanguageFormatting": "auto"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
