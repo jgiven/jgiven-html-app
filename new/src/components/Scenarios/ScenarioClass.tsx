@@ -7,13 +7,17 @@ export function ScenarioClass(props: { scenarios: ScenarioModel[] }) {
         string,
         { expanded: boolean; setExpanded: (expanded: boolean) => void }
     > = new Map();
-    props.scenarios.forEach(scenario => {
-        const [expanded, setExpanded] = useState(false);
-        accordionExpansion.set(scenario.testMethodName, {
-            expanded: expanded,
-            setExpanded: setExpanded
+    const [expanded, setExpanded] = useState(props.scenarios.map(__ => false));
+    for (let i = 0; i < props.scenarios.length; i++) {
+        accordionExpansion.set(props.scenarios[i].testMethodName, {
+            expanded: expanded[i],
+            setExpanded: value => {
+                const newExpanded = expanded;
+                newExpanded[i] = value;
+                setExpanded(newExpanded);
+            }
         });
-    });
+    }
     return (
         <div>
             {props.scenarios.map(scenario => (
