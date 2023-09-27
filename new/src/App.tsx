@@ -1,7 +1,7 @@
-import './App.css';
-import ReportModel, {ReportStatistics} from './reportModel';
-import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json"
-import {SingleScenarioView} from "./components/Scenarios/SingleScenarioView";
+import "./App.css";
+import ReportModel, { ReportStatistics } from "./reportModel";
+import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json";
+import { SingleScenarioView } from "./components/Scenarios/SingleScenarioView";
 
 export const statistics: ReportStatistics[] = [
     {
@@ -15,14 +15,17 @@ export const statistics: ReportStatistics[] = [
         numPendingScenarios: 0,
         numSuccessfulScenarios: 3
     }
-]
+];
 
 const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as ReportModel;
 
 function App() {
     return (
         <div className="App" aria-label="App">
-            <SingleScenarioView reportName={guaranteedStateReport.name} scenario={guaranteedStateReport.scenarios[0]}/>
+            <SingleScenarioView
+                reportName={guaranteedStateReport.name}
+                scenario={guaranteedStateReport.scenarios[0]}
+            />
         </div>
     );
 }

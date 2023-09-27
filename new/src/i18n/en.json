@@ -1,10 +1,10 @@
 {
-  "report": {
-    "scenario": {
-      "cases":{
-        "casesTitle": "Cases",
-        "status": "Status"
-      }
+    "report": {
+        "scenario": {
+            "cases": {
+                "casesTitle": "Cases",
+                "status": "Status"
+            }
+        }
     }
-  }
 }
