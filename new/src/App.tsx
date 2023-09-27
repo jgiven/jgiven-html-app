@@ -21,7 +21,7 @@ const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as
 
 function App() {
     return (
-        <div className="App">
+        <div className="App" aria-label="App">
             <SingleScenarioView reportName={guaranteedStateReport.name} scenario={guaranteedStateReport.scenarios[0]}/>
         </div>
     );
