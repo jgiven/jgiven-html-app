@@ -47,7 +47,7 @@ test("Scenario displays steps", async () => {
     expect(textElement).toBeTruthy();
 });
 
-test("Scenario capitalizes title ", async () => {
+test("Scenario capitalizes title", async () => {
     let expanded = true;
     const setExpanded = (value: boolean) => {
         expanded = value;
