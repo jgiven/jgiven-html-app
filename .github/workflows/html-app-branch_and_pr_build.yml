@@ -1,8 +1,12 @@
 name: Yarn CI Cycle
 on: [ push, pull_request ]
 
+#Add prettier to CI
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: ./legacy
     name: Build JGiven-HTML-App
     runs-on: ubuntu-latest
     steps:
@@ -13,3 +17,31 @@ jobs:
         run: yarn build
       - name: Test
         run: yarn test
+#  Sample CI for react apps
+  react:
+    defaults:
+      run:
+       working-directory: ./new
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+
+  reactChecks:
+    defaults:
+      run:
+        working-directory: ./new
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install
+        run:  npm install
+      - name: Prettier
+        run: npx prettier --check src #probably requires installation
+      - name: Eslint
+        run: npx eslint src --ext .js,.jsx,.ts,.tsx
