@@ -61,45 +61,6 @@ const Content = styled('div')(({ theme }) => ({
 export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
         <div style={{ display: 'flex'}}>
-            <StyledDrawer variant="permanent">
-                <List>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
-                    </ListItem>
-                    <List>
-                        <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                            <ListItemText primary={
-                                <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                    All Scenarios
-                                </Link>}
-                            />
-                        </ListItem>
-                        <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                            <ListItemText primary={
-                                <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                    Failed Scenarios
-                                </Link>}
-                            />
-                        </ListItem>
-                        <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                            <ListItemText primary={
-                                <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                    Pending Scenarios
-                                </Link>}
-                            />
-                        </ListItem>
-                    </List>
-                    <ListItem>
-                        <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
-                    </ListItem>
-                </List>
-            </StyledDrawer>
             <Content>
                 <List>
                     <ListItem>
@@ -125,6 +86,50 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
             </Content>
         </div>
     );
+}
+
+export function MenuBar() {
+    return(
+        <StyledDrawer variant="permanent">
+            <List>
+                <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                    <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
+                </ListItem>
+                <List>
+                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                        <ListItemText primary={
+                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+                                All Scenarios
+                            </Link>}
+                        />
+                    </ListItem>
+                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                        <ListItemText primary={
+                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+                                Failed Scenarios
+                            </Link>}
+                        />
+                    </ListItem>
+                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                        <ListItemText primary={
+                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+                                Pending Scenarios
+                            </Link>}
+                        />
+                    </ListItem>
+                </List>
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
+                </ListItem>
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
+                </ListItem>
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
+                </ListItem>
+            </List>
+        </StyledDrawer>
+    )
 }
 
 function ScenarioTitles(props: { headers: Headers }) {
