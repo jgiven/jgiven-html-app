@@ -4,6 +4,7 @@ import {
     Breadcrumbs,
     Button,
     Divider,
+    Drawer,
     Grid,
     Link,
     List,
@@ -22,6 +23,7 @@ import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { createReportCircle } from "./DonutChart";
 import React, { MouseEventHandler } from "react";
 import { processWords } from "../../wordProcessor";
+import {styled} from "@mui/material/styles";
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
@@ -42,29 +44,57 @@ interface Headers {
     belowHeader?: string;
 }
 
+const StyledDrawer = styled(Drawer)({
+    width: 240,
+    flexShrink: 0,
+    '& .MuiDrawer-paper': {
+        width: 240,
+    },
+});
+
+const Content = styled('div')(({ theme }) => ({
+    flexGrow: 1,
+    padding: theme.spacing(3),
+}));
+
 export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
-        <List>
-            <ListItem>
-                <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
-                    <Grid item xs={12} sm={8}>
-                        <ScenarioTitles headers={props.headers} />
+        <div style={{ display: 'flex'}}>
+            <StyledDrawer
+                variant="permanent"
+            >
+                <List>
+                    {['Menu Item 1', 'Menu Item 2', 'Menu Item 3'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            </StyledDrawer>
+            <Content>
+            <List>
+                <ListItem>
+                    <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
+                        <Grid item xs={12} sm={8}>
+                            <ScenarioTitles headers={props.headers} />
+                        </Grid>
+                        <Grid item sx={{ flexGrow: 1 }} />
+                        <Grid item>{createReportCircle(props)}</Grid>
+                        <Grid item>
+                            <ScenarioActionButtons targets={props.targets} />
+                        </Grid>
                     </Grid>
-                    <Grid item sx={{ flexGrow: 1 }} />
-                    <Grid item>{createReportCircle(props)}</Grid>
-                    <Grid item>
-                        <ScenarioActionButtons targets={props.targets} />
-                    </Grid>
-                </Grid>
-            </ListItem>
-            <Divider />
-            <ListItem>
-                <ListItemText primary={StatisticBreadcrumbs(props)} />
-            </ListItem>
-            <ListItem>
-                <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
-            </ListItem>
-        </List>
+                </ListItem>
+                <Divider />
+                <ListItem>
+                    <ListItemText primary={StatisticBreadcrumbs(props)} />
+                </ListItem>
+                <ListItem>
+                    <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
+                </ListItem>
+            </List>
+            </Content>
+        </div>
     );
 }
 
