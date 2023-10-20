@@ -49,6 +49,7 @@ const StyledDrawer = styled(Drawer)({
     flexShrink: 0,
     '& .MuiDrawer-paper': {
         width: 240,
+        backgroundColor: "rgba(250,250,250,255)"
     },
 });
 
@@ -60,39 +61,67 @@ const Content = styled('div')(({ theme }) => ({
 export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
         <div style={{ display: 'flex'}}>
-            <StyledDrawer
-                variant="permanent"
-            >
+            <StyledDrawer variant="permanent">
                 <List>
-                    {['Menu Item 1', 'Menu Item 2', 'Menu Item 3'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemText primary={text} />
+                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                        <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
+                    </ListItem>
+                    <List>
+                        <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                            <ListItemText primary={
+                                <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+                                    All Scenarios
+                                </Link>}
+                            />
                         </ListItem>
-                    ))}
+                        <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                            <ListItemText primary={
+                                <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+                                    Failed Scenarios
+                                </Link>}
+                            />
+                        </ListItem>
+                        <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                            <ListItemText primary={
+                                <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+                                    Pending Scenarios
+                                </Link>}
+                            />
+                        </ListItem>
+                    </List>
+                    <ListItem>
+                        <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
+                    </ListItem>
                 </List>
             </StyledDrawer>
             <Content>
-            <List>
-                <ListItem>
-                    <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
-                        <Grid item xs={12} sm={8}>
-                            <ScenarioTitles headers={props.headers} />
+                <List>
+                    <ListItem>
+                        <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
+                            <Grid item xs={12} sm={8}>
+                                <ScenarioTitles headers={props.headers} />
+                            </Grid>
+                            <Grid item sx={{ flexGrow: 1 }} />
+                            <Grid item>{createReportCircle(props)}</Grid>
+                            <Grid item>
+                                <ScenarioActionButtons targets={props.targets} />
+                            </Grid>
                         </Grid>
-                        <Grid item sx={{ flexGrow: 1 }} />
-                        <Grid item>{createReportCircle(props)}</Grid>
-                        <Grid item>
-                            <ScenarioActionButtons targets={props.targets} />
-                        </Grid>
-                    </Grid>
-                </ListItem>
-                <Divider />
-                <ListItem>
-                    <ListItemText primary={StatisticBreadcrumbs(props)} />
-                </ListItem>
-                <ListItem>
-                    <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
-                </ListItem>
-            </List>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <ListItemText primary={StatisticBreadcrumbs(props)} />
+                    </ListItem>
+                    <ListItem>
+                        <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
+                    </ListItem>
+                </List>
             </Content>
         </div>
     );
