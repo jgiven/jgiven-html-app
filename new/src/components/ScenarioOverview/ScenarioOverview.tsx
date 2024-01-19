@@ -4,7 +4,7 @@ import {
     Breadcrumbs,
     Button,
     Divider,
-    Drawer,
+    //Drawer,
     Grid,
     Link,
     List,
@@ -44,14 +44,14 @@ interface Headers {
     belowHeader?: string;
 }
 
-const StyledDrawer = styled(Drawer)({
-    width: 240,
-    flexShrink: 0,
-    '& .MuiDrawer-paper': {
-        width: 240,
-        backgroundColor: "rgba(250,250,250,255)"
-    },
-});
+// const StyledDrawer = styled(Drawer)({
+//     width: 240,
+//     flexShrink: 0,
+//     '& .MuiDrawer-paper': {
+//         width: 240,
+//         backgroundColor: "rgba(250,250,250,255)"
+//     },
+// });
 
 const Content = styled('div')(({ theme }) => ({
     flexGrow: 1,
@@ -88,49 +88,49 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
     );
 }
 
-export function MenuBar() {
-    return(
-        <StyledDrawer variant="permanent">
-            <List>
-                <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                    <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
-                </ListItem>
-                <List>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={
-                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                All Scenarios
-                            </Link>}
-                        />
-                    </ListItem>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={
-                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                Failed Scenarios
-                            </Link>}
-                        />
-                    </ListItem>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={
-                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                Pending Scenarios
-                            </Link>}
-                        />
-                    </ListItem>
-                </List>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
-                </ListItem>
-            </List>
-        </StyledDrawer>
-    )
-}
+// export function MenuBar() {
+//     return(
+//         <StyledDrawer variant="permanent">
+//             <List>
+//                 <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+//                     <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
+//                 </ListItem>
+//                 <List>
+//                     <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+//                         <ListItemText primary={
+//                             <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+//                                 All Scenarios
+//                             </Link>}
+//                         />
+//                     </ListItem>
+//                     <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+//                         <ListItemText primary={
+//                             <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+//                                 Failed Scenarios
+//                             </Link>}
+//                         />
+//                     </ListItem>
+//                     <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+//                         <ListItemText primary={
+//                             <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
+//                                 Pending Scenarios
+//                             </Link>}
+//                         />
+//                     </ListItem>
+//                 </List>
+//                 <ListItem>
+//                     <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
+//                 </ListItem>
+//                 <ListItem>
+//                     <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
+//                 </ListItem>
+//                 <ListItem>
+//                     <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
+//                 </ListItem>
+//             </List>
+//         </StyledDrawer>
+//     )
+// }
 
 function ScenarioTitles(props: { headers: Headers }) {
     return (
