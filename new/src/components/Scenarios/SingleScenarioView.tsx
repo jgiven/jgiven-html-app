@@ -1,5 +1,5 @@
 import { ReportStatistics, ScenarioCaseModel, ScenarioModel } from "../../reportModel";
-import {/*MenuBar,*/ ScenarioOverview} from "../ScenarioOverview/ScenarioOverview";
+import {MenuBar, ScenarioOverview} from "../ScenarioOverview/ScenarioOverview";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
 import {Grid} from "@mui/material";
@@ -9,11 +9,11 @@ export function SingleScenarioView(props: { reportName: string; scenario: Scenar
     return (
         <>
             <Grid container>
-                {/*<Grid item xs={12} md={1}>*/}
-                {/*    <div style={{ height: '100vh'}}>*/}
-                {/*        <MenuBar/>*/}
-                {/*    </div>*/}
-                {/*</Grid>*/}
+                <Grid item xs={12} md={1}>
+                    <div style={{ height: '100vh'}}>
+                        <MenuBar/>
+                    </div>
+                </Grid>
                 <Grid item xs={12} md={11}>
                     <Grid container direction="column">
                         <Grid item xs={12}>
