@@ -1,8 +1,8 @@
 import { ReportStatistics, ScenarioCaseModel, ScenarioModel } from "../../reportModel";
-import {MenuBar, ScenarioOverview} from "../ScenarioOverview/ScenarioOverview";
+import { MenuBar, ScenarioOverview } from "../ScenarioOverview/ScenarioOverview";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
-import {Grid} from "@mui/material";
+import { Grid } from "@mui/material";
 
 export function SingleScenarioView(props: { reportName: string; scenario: ScenarioModel }) {
     const [expanded, setExpanded] = useState(false);
@@ -10,14 +10,16 @@ export function SingleScenarioView(props: { reportName: string; scenario: Scenar
         <>
             <Grid container>
                 <Grid item xs={12} md={1}>
-                    <div style={{ height: '100vh'}}>
-                        <MenuBar/>
+                    <div style={{ height: "100vh" }}>
+                        <MenuBar />
                     </div>
                 </Grid>
                 <Grid item xs={12} md={11}>
+                    {" "}
+                    {/* Workshop: Extract to new component.  */}
                     <Grid container direction="column">
                         <Grid item xs={12}>
-                            <div style={{ height: '20em'}}>
+                            <div style={{ height: "20em" }}>
                                 <ScenarioOverview
                                     headers={{
                                         aboveHeader: props.scenario.className,
@@ -45,11 +47,14 @@ export function SingleScenarioView(props: { reportName: string; scenario: Scenar
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <div style={{ height: '40em'}}>
+                        <div style={{ height: "40em" }}>
                             <Scenario
                                 reportName={props.reportName}
                                 scenario={props.scenario}
-                                accordionExpansion={{ expanded: expanded, setExpanded: setExpanded }}
+                                accordionExpansion={{
+                                    expanded: expanded,
+                                    setExpanded: setExpanded
+                                }}
                             ></Scenario>
                         </div>
                     </Grid>

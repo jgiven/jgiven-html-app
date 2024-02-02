@@ -23,7 +23,7 @@ import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { createReportCircle } from "./DonutChart";
 import React, { MouseEventHandler } from "react";
 import { processWords } from "../../wordProcessor";
-import {styled} from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
@@ -47,23 +47,28 @@ interface Headers {
 const StyledDrawer = styled(Drawer)({
     // width: 240,
     flexShrink: 0,
-    '& .MuiDrawer-paper': {
+    "& .MuiDrawer-paper": {
         backgroundColor: "rgba(250,250,250,255)"
-    },
+    }
 });
 
-const Content = styled('div')(({ theme }) => ({
+const Content = styled("div")(({ theme }) => ({
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(3)
 }));
 
 export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
-        <div style={{ display: 'flex'}}>
+        <div style={{ display: "flex" }}>
             <Content>
                 <List>
                     <ListItem>
-                        <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
+                        <Grid
+                            container
+                            direction={"row"}
+                            justifyContent="flex-end"
+                            alignItems="flex-start"
+                        >
                             <Grid item xs={12} sm={8}>
                                 <ScenarioTitles headers={props.headers} />
                             </Grid>
@@ -88,35 +93,34 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
 }
 
 export function MenuBar() {
-    return(
+    return (
         <StyledDrawer variant="permanent">
             <List>
-                <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                    <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
-                </ListItem>
                 <List>
                     <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={
-                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                All Scenarios
-                            </Link>}
-                        />
+                        <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
                     </ListItem>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={
-                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                Failed Scenarios
-                            </Link>}
-                        />
-                    </ListItem>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={
-                            <Link href="http://localhost:3000" underline="none" sx={{ color: 'inherit' }}>
-                                Pending Scenarios
-                            </Link>}
-                        />
-                    </ListItem>
+                    <List>
+                        {["All Scenarios", "Failed Scenarios", "Pending Scenarios"].map(
+                            (scenario, index) => (
+                                <ListItem key={index} sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                                    <ListItemText
+                                        primary={
+                                            <Link
+                                                href="http://localhost:3000"
+                                                underline="none"
+                                                sx={{ color: "inherit" }}
+                                            >
+                                                {scenario}
+                                            </Link>
+                                        }
+                                    />
+                                </ListItem>
+                            )
+                        )}
+                    </List>
                 </List>
+                {/* Workshop: Use forEach to implement missing subitems. */}
                 <ListItem>
                     <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
                 </ListItem>
@@ -128,7 +132,7 @@ export function MenuBar() {
                 </ListItem>
             </List>
         </StyledDrawer>
-    )
+    );
 }
 
 function ScenarioTitles(props: { headers: Headers }) {
