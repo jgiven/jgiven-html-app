@@ -1,40 +1,65 @@
 import { ReportStatistics, ScenarioCaseModel, ScenarioModel } from "../../reportModel";
-import { ScenarioOverview } from "../ScenarioOverview/ScenarioOverview";
+import { MenuBar, ScenarioOverview } from "../ScenarioOverview/ScenarioOverview";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
+import { Grid } from "@mui/material";
 
 export function SingleScenarioView(props: { reportName: string; scenario: ScenarioModel }) {
     const [expanded, setExpanded] = useState(false);
     return (
         <>
-            <ScenarioOverview
-                headers={{
-                    aboveHeader: props.scenario.className,
-                    header: props.scenario.description
-                }}
-                statistic={createStatistics(props.scenario)}
-                targets={{
-                    minusButtonTarget: () => {
-                        console.log("Collapsing stuff");
-                        setExpanded(false);
-                    },
-                    plusButtonTarget: () => {
-                        console.log("Expanding stuff");
-                        setExpanded(true);
-                    },
-                    printButtonTarget: () => {
-                        console.error("print not implemented");
-                    },
-                    bookmarkButtonTarget: () => {
-                        console.error("bookmark not implemented");
-                    }
-                }}
-            />
-            <Scenario
-                reportName={props.reportName}
-                scenario={props.scenario}
-                accordionExpansion={{ expanded: expanded, setExpanded: setExpanded }}
-            ></Scenario>
+            <Grid container>
+                <Grid item xs={12} md={1}>
+                    <div style={{ height: "100vh" }}>
+                        <MenuBar />
+                    </div>
+                </Grid>
+                <Grid item xs={12} md={11}>
+                    {" "}
+                    {/* Workshop: Extract to new component.  */}
+                    <Grid container direction="column">
+                        <Grid item xs={12}>
+                            <div style={{ height: "20em" }}>
+                                <ScenarioOverview
+                                    headers={{
+                                        aboveHeader: props.scenario.className,
+                                        header: props.scenario.description
+                                    }}
+                                    statistic={createStatistics(props.scenario)}
+                                    targets={{
+                                        minusButtonTarget: () => {
+                                            console.log("Collapsing stuff");
+                                            setExpanded(false);
+                                        },
+                                        plusButtonTarget: () => {
+                                            console.log("Expanding stuff");
+                                            setExpanded(true);
+                                        },
+                                        printButtonTarget: () => {
+                                            console.error("print not implemented");
+                                        },
+                                        bookmarkButtonTarget: () => {
+                                            console.error("bookmark not implemented");
+                                        }
+                                    }}
+                                />
+                            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <div style={{ height: "40em" }}>
+                            <Scenario
+                                reportName={props.reportName}
+                                scenario={props.scenario}
+                                accordionExpansion={{
+                                    expanded: expanded,
+                                    setExpanded: setExpanded
+                                }}
+                            ></Scenario>
+                        </div>
+                    </Grid>
+                </Grid>
+            </Grid>
         </>
     );
 }

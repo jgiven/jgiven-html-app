@@ -45,7 +45,7 @@ export function CasesTable(props: CasesTableProps) {
 
 function createColumnsFromArguments(
     cases: ScenarioCaseModel,
-    t: TFunction<"translation", undefined, "translation">
+    t: TFunction<"translation", undefined>
 ): GridColDef[] {
     return [
         {

@@ -4,6 +4,7 @@ import {
     Breadcrumbs,
     Button,
     Divider,
+    Drawer,
     Grid,
     Link,
     List,
@@ -22,6 +23,7 @@ import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { createReportCircle } from "./DonutChart";
 import React, { MouseEventHandler } from "react";
 import { processWords } from "../../wordProcessor";
+import { styled } from "@mui/material/styles";
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
@@ -42,29 +44,94 @@ interface Headers {
     belowHeader?: string;
 }
 
+const StyledDrawer = styled(Drawer)({
+    // width: 240,
+    flexShrink: 0,
+    "& .MuiDrawer-paper": {
+        backgroundColor: "rgba(250,250,250,255)"
+    }
+});
+
+const Content = styled("div")(({ theme }) => ({
+    flexGrow: 1,
+    padding: theme.spacing(3)
+}));
+
 export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
-        <List>
-            <ListItem>
-                <Grid container direction={"row"} justifyContent="flex-end" alignItems="flex-start">
-                    <Grid item xs={12} sm={8}>
-                        <ScenarioTitles headers={props.headers} />
-                    </Grid>
-                    <Grid item sx={{ flexGrow: 1 }} />
-                    <Grid item>{createReportCircle(props)}</Grid>
-                    <Grid item>
-                        <ScenarioActionButtons targets={props.targets} />
-                    </Grid>
-                </Grid>
-            </ListItem>
-            <Divider />
-            <ListItem>
-                <ListItemText primary={StatisticBreadcrumbs(props)} />
-            </ListItem>
-            <ListItem>
-                <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
-            </ListItem>
-        </List>
+        <div style={{ display: "flex" }}>
+            <Content>
+                <List>
+                    <ListItem>
+                        <Grid
+                            container
+                            direction={"row"}
+                            justifyContent="flex-end"
+                            alignItems="flex-start"
+                        >
+                            <Grid item xs={12} sm={8}>
+                                <ScenarioTitles headers={props.headers} />
+                            </Grid>
+                            <Grid item sx={{ flexGrow: 1 }} />
+                            <Grid item>{createReportCircle(props)}</Grid>
+                            <Grid item>
+                                <ScenarioActionButtons targets={props.targets} />
+                            </Grid>
+                        </Grid>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <ListItemText primary={StatisticBreadcrumbs(props)} />
+                    </ListItem>
+                    <ListItem>
+                        <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
+                    </ListItem>
+                </List>
+            </Content>
+        </div>
+    );
+}
+
+export function MenuBar() {
+    return (
+        <StyledDrawer variant="permanent">
+            <List>
+                <List>
+                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                        <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
+                    </ListItem>
+                    <List>
+                        {["All Scenarios", "Failed Scenarios", "Pending Scenarios"].map(
+                            (scenario, index) => (
+                                <ListItem key={index} sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
+                                    <ListItemText
+                                        primary={
+                                            <Link
+                                                href="http://localhost:3000"
+                                                underline="none"
+                                                sx={{ color: "inherit" }}
+                                            >
+                                                {scenario}
+                                            </Link>
+                                        }
+                                    />
+                                </ListItem>
+                            )
+                        )}
+                    </List>
+                </List>
+                {/* Workshop: Use forEach to implement missing subitems. */}
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
+                </ListItem>
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
+                </ListItem>
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
+                </ListItem>
+            </List>
+        </StyledDrawer>
     );
 }
 
