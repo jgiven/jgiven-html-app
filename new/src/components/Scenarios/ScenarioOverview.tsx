@@ -47,15 +47,21 @@ export function ScenarioOverview(props: { reportName: string, title: string, des
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
+
                         <div style={{ height: "40em" }}>
-                            <Scenario
-                                reportName={props.reportName}
-                                scenario={props.scenarios[0]}
-                                accordionExpansion={{
-                                    expanded: expanded,
-                                    setExpanded: setExpanded
-                                }}
-                            ></Scenario>
+                        {props.scenarios.map((scenario) => {
+                            return (
+                                    <Scenario
+                                        reportName={props.reportName}
+                                        scenario={scenario}
+                                        accordionExpansion={{
+                                            expanded: expanded,
+                                            setExpanded: setExpanded
+                                        }}
+                                    ></Scenario>
+                            );
+                        })                        }
+
                         </div>
                     </Grid>
                 </Grid>

@@ -29,7 +29,7 @@ function App() {
                 title={"Mein Titel"}
                 description={"Meine Description"}
                 reportName={guaranteedStateReport.name}
-                scenarios={[guaranteedStateReport.scenarios[0]]}
+                scenarios={guaranteedStateReport.scenarios}
             />
         </div>
     );

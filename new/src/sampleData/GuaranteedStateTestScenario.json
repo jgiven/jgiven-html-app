@@ -4,8 +4,8 @@
     "scenarios": [
         {
             "className": "com.tngtech.jgiven.impl.GuaranteedStateTest",
-            "testMethodName": "assure_before_method_of_second_test_is_executed_after_guaranteed_fields_validation",
-            "description": "assure before method of second test is executed after guaranteed fields validation",
+            "testMethodName": "assure_before_method_of_first_test_is_executed_after_guaranteed_fields_validation",
+            "description": "assure before method of first test is executed after guaranteed fields validation",
             "tagIds": [],
             "explicitParameters": [],
             "derivedParameters": [],
