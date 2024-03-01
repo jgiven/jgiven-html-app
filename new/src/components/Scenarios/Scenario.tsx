@@ -1,13 +1,13 @@
-import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
-import {Accordion, AccordionDetails, Box, Grid, Link, Typography} from "@mui/material";
-import {styled} from "@mui/material/styles";
+import type { ScenarioCaseModel, ScenarioModel, StepModel } from "../../reportModel";
+import { Accordion, AccordionDetails, Box, Grid, Link, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordionSummary, {AccordionSummaryProps} from "@mui/material/AccordionSummary";
-import {PropsWithChildren, useCallback, useEffect, useState} from "react";
-import {addRuntime} from "../utils";
-import {StatusIcon} from "../StatusIconSelector";
-import {processWords} from "../../wordProcessor";
-import {ExpansionState} from "./ScenarioOverview";
+import MuiAccordionSummary, { AccordionSummaryProps } from "@mui/material/AccordionSummary";
+import { PropsWithChildren, useCallback, useEffect, useState } from "react";
+import { addRuntime } from "../utils";
+import { StatusIcon } from "../StatusIconSelector";
+import { processWords } from "../../wordProcessor";
+import { ExpansionState } from "./ScenarioOverview";
 
 export interface ScenarioProps {
     scenario: ScenarioModel;
@@ -27,12 +27,15 @@ export function Scenario(props: ScenarioProps) {
         if (props.globalExpansionState === ExpansionState.EXPANDED) {
             setExpanded(true);
         }
-    }, [props.globalExpansionState])
+    }, [props.globalExpansionState]);
 
-    const onExpansionChanged = useCallback((isExpansion: boolean) => {
-        setExpanded(isExpansion);
-        isExpansion ? props.onExpansionCallback() : props.onCollapsionCallback();
-    }, [expanded])
+    const onExpansionChanged = useCallback(
+        (isExpansion: boolean) => {
+            setExpanded(isExpansion);
+            isExpansion ? props.onExpansionCallback() : props.onCollapsionCallback();
+        },
+        [expanded]
+    );
 
     return props.scenario.scenarioCases.length === 1 ? (
         <div
