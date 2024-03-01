@@ -2,15 +2,7 @@ import {repository} from "./repository";
 import ReportModel from "./reportModel";
 import {ScenarioStatusFilter} from "./components/ScenarioOverview/ScenarioHead";
 
-interface JsonReport {
-    scenarios: ReportModel[],
-    tagFile: TagFile
-};
-
-type TagFile = { tagTypeMap: unknown, tags: unknown[] }
-
-
-export function filterByStatus(status: string) {
+export function filterByStatus(status: ScenarioStatusFilter) {
     const fullReport = repository.getReport();
     return filterScenarios(fullReport.scenarios, status)
 
