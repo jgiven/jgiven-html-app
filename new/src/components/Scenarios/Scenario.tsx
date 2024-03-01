@@ -35,7 +35,7 @@ export function Scenario(props: ScenarioProps) {
         [expanded]
     );
 
-    return props.scenario.scenarioCases.length === 1 ? (
+    return (
         <div
             id={`${props.scenario.className}#${props.scenario.testMethodName}`}
             aria-label={`Scenario ${props.scenario.description}`}
@@ -64,8 +64,6 @@ export function Scenario(props: ScenarioProps) {
                 </AccordionDetails>
             </Accordion>
         </div>
-    ) : (
-        <div></div>
     );
 }
 
@@ -77,8 +75,6 @@ function SingleCaseScenario(props: {
     summary: string;
     className: string;
 }) {
-
-
     return (
             <Box sx={{marginLeft: "2em"}}>
                 {props.scenarioCase.steps.map((step: StepModel, index) => (
