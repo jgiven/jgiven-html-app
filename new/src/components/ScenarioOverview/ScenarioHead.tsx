@@ -110,21 +110,6 @@ export function MenuBar() {
                 {/* Workshop: Use forEach to implement missing subitems. */}
                 <ListItem>
                     <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
-                    <List>
-                        <ListItem>
-                            <ListItemText
-                                primary={
-                                    <Link
-                                        href="http://localhost:3000?tag=mytag"
-                                        underline="none"
-                                        sx={{ color: "inherit" }}
-                                    >
-                                        mytag
-                                    </Link>
-                                }
-                            />
-                        </ListItem>
-                    </List>
                 </ListItem>
                 <ListItem>
                     <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
