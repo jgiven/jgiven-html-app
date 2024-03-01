@@ -1,12 +1,12 @@
-import { Grid, Typography} from "@mui/material";
-import { ScenarioModel} from "../../reportModel";
+import {Grid, Typography} from "@mui/material";
+import {ScenarioModel} from "../../reportModel";
 import {processWords} from "../../wordProcessor";
 import {StatusIcon} from "../StatusIconSelector";
-import {addRuntime} from "../utils";
 import {styled} from "@mui/material/styles";
 import MuiAccordionSummary, {AccordionSummaryProps} from "@mui/material/AccordionSummary";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import {ScenarioCaption} from "./ScenarioCaption";
+import {addRuntimeInMiliseconds} from "../utils";
 
 export function ScenarioHead(props: {
     scenario: ScenarioModel;
@@ -48,7 +48,7 @@ export function ScenarioHead(props: {
                 <StatusIcon executionStatus={props.scenario.executionStatus} />
             </Grid>
             <Grid>
-                <ScenarioCaption>{addRuntime(props.scenario.scenarioCases[0])}</ScenarioCaption>
+                <ScenarioCaption>{addRuntimeInMiliseconds(props.scenario.scenarioCases[0].durationInNanos)}</ScenarioCaption>
             </Grid>
         </Grid>
     </AccordionSummary>
