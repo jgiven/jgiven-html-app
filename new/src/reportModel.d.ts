@@ -65,7 +65,8 @@ interface ScenarioCaseModel {
     durationInNanos: number;
     description?: string;
 }
-interface ScenarioModel {
+
+export interface ScenarioModel {
     className: string;
     classTitle: string;
     testMethodName: string;
