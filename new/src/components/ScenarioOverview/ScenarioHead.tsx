@@ -1,33 +1,18 @@
-import type { ReportStatistics } from "../../reportModel";
-import {
-    Breadcrumbs,
-    Divider,
-    Grid,
-    Link,
-    List,
-    ListItem,
-    ListItemText,
-    Typography
-} from "@mui/material";
+import type {ReportStatistics} from "../../reportModel";
+import {Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
 import CheckIcon from "@mui/icons-material/CheckBox";
 import ErrorIcon from "@mui/icons-material/Error";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
-import { addRuntime } from "../utils";
+import {addRuntime} from "../utils";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import { createReportCircle } from "./DonutChart";
-import { PropsWithChildren } from "react";
-import { processWords } from "../../wordProcessor";
-import { useSearchParams } from "react-router-dom";
-import {
-    StyledContent,
-    StyledDrawer,
-    StyledIconButton,
-    StyledIconContainer,
-    StyledLink
-} from "./ScenarioHead.styles";
+import {createReportCircle} from "./DonutChart";
+import {PropsWithChildren} from "react";
+import {processWords} from "../../wordProcessor";
+import {useSearchParams} from "react-router-dom";
+import {StyledContent, StyledDrawer, StyledIconButton, StyledIconContainer, StyledLink} from "./ScenarioHead.styles";
 
 export enum HeaderIconType {}
 
@@ -199,9 +184,9 @@ function ScenarioHeaderIcon({ children, onClick }: ScenarioHeaderIconProps) {
 }
 
 export enum ScenarioStatusFilter {
-    SUCCESS = "success",
-    FAILURE = "failure",
-    PENDING = "pending"
+    SUCCESS = "SUCCESS",
+    FAILED = "FAILED",
+    PENDING = "PENDING"
 }
 
 function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
@@ -222,7 +207,7 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 underline="hover"
                 className="pseudo-link"
                 color={"red"}
-                onClick={() => setUrlSearchParams({ result: ScenarioStatusFilter.FAILURE })}
+                onClick={() => setUrlSearchParams({result: ScenarioStatusFilter.FAILED})}
             >
                 <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numFailedScenarios} failed,

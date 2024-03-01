@@ -114,12 +114,14 @@ export interface Tag {
     href?: string;
     hideInNav?: boolean;
 }
-interface Word {
+
+export interface Word {
     value: string;
     isIntroWord?: boolean;
     argumentInfo?: ArgumentInfo;
 }
-type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
-type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
-type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
+
+export type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
+export type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
+export type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
 export type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING" |/*shows up in json file*/"SUCCESS";
