@@ -1,5 +1,5 @@
 import { ReportStatistics, ScenarioModel } from "../../reportModel";
-import { MenuBar, ScenarioHead } from "../ScenarioOverview/ScenarioHead";
+import { MenuBar, ScenarioCollectionHead } from "../ScenarioOverview/ScenarioCollectionHead";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
 import { Grid } from "@mui/material";
@@ -30,7 +30,7 @@ export function ScenarioOverview(props: {
                     <Grid container direction="column">
                         <Grid item xs={12}>
                             <div style={{ height: "20em" }}>
-                                <ScenarioHead
+                                <ScenarioCollectionHead
                                     headers={{
                                         aboveHeader: props.description,
                                         header: props.title

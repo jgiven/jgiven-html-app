@@ -37,7 +37,7 @@ interface ExecutionStatusCalculator {
     failedCount: number;
     pendingCount: number;
     totalCount: number;
-    status: ExecutionStatus;
+    status: CaseStatus;
 }
 interface NamedArgument {
     name: string;
@@ -59,7 +59,7 @@ interface ScenarioCaseModel {
     steps: StepModel[];
     explicitArguments: string[];
     derivedArguments: string[];
-    status: ExecutionStatus;
+    status: CaseStatus;
     errorMessage?: string;
     stackTrace?: string[];
     durationInNanos: number;
@@ -77,7 +77,7 @@ interface ScenarioModel {
     scenarioCases: ScenarioCaseModel[];
     casesAsTable: boolean;
     durationInNanos: number;
-    executionStatus: "SUCCESS" | "PENDING" | "FAILED"
+    executionStatus: ExecutionStatus;
     tags: TagModel[];
 }
 
@@ -121,7 +121,8 @@ export interface Word {
     argumentInfo?: ArgumentInfo;
 }
 
-export type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
+export type ExecutionStatus = "SUCCESS" | "FAILED" | "PENDING";
+type CaseStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
 export type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
 export type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
 export type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING" |/*shows up in json file*/"SUCCESS";

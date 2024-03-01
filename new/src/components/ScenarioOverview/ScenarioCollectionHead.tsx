@@ -31,7 +31,7 @@ interface Headers {
     belowHeader?: string;
 }
 
-export function ScenarioHead(props: ScenarioOverviewProps) {
+export function ScenarioCollectionHead(props: ScenarioOverviewProps) {
     const { statistic, headers, ...iconClickHandlers } = props;
 
     return (
