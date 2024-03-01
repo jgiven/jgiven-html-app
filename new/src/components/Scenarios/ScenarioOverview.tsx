@@ -1,8 +1,14 @@
 import { ReportStatistics, ScenarioModel } from "../../reportModel";
-import { MenuBar, ScenarioCollectionHead } from "../ScenarioOverview/ScenarioCollectionHead";
+import {
+    MenuBar,
+    ScenarioCollectionHead,
+    ScenarioStatusFilter
+} from "../ScenarioOverview/ScenarioCollectionHead";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
 import { Grid } from "@mui/material";
+import { filterByStatus } from "../../ReportFilter";
+import { useSearchParams } from "react-router-dom";
 
 export enum ExpansionState {
     COLLAPSED,
@@ -16,6 +22,8 @@ export function ScenarioOverview(props: {
     scenarios: ScenarioModel[];
 }) {
     const [allExpanded, setAllExpanded] = useState<ExpansionState>(ExpansionState.COLLAPSED);
+    const [searchParams] = useSearchParams();
+
     return (
         <>
             <Grid container>
@@ -54,8 +62,10 @@ export function ScenarioOverview(props: {
                     </Grid>
                     <Grid item xs={12}>
                         <div style={{ height: "40em" }}>
-                            {props.scenarios.map(scenario => {
-                                return (
+                            {filterByStatus(
+                                searchParams.get("result") as ScenarioStatusFilter | null
+                            ).flatMap(reportModel => {
+                                return reportModel.scenarios.map(scenario => (
                                     <Scenario
                                         reportName={props.reportName}
                                         scenario={scenario}
@@ -66,8 +76,8 @@ export function ScenarioOverview(props: {
                                         onExpansionCallback={() => {
                                             setAllExpanded(ExpansionState.INTERMEDIATE);
                                         }}
-                                    ></Scenario>
-                                );
+                                    />
+                                ));
                             })}
                         </div>
                     </Grid>
