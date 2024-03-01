@@ -4,7 +4,6 @@ import {
     Breadcrumbs,
     Button,
     Divider,
-    Drawer,
     Grid,
     Link,
     List,
@@ -23,9 +22,8 @@ import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { createReportCircle } from "./DonutChart";
 import React, { MouseEventHandler } from "react";
 import { processWords } from "../../wordProcessor";
-import { styled } from "@mui/material/styles";
 import { useSearchParams } from "react-router-dom";
-import "./ScenarioHead.css";
+import { StyledContent, StyledDrawer, StyledLink } from "./ScenarioHead.styles";
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
@@ -46,23 +44,10 @@ interface Headers {
     belowHeader?: string;
 }
 
-const StyledDrawer = styled(Drawer)({
-    // width: 240,
-    flexShrink: 0,
-    "& .MuiDrawer-paper": {
-        backgroundColor: "rgba(250,250,250,255)"
-    }
-});
-
-const Content = styled("div")(({ theme }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3)
-}));
-
 export function ScenarioHead(props: ScenarioOverviewProps) {
     return (
         <div style={{ display: "flex" }}>
-            <Content>
+            <StyledContent>
                 <List>
                     <ListItem>
                         <Grid
@@ -89,7 +74,7 @@ export function ScenarioHead(props: ScenarioOverviewProps) {
                         <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
                     </ListItem>
                 </List>
-            </Content>
+            </StyledContent>
         </div>
     );
 }
@@ -242,7 +227,7 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
 
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
-            <Link
+            <StyledLink
                 underline="hover"
                 className="pseudo-link"
                 color={"black"}
@@ -250,8 +235,8 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
             >
                 <CheckIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numSuccessfulScenarios} Successful,
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
                 underline="hover"
                 className="pseudo-link"
                 color={"red"}
@@ -259,8 +244,8 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
             >
                 <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numFailedScenarios} failed,
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
                 underline="hover"
                 className="pseudo-link"
                 color={"grey"}
@@ -268,7 +253,7 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
             >
                 <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numPendingScenarios} pending,
-            </Link>
+            </StyledLink>
             <Typography color="text.primary">{props.statistic.numScenarios} Total</Typography>
             <Typography color={"text.primary"}>{addRuntime(props.statistic)}</Typography>
         </Breadcrumbs>
