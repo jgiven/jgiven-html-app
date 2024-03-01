@@ -24,8 +24,8 @@ import { createReportCircle } from "./DonutChart";
 import React, { MouseEventHandler } from "react";
 import { processWords } from "../../wordProcessor";
 import { styled } from "@mui/material/styles";
-import {useSearchParams} from "react-router-dom";
-import './ScenarioHead.css';
+import { useSearchParams } from "react-router-dom";
+import "./ScenarioHead.css";
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
@@ -232,9 +232,9 @@ function ScenarioOverviewItem(props: { children: React.ReactNode; action: MouseE
 }
 
 export enum ScenarioStatusFilter {
-    SUCCESS = 'success',
-    FAILURE = 'failure',
-    PENDING = 'pending'
+    SUCCESS = "success",
+    FAILURE = "failure",
+    PENDING = "pending"
 }
 
 function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
@@ -242,15 +242,30 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
 
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
-            <Link underline="hover" className="pseudo-link" color={"black"} onClick={() => setUrlSearchParams({result: ScenarioStatusFilter.SUCCESS})}>
+            <Link
+                underline="hover"
+                className="pseudo-link"
+                color={"black"}
+                onClick={() => setUrlSearchParams({ result: ScenarioStatusFilter.SUCCESS })}
+            >
                 <CheckIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numSuccessfulScenarios} Successful,
             </Link>
-            <Link underline="hover" className="pseudo-link" color={"red"} onClick={() => setUrlSearchParams({result: ScenarioStatusFilter.FAILURE})}>
+            <Link
+                underline="hover"
+                className="pseudo-link"
+                color={"red"}
+                onClick={() => setUrlSearchParams({ result: ScenarioStatusFilter.FAILURE })}
+            >
                 <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numFailedScenarios} failed,
             </Link>
-            <Link underline="hover" className="pseudo-link" color={"grey"} onClick={() => setUrlSearchParams({result: ScenarioStatusFilter.PENDING})}>
+            <Link
+                underline="hover"
+                className="pseudo-link"
+                color={"grey"}
+                onClick={() => setUrlSearchParams({ result: ScenarioStatusFilter.PENDING })}
+            >
                 <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numPendingScenarios} pending,
             </Link>
