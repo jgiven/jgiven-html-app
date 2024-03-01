@@ -57,7 +57,7 @@ const Content = styled("div")(({ theme }) => ({
     padding: theme.spacing(3)
 }));
 
-export function ScenarioOverview(props: ScenarioOverviewProps) {
+export function ScenarioHead(props: ScenarioOverviewProps) {
     return (
         <div style={{ display: "flex" }}>
             <Content>
