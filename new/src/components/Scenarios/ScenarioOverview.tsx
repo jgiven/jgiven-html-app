@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Grid } from "@mui/material";
 import { filterByStatus } from "../../ReportFilter";
 import { useFilters } from "../../hooks/useFilters";
+import {repository} from "../../repository";
 
 export enum ExpansionState {
     COLLAPSED,
@@ -15,10 +16,10 @@ export function ScenarioOverview(props: {
     reportName: string;
     title: string;
     description: string;
-    scenarios: ScenarioModel[];
 }) {
     const [allExpanded, setAllExpanded] = useState<ExpansionState>(ExpansionState.COLLAPSED);
     const [filters] = useFilters();
+    const scenarios = repository.getAllScenarios();
 
     return (
         <>
@@ -39,7 +40,7 @@ export function ScenarioOverview(props: {
                                         aboveHeader: props.description,
                                         header: props.title
                                     }}
-                                    statistic={createStatistics(props.scenarios)}
+                                    statistic={createStatistics(scenarios)}
                                     onCollapseButtonClick={() => {
                                         setAllExpanded(ExpansionState.COLLAPSED);
                                     }}
@@ -58,7 +59,7 @@ export function ScenarioOverview(props: {
                     </Grid>
                     <Grid item xs={12}>
                         <div style={{ height: "40em" }}>
-                            {filterByStatus(filters.status).flatMap(scenario => (
+                            {filterByStatus(filters.status).map(scenario => (
                                 <Scenario
                                     reportName={props.reportName}
                                     scenario={scenario}
