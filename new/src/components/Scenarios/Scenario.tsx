@@ -31,7 +31,7 @@ export function Scenario(props: ScenarioProps) {
 
     const onExpansionChanged = useCallback((isExpansion: boolean) => {
         setExpanded(isExpansion);
-        isExpansion ? props.onExpansionCallback : props.onCollapsionCallback;
+        isExpansion ? props.onExpansionCallback() : props.onCollapsionCallback();
     }, [expanded])
 
     return props.scenario.scenarioCases.length === 1 ? (
