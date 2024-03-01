@@ -12,7 +12,6 @@ function App() {
                 title={"Mein Titel"}
                 description={"Meine Description"}
                 reportName={guaranteedStateReport.name}
-                scenarios={guaranteedStateReport.scenarios}
             />
         </div>
     );

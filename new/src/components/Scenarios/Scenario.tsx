@@ -45,7 +45,7 @@ export function Scenario(props: ScenarioProps) {
                     scenario={props.scenario}
                     expanded={expanded}
                     setExpanded={onExpansionChanged}
-                    summary={"Summary"}
+                    summary={props.scenario.classTitle}
                     className={"className"}
                 />
 
