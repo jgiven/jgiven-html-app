@@ -48,12 +48,8 @@ interface ReportModelFile {
     file: File;
 }
 interface ReportStatistics {
-    numClasses: number;
     numScenarios: number;
     numFailedScenarios: number;
-    numCases: number;
-    numFailedCases: number;
-    numSteps: number;
     durationInNanos: number;
     numPendingScenarios: number;
     numSuccessfulScenarios: number;
