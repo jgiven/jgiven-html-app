@@ -5,9 +5,5 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
-    },
-    {
-        path: "/result/:result",
-        element: <App/>,
-    },
+    }
 ]);
