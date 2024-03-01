@@ -4,13 +4,19 @@ import {Scenario} from "./Scenario";
 import {useState} from "react";
 import {Grid} from "@mui/material";
 
+
+export enum ExpansionState {
+    COLLAPSED,
+    INTERMEDIATE,
+    EXPANDED
+}
 export function ScenarioOverview(props: {
     reportName: string,
     title: string,
     description: string,
     scenarios: ScenarioModel[]
 }) {
-    const [expanded, setExpanded] = useState(false);
+    const [allExpanded, setAllExpanded] = useState<ExpansionState>(ExpansionState.COLLAPSED);
     return (
         <>
             <Grid container>
@@ -34,11 +40,11 @@ export function ScenarioOverview(props: {
                                     targets={{
                                         minusButtonTarget: () => {
                                             console.log("Collapsing stuff");
-                                            setExpanded(false);
+                                            setAllExpanded(ExpansionState.COLLAPSED);
                                         },
                                         plusButtonTarget: () => {
                                             console.log("Expanding stuff");
-                                            setExpanded(true);
+                                            setAllExpanded(ExpansionState.EXPANDED);
                                         },
                                         printButtonTarget: () => {
                                             console.error("print not implemented");
@@ -59,10 +65,9 @@ export function ScenarioOverview(props: {
                                     <Scenario
                                         reportName={props.reportName}
                                         scenario={scenario}
-                                        accordionExpansion={{
-                                            expanded: expanded,
-                                            setExpanded: setExpanded
-                                        }}
+                                        globalExpansionState={allExpanded}
+                                        onCollapsionCallback={() => {setAllExpanded(ExpansionState.INTERMEDIATE)}}
+                                        onExpansionCallback={() => {setAllExpanded(ExpansionState.INTERMEDIATE)}}
                                     ></Scenario>
                                 );
                             })}

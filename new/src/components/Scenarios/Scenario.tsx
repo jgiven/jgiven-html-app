@@ -1,23 +1,39 @@
-import type { ScenarioCaseModel, ScenarioModel, StepModel } from "../../reportModel";
-import { Accordion, AccordionDetails, Box, Grid, Link, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
+import {Accordion, AccordionDetails, Box, Grid, Link, Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordionSummary, { AccordionSummaryProps } from "@mui/material/AccordionSummary";
-import { PropsWithChildren } from "react";
-import { addRuntime } from "../utils";
-import { StatusIcon } from "../StatusIconSelector";
-import { processWords } from "../../wordProcessor";
+import MuiAccordionSummary, {AccordionSummaryProps} from "@mui/material/AccordionSummary";
+import {PropsWithChildren, useCallback, useEffect, useState} from "react";
+import {addRuntime} from "../utils";
+import {StatusIcon} from "../StatusIconSelector";
+import {processWords} from "../../wordProcessor";
+import {ExpansionState} from "./ScenarioOverview";
 
 export interface ScenarioProps {
     scenario: ScenarioModel;
+    globalExpansionState: ExpansionState;
+    onExpansionCallback: () => void;
+    onCollapsionCallback: () => void;
     reportName?: string;
-    accordionExpansion: {
-        expanded: boolean;
-        setExpanded: (expanded: boolean) => void;
-    };
 }
 
 export function Scenario(props: ScenarioProps) {
+    const [expanded, setExpanded] = useState(false);
+
+    useEffect(() => {
+        if (props.globalExpansionState === ExpansionState.COLLAPSED) {
+            setExpanded(false);
+        }
+        if (props.globalExpansionState === ExpansionState.EXPANDED) {
+            setExpanded(true);
+        }
+    }, [props.globalExpansionState])
+
+    const onExpansionChanged = useCallback((isExpansion: boolean) => {
+        setExpanded(isExpansion);
+        isExpansion ? props.onExpansionCallback : props.onCollapsionCallback;
+    }, [expanded])
+
     return props.scenario.scenarioCases.length === 1 ? (
         <div
             id={`${props.scenario.className}#${props.scenario.testMethodName}`}
@@ -27,8 +43,8 @@ export function Scenario(props: ScenarioProps) {
                 scenarioCase={props.scenario.scenarioCases[0]}
                 reportName={props.reportName}
                 summary={props.scenario.description}
-                expanded={props.accordionExpansion.expanded}
-                setExpanded={props.accordionExpansion.setExpanded}
+                expanded={expanded}
+                setExpanded={onExpansionChanged}
                 className={props.scenario.className}
             />
         </div>
