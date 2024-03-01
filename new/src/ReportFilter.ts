@@ -3,11 +3,11 @@ import ReportModel, { ScenarioModel } from "./reportModel";
 import { ScenarioStatusFilter } from "./components/ScenarioOverview/ScenarioCollectionHead";
 
 export function filterByStatus(
-    ...statusParameter: (ScenarioStatusFilter | null)[]
+    ...statusParameter: (ScenarioStatusFilter | undefined)[]
 ): ScenarioModel[] {
     const fullReport = repository.getReport();
     const status = statusParameter
-        .filter(status => status !== null)
+        .filter(status => status !== undefined)
         .map(s => s as ScenarioStatusFilter);
 
     const filteredReports =
