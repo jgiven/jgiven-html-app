@@ -97,6 +97,9 @@ test("Scenario capitalizes title", async () => {
 });
 
 const model: ScenarioModel = {
+    classTitle: "classTitle",
+    executionStatus: "SUCCESS",
+    tags: [],
     className: "testClass",
     testMethodName: "testMethod",
     description: "this is a description",
