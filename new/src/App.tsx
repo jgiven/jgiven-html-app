@@ -2,7 +2,7 @@ import "./App.css";
 import ReportModel, {ReportStatistics} from "./reportModel";
 import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json";
 import {ScenarioOverview} from "./components/Scenarios/ScenarioOverview";
-import {useParams} from "react-router-dom";
+import { useSearchParams} from "react-router-dom";
 
 export const statistics: ReportStatistics[] = [
     {
@@ -21,10 +21,10 @@ export const statistics: ReportStatistics[] = [
 const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as ReportModel;
 
 function App() {
-    let { result } = useParams();
+    const [searchParams] = useSearchParams();
     return (
         <div className="App" aria-label="App">
-            {result}
+            {searchParams.get('result')}
             <ScenarioOverview
                 title={"Mein Titel"}
                 description={"Meine Description"}
