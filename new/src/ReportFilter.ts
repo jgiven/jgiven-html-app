@@ -1,21 +1,19 @@
 import {repository} from "./repository";
-import ReportModel from "./reportModel";
+import ReportModel, {ScenarioModel} from "./reportModel";
 import {ScenarioStatusFilter} from "./components/ScenarioOverview/ScenarioCollectionHead";
 
-export function filterByStatus(...statusParameter: (ScenarioStatusFilter | null)[]): ReportModel[] {
+export function filterByStatus(...statusParameter: (ScenarioStatusFilter | null)[]): ScenarioModel[] {
     const fullReport = repository.getReport();
     const status = statusParameter
         .filter(status => status !== null)
         .map(s => s as ScenarioStatusFilter);
 
-    if (status.length === 0) {
-        return fullReport.scenarios;
-    }
+    const filteredReports = status.length === 0 ? fullReport.scenarios : filterReportByScenarioStatus(fullReport.scenarios, ...status);
 
-    return filterScenarios(fullReport.scenarios, ...status);
+    return filteredReports.flatMap(report => report.scenarios);
 }
 
-function filterScenarios(reports: ReportModel[], ...status: ScenarioStatusFilter[]) {
+function filterReportByScenarioStatus(reports: ReportModel[], ...status: ScenarioStatusFilter[]) {
     const filteredReports = [];
     for (const report of reports) {
         const filteredScenarios = report.scenarios.filter(
