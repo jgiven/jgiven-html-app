@@ -1,14 +1,10 @@
-import { ReportStatistics, ScenarioModel } from "../../reportModel";
-import {
-    MenuBar,
-    ScenarioCollectionHead,
-    ScenarioStatusFilter
-} from "../ScenarioOverview/ScenarioCollectionHead";
-import { Scenario } from "./Scenario";
-import { useState } from "react";
-import { Grid } from "@mui/material";
-import { filterByStatus } from "../../ReportFilter";
-import { useSearchParams } from "react-router-dom";
+import {ReportStatistics, ScenarioModel} from "../../reportModel";
+import {MenuBar, ScenarioCollectionHead, ScenarioStatusFilter} from "../ScenarioOverview/ScenarioCollectionHead";
+import {Scenario} from "./Scenario";
+import {useState} from "react";
+import {Grid} from "@mui/material";
+import {filterByStatus} from "../../ReportFilter";
+import {useSearchParams} from "react-router-dom";
 
 export enum ExpansionState {
     COLLAPSED,
@@ -64,8 +60,8 @@ export function ScenarioOverview(props: {
                         <div style={{ height: "40em" }}>
                             {filterByStatus(
                                 searchParams.get("result") as ScenarioStatusFilter | null
-                            ).flatMap(reportModel => {
-                                return reportModel.scenarios.map(scenario => (
+                            ).flatMap(scenario =>
+                                (
                                     <Scenario
                                         reportName={props.reportName}
                                         scenario={scenario}
@@ -77,8 +73,8 @@ export function ScenarioOverview(props: {
                                             setAllExpanded(ExpansionState.INTERMEDIATE);
                                         }}
                                     />
-                                ));
-                            })}
+                                )
+                            )}
                         </div>
                     </Grid>
                 </Grid>
