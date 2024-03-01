@@ -1,7 +1,7 @@
 import "./App.css";
-import ReportModel, { ReportStatistics } from "./reportModel";
+import ReportModel, {ReportStatistics} from "./reportModel";
 import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json";
-import { SingleScenarioView } from "./components/Scenarios/SingleScenarioView";
+import {ScenarioOverview} from "./components/Scenarios/ScenarioOverview";
 import {useParams} from "react-router-dom";
 
 export const statistics: ReportStatistics[] = [
@@ -25,9 +25,11 @@ function App() {
     return (
         <div className="App" aria-label="App">
             {result}
-            <SingleScenarioView
+            <ScenarioOverview
+                title={"Mein Titel"}
+                description={"Meine Description"}
                 reportName={guaranteedStateReport.name}
-                scenario={guaranteedStateReport.scenarios[0]}
+                scenarios={[guaranteedStateReport.scenarios[0]]}
             />
         </div>
     );
