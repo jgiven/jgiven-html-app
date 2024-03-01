@@ -2,7 +2,7 @@ export function addRuntimeInSeconds(durationInNanos: number ): string {
     return addRuntime(durationInNanos, 1e7, 1e9, "s");
 }
 
-export function addRuntimeInMiliseconds(durationInNanos: number): string {
+export function addRuntimeInMilliseconds(durationInNanos: number): string {
     return addRuntime(durationInNanos, 1e4, 1e6,  "ms");
 }
 
