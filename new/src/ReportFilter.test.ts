@@ -32,6 +32,26 @@ describe("Report filter status filter", () => {
             .toEqual([fullReport.scenarios[0].scenarios[0]]);
     });
 
+    test("should ignore null status", () => {
+        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+
+        expect(filterByStatus(ScenarioStatusFilter.SUCCESS, null)
+            .flatMap(rep => rep.scenarios))
+            .toEqual([fullReport.scenarios[0].scenarios[0]]);
+    });
+
+    test('should return the full report if no status is provided', () => {
+        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+
+        expect(filterByStatus()).toEqual(fullReport.scenarios);
+    });
+
+    test('should return the full report if null is provided', () => {
+        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+
+        expect(filterByStatus(null)).toEqual(fullReport.scenarios);
+
+    });
 });
 
 function createSampleScenario(scenario: Partial<ScenarioModel>): ScenarioModel {
