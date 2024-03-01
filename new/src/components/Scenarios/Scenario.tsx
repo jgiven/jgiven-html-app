@@ -1,11 +1,11 @@
 import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
 import {Accordion, AccordionDetails, Box, Link, Typography} from "@mui/material";
 import {useCallback, useEffect, useState} from "react";
-import {addRuntime} from "../utils";
 import {processWords} from "../../wordProcessor";
 import {ExpansionState} from "./ScenarioOverview";
 import {ScenarioHead} from "./ScenarioHead";
 import {ScenarioCaption} from "./ScenarioCaption";
+import {addRuntimeInSeconds} from "../utils";
 
 export interface ScenarioProps {
     scenario: ScenarioModel;
@@ -102,7 +102,7 @@ function ScenarioStep(props: { step: StepModel }) {
     const stepDescription = processWords(props.step.words);
     return (
         <Typography align={"left"}>
-            {stepDescription} <ScenarioCaption>{addRuntime(props.step)}</ScenarioCaption>
+            {stepDescription} <ScenarioCaption>{addRuntimeInSeconds(props.step.durationInNanos)}</ScenarioCaption>
         </Typography>
     );
 }
