@@ -48,14 +48,22 @@ export function Scenario(props: ScenarioProps) {
                     summary={"Summary"}
                     className={"className"}
                 />
-                <SingleCaseScenario
-                    scenarioCase={props.scenario.scenarioCases[0]}
-                    reportName={props.reportName}
-                    summary={props.scenario.description}
-                    expanded={expanded}
-                    setExpanded={onExpansionChanged}
-                    className={props.scenario.className}
-                />
+
+                <AccordionDetails aria-label="Scenario Steps">
+                    {
+                        props.scenario.scenarioCases.map((scenarioCase) => {
+                                return <SingleCaseScenario
+                                    scenarioCase={scenarioCase}
+                                    reportName={props.reportName}
+                                    summary={props.scenario.description}
+                                    expanded={expanded}
+                                    setExpanded={onExpansionChanged}
+                                    className={props.scenario.className}
+                                />
+                            }
+                        )
+                    }
+                </AccordionDetails>
             </Accordion>
         </div>
     ) : (
@@ -74,7 +82,6 @@ function SingleCaseScenario(props: {
 
 
     return (
-        <AccordionDetails aria-label="Scenario Steps">
             <Box sx={{marginLeft: "2em"}}>
                 {props.scenarioCase.steps.map((step: StepModel, index) => (
                     <ScenarioStep key={index} step={step}></ScenarioStep>
@@ -90,7 +97,6 @@ function SingleCaseScenario(props: {
                     </Link>
                 </Typography>
             </Box>
-        </AccordionDetails>
     );
 }
 
