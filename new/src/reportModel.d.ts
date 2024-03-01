@@ -3,7 +3,7 @@ export default interface ReportModel {
     name: string;
     description?: string;
     scenarios: ScenarioModel[];
-    tagMap: Map<string, Tag>;
+    tagMap?: Map<string, Tag>;
 }
 interface ArgumentInfo {
     parameterName?: string;
@@ -71,15 +71,18 @@ interface ScenarioCaseModel {
 }
 interface ScenarioModel {
     className: string;
+    classTitle: string;
     testMethodName: string;
     description: string;
-    extendedDescription: string;
+    extendedDescription?: string;
     tagIds: string[];
     explicitParameters: string[];
     derivedParameters: string[];
     scenarioCases: ScenarioCaseModel[];
     casesAsTable: boolean;
     durationInNanos: number;
+    executionStatus: "SUCCESS" | "PENDING" | "FAILED"
+    tags: TagModel[];
 }
 
 interface StepFormatter {
@@ -90,15 +93,15 @@ interface StepFormatter {
 interface StepModel {
     name: string;
     words: Word[];
-    nestedSteps?: StepModel[];
     status: StepStatus;
     durationInNanos: number;
+    depth: number;
+    parentFailed: boolean;
+    nestedSteps?: StepModel[];
     extendedDescription?: string;
     attachments?: AttachmentModel[];
     isSectionTitle?: boolean;
     comment?: string;
-    depth: number;
-    parentFailed: boolean;
 }
 interface Tag {
     fullType: string;
