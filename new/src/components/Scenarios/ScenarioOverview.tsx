@@ -83,26 +83,16 @@ export function ScenarioOverview(props: {
 
 function createStatistics(scenarios: ScenarioModel[]): ReportStatistics {
     const allCases = scenarios.flatMap((scenario) => scenario.scenarioCases);
-    const allSteps = allCases.flatMap((scenarioCase) => {scenarioCase.steps});
-    const failedCases = allCases.filter((scenarioCase) => scenarioCase.status === "FAILED" );
-
-    const failedScenarios = scenarios.filter((scenario) => scenario.scenarioCases.some((scenarioCase) => scenarioCase.status === "FAILED"));
-    const pendingScenarios = scenarios.filter((scenario) => scenario.scenarioCases.some((scenarioCase) => scenarioCase.status === "SOME_STEPS_PENDING" || scenarioCase.status === "SCENARIO_PENDING"));
+    const failedScenarios = scenarios.filter((scenario) => scenario.executionStatus === "FAILED");
+    const pendingScenarios = scenarios.filter((scenario) => scenario.executionStatus === "PENDING");
+    const successfulScenarios = scenarios.filter((scenario) => scenario.executionStatus === "SUCCESS");
     return {
-        numClasses: 1,
         numScenarios: scenarios.length,
-                numFailedScenarios: failedScenarios.length,
-        numCases: allCases.length,
-        numFailedCases: failedCases.length,
-        numSteps: allSteps.length,
-        durationInNanos: 1, //scenario.durationInNanos,
+        numFailedScenarios: failedScenarios.length,
+        durationInNanos: allCases
+            .map((scenarioCase) => scenarioCase.durationInNanos)
+            .reduce((totalDuration, current) => totalDuration + current),
         numPendingScenarios: pendingScenarios.length,
-        //Math.sign(
-        //    findNumberOfCasesWithStatus(scenario.scenarioCases, "SCENARIO_PENDING")
-        //),
-        numSuccessfulScenarios: 1
-        //Math.sign(
-        //    findNumberOfCasesWithStatus(scenario.scenarioCases, "SUCCESS")
-        //)
+        numSuccessfulScenarios: successfulScenarios.length,
     };
 }
