@@ -103,7 +103,8 @@ interface StepModel {
     isSectionTitle?: boolean;
     comment?: string;
 }
-interface Tag {
+
+export interface Tag {
     fullType: string;
     type: string;
     name: string;
@@ -125,4 +126,4 @@ interface Word {
 type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
 type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
 type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
-type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING";
+export type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING" |/*shows up in json file*/"SUCCESS";
