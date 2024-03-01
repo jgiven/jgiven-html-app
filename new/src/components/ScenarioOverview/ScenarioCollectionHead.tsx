@@ -1,18 +1,33 @@
-import type {ReportStatistics} from "../../reportModel";
-import {Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
+import type { ReportStatistics } from "../../reportModel";
+import {
+    Breadcrumbs,
+    Divider,
+    Grid,
+    Link,
+    List,
+    ListItem,
+    ListItemText,
+    Typography
+} from "@mui/material";
 import CheckIcon from "@mui/icons-material/CheckBox";
 import ErrorIcon from "@mui/icons-material/Error";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
-import {addRuntime} from "../utils";
+import { addRuntime } from "../utils";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import {createReportCircle} from "./DonutChart";
-import {PropsWithChildren} from "react";
-import {processWords} from "../../wordProcessor";
-import {useSearchParams} from "react-router-dom";
-import {StyledContent, StyledDrawer, StyledIconButton, StyledIconContainer, StyledLink} from "./ScenarioHead.styles";
+import { createReportCircle } from "./DonutChart";
+import { PropsWithChildren } from "react";
+import { processWords } from "../../wordProcessor";
+import {
+    StyledContent,
+    StyledDrawer,
+    StyledIconButton,
+    StyledIconContainer,
+    StyledLink
+} from "./ScenarioHead.styles";
+import { useFilters } from "../../hooks/useFilters";
 
 export enum HeaderIconType {}
 
@@ -190,7 +205,7 @@ export enum ScenarioStatusFilter {
 }
 
 function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
-    const [_urlSearchParams, setUrlSearchParams] = useSearchParams();
+    const [_, setUrlSearchParams] = useFilters();
 
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
@@ -198,7 +213,7 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 underline="hover"
                 className="pseudo-link"
                 color={"black"}
-                onClick={() => setUrlSearchParams({ result: ScenarioStatusFilter.SUCCESS })}
+                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.SUCCESS })}
             >
                 <CheckIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numSuccessfulScenarios} Successful,
@@ -207,7 +222,7 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 underline="hover"
                 className="pseudo-link"
                 color={"red"}
-                onClick={() => setUrlSearchParams({result: ScenarioStatusFilter.FAILED})}
+                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.FAILED })}
             >
                 <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numFailedScenarios} failed,
@@ -216,7 +231,7 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 underline="hover"
                 className="pseudo-link"
                 color={"grey"}
-                onClick={() => setUrlSearchParams({ result: ScenarioStatusFilter.PENDING })}
+                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.PENDING })}
             >
                 <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numPendingScenarios} pending,
