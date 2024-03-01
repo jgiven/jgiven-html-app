@@ -195,8 +195,8 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
             <StyledLink
+                aria-label="filter-for-successful-tests"
                 underline="hover"
-                className="pseudo-link"
                 color={"black"}
                 onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.SUCCESS })}
             >
@@ -204,8 +204,8 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 {props.statistic.numSuccessfulScenarios} Successful,
             </StyledLink>
             <StyledLink
+                aria-label="filter-for-failed-tests"
                 underline="hover"
-                className="pseudo-link"
                 color={"red"}
                 onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.FAILED })}
             >
@@ -213,8 +213,8 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 {props.statistic.numFailedScenarios} failed,
             </StyledLink>
             <StyledLink
+                aria-label="filter-for-pending-tests"
                 underline="hover"
-                className="pseudo-link"
                 color={"grey"}
                 onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.PENDING })}
             >
