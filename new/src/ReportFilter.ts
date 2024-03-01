@@ -1,6 +1,6 @@
 import {repository} from "./repository";
 import ReportModel from "./reportModel";
-import {ScenarioStatusFilter} from "./components/ScenarioOverview/ScenarioHead";
+import {ScenarioStatusFilter} from "./components/ScenarioOverview/ScenarioCollectionHead";
 
 export function filterByStatus(status: ScenarioStatusFilter) {
     const fullReport = repository.getReport();

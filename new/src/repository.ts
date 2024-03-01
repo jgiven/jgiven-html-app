@@ -1,5 +1,5 @@
-import jGivenReport from '../resources/jgivenReport.json';
-import tagFile from '../resources/tagFile.json';
+import jGivenReport from './sampleData/jgivenReport.json';
+import tagFile from './sampleData/tagFile.json';
 import ReportModel from "./reportModel";
 
 export const repository = {
