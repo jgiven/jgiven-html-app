@@ -1,22 +1,8 @@
 import "./App.css";
-import ReportModel, { ReportStatistics } from "./reportModel";
+import ReportModel from "./reportModel";
 import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json";
-import { ScenarioOverview } from "./components/Scenarios/ScenarioOverview";
-import { useSearchParams } from "react-router-dom";
-
-export const statistics: ReportStatistics[] = [
-    {
-        numClasses: 3,
-        numScenarios: 5,
-        numFailedScenarios: 2,
-        numCases: 3,
-        numFailedCases: 3,
-        numSteps: 10,
-        durationInNanos: 12345678910,
-        numPendingScenarios: 0,
-        numSuccessfulScenarios: 3
-    }
-];
+import {ScenarioOverview} from "./components/Scenarios/ScenarioOverview";
+import {useSearchParams} from "react-router-dom";
 
 const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as ReportModel;
 

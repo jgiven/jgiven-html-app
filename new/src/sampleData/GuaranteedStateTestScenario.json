@@ -3,6 +3,7 @@
     "name": "Guaranteed State",
     "scenarios": [
         {
+            "executionStatus": "SUCCESS",
             "className": "com.tngtech.jgiven.impl.GuaranteedStateTest",
             "testMethodName": "assure_before_method_of_first_test_is_executed_after_guaranteed_fields_validation",
             "description": "assure before method of first test is executed after guaranteed fields validation",
@@ -84,6 +85,7 @@
         {
             "className": "com.tngtech.jgiven.impl.GuaranteedStateTest",
             "testMethodName": "assure_before_method_of_second_test_is_executed_if_guaranteed_initialized",
+            "executionStatus": "PENDING",
             "description": "assure before method of second test is executed if guaranteed initialized",
             "tagIds": [],
             "explicitParameters": [],

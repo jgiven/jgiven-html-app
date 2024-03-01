@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Drawer, Link } from "@mui/material";
+import { Box, Button, Drawer, Link } from "@mui/material";
 
 export const StyledDrawer = styled(Drawer)({
     // width: 240,
@@ -16,4 +16,24 @@ export const StyledContent = styled("div")(({ theme }) => ({
 
 export const StyledLink = styled(Link)({
     cursor: "pointer"
+});
+
+export const StyledIconContainer = styled(Box)({
+    width: "30px",
+    height: "30px",
+    p: 0.01,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "1px solid grey",
+    borderRadius: 1,
+    marginRight: "5px"
+});
+
+export const StyledIconButton = styled(Button)({
+    "&:hover": { textDecoration: "none", color: "inherit" },
+    "min-width": "1px",
+    "min-height": "1px",
+    height: "30px",
+    color: "black"
 });

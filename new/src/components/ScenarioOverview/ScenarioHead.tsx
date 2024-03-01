@@ -1,8 +1,6 @@
 import type { ReportStatistics } from "../../reportModel";
 import {
-    Box,
     Breadcrumbs,
-    Button,
     Divider,
     Grid,
     Link,
@@ -23,7 +21,13 @@ import { createReportCircle } from "./DonutChart";
 import React, { MouseEventHandler } from "react";
 import { processWords } from "../../wordProcessor";
 import { useSearchParams } from "react-router-dom";
-import { StyledContent, StyledDrawer, StyledLink } from "./ScenarioHead.styles";
+import {
+    StyledContent,
+    StyledDrawer,
+    StyledIconButton,
+    StyledIconContainer,
+    StyledLink
+} from "./ScenarioHead.styles";
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
@@ -147,57 +151,36 @@ function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
     return (
         <Grid container>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.minusButtonTarget}>
+                <ScenarioHeaderIcon action={props.targets.minusButtonTarget}>
                     <RemoveIcon fontSize="inherit" />
-                </ScenarioOverviewItem>
+                </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.plusButtonTarget}>
-                    <AddIcon></AddIcon>
-                </ScenarioOverviewItem>
+                <ScenarioHeaderIcon action={props.targets.plusButtonTarget}>
+                    <AddIcon />
+                </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.printButtonTarget}>
+                <ScenarioHeaderIcon action={props.targets.printButtonTarget}>
                     <PrintOutlinedIcon fontSize="inherit" />
-                </ScenarioOverviewItem>
+                </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.bookmarkButtonTarget}>
+                <ScenarioHeaderIcon action={props.targets.bookmarkButtonTarget}>
                     <BookmarkOutlinedIcon fontSize="inherit" />
-                </ScenarioOverviewItem>
+                </ScenarioHeaderIcon>
             </Grid>
         </Grid>
     );
 }
 
-function ScenarioOverviewItem(props: { children: React.ReactNode; action: MouseEventHandler }) {
-    const sx = {
-        width: "12px", // or some other value
-        height: "12px", // same as width
-        p: 0.01,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid grey",
-        borderRadius: 1,
-        marginRight: "5px"
-    };
+function ScenarioHeaderIcon(props: { children: React.ReactNode; action: MouseEventHandler }) {
     return (
-        <Box sx={sx} component="span">
-            <Button
-                className="actionPanelButton"
-                color="inherit"
-                sx={{
-                    "&:hover": { textDecoration: "none", color: "inherit" },
-                    "min-width": "1px",
-                    "min-height": "1px",
-                    height: sx.height
-                }}
-                onClick={props.action}
-            >
+        <StyledIconContainer>
+            <StyledIconButton className="actionPanelButton" onClick={props.action}>
                 {props.children}
-            </Button>
-        </Box>
+            </StyledIconButton>
+        </StyledIconContainer>
     );
 }
 
