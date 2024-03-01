@@ -45,8 +45,6 @@ export function Scenario(props: ScenarioProps) {
                     scenario={props.scenario}
                     expanded={expanded}
                     setExpanded={onExpansionChanged}
-                    summary={props.scenario.classTitle}
-                    className={"className"}
                 />
 
                 <AccordionDetails aria-label="Scenario Steps">

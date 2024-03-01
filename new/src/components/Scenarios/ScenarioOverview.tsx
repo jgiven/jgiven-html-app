@@ -59,7 +59,9 @@ export function ScenarioOverview(props: {
                     </Grid>
                     <Grid item xs={12}>
                         <div style={{ height: "40em" }}>
-                            {filterByStatus(filters.status).map(scenario => (
+                            {filterByStatus(filters.status)
+                                .sort(compareByClassTitleAndDescriptionFn)
+                                .map(scenario => (
                                 <Scenario
                                     reportName={props.reportName}
                                     scenario={scenario}
@@ -96,4 +98,12 @@ function createStatistics(scenarios: ScenarioModel[]): ReportStatistics {
         numPendingScenarios: pendingScenarios.length,
         numSuccessfulScenarios: successfulScenarios.length
     };
+}
+
+const compareByClassTitleAndDescriptionFn = (a: ScenarioModel, b: ScenarioModel) => {
+    const sortValueByClassTitle = a.classTitle.localeCompare(b.classTitle);
+    if (sortValueByClassTitle === 0) {
+        return a.description.localeCompare(b.description);
+    }
+    return sortValueByClassTitle;
 }
