@@ -1,9 +1,14 @@
-import JGivenReport from '../resources/jgivenReport.json';
-import ReportModel, {Tag} from "./reportModel";
+import jGivenReport from '../resources/jgivenReport.json';
+import tagFile from '../resources/tagFile.json';
+import ReportModel from "./reportModel";
 
 export const repository = {
     getReport(): JsonReport {
-        return JGivenReport as unknown as JsonReport;
+        return jGivenReport as unknown as JsonReport;
+    },
+
+    getTags(): TagFile {
+        return tagFile;
     }
 }
 
@@ -11,4 +16,18 @@ interface JsonReport {
     scenarios: ReportModel[],
     tagFile: TagFile
 };
-type TagFile = { tagTypeMap: Record<string, Tag>, tags: Record<string, {}>[] }
+type TagFile = { tagTypeMap: Record<string, JsonTagType>, tags: Record<string, JsonTag> }
+
+interface JsonTagType {
+    fullType: string,
+    type: string,
+    description: string,
+    prependType?: boolean,
+    color?: string,
+    href: string
+}
+
+interface JsonTag {
+    tagType: string,
+    value?: string,
+}
