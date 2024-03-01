@@ -13,8 +13,6 @@ export function ScenarioHead(props: {
     expanded: boolean;
     setExpanded: (expanded: boolean) => void;
     reportName?: string;
-    summary: string;
-    className: string;
 }) {
     const AccordionSummary = styled((props: AccordionSummaryProps) => (
         <MuiAccordionSummary
@@ -41,10 +39,10 @@ export function ScenarioHead(props: {
     >
         <Grid container columnSpacing={1}>
             <Grid item>
-                <Typography color={"grey"}>{props.reportName}</Typography>
+                <Typography color={"grey"}>{props.scenario.classTitle}</Typography>
             </Grid>
             <Grid item>
-                <Typography>{processWords(props.summary)}</Typography>
+                <Typography>{processWords(props.scenario.description)}</Typography>
             </Grid>
             <Grid>
                 <StatusIcon executionStatus={props.scenario.executionStatus} />
