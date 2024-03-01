@@ -36,21 +36,17 @@ export function ScenarioOverview(props: {
                                         header: props.title
                                     }}
                                     statistic={createStatistics(props.scenarios)}
-                                    targets={{
-                                        minusButtonTarget: () => {
-                                            console.log("Collapsing stuff");
-                                            setAllExpanded(ExpansionState.COLLAPSED);
-                                        },
-                                        plusButtonTarget: () => {
-                                            console.log("Expanding stuff");
-                                            setAllExpanded(ExpansionState.EXPANDED);
-                                        },
-                                        printButtonTarget: () => {
-                                            console.error("print not implemented");
-                                        },
-                                        bookmarkButtonTarget: () => {
-                                            console.error("bookmark not implemented");
-                                        }
+                                    onCollapseButtonClick={() => {
+                                        setAllExpanded(ExpansionState.COLLAPSED);
+                                    }}
+                                    onExpandButtonClick={() => {
+                                        setAllExpanded(ExpansionState.EXPANDED);
+                                    }}
+                                    onBookmarkButtonClick={() => {
+                                        /* not implemented yet */
+                                    }}
+                                    onPrintButtonClick={() => {
+                                        /* not implemented yet */
                                     }}
                                 />
                             </div>
@@ -82,17 +78,19 @@ export function ScenarioOverview(props: {
 }
 
 function createStatistics(scenarios: ScenarioModel[]): ReportStatistics {
-    const allCases = scenarios.flatMap((scenario) => scenario.scenarioCases);
-    const failedScenarios = scenarios.filter((scenario) => scenario.executionStatus === "FAILED");
-    const pendingScenarios = scenarios.filter((scenario) => scenario.executionStatus === "PENDING");
-    const successfulScenarios = scenarios.filter((scenario) => scenario.executionStatus === "SUCCESS");
+    const allCases = scenarios.flatMap(scenario => scenario.scenarioCases);
+    const failedScenarios = scenarios.filter(scenario => scenario.executionStatus === "FAILED");
+    const pendingScenarios = scenarios.filter(scenario => scenario.executionStatus === "PENDING");
+    const successfulScenarios = scenarios.filter(
+        scenario => scenario.executionStatus === "SUCCESS"
+    );
     return {
         numScenarios: scenarios.length,
         numFailedScenarios: failedScenarios.length,
         durationInNanos: allCases
-            .map((scenarioCase) => scenarioCase.durationInNanos)
+            .map(scenarioCase => scenarioCase.durationInNanos)
             .reduce((totalDuration, current) => totalDuration + current),
         numPendingScenarios: pendingScenarios.length,
-        numSuccessfulScenarios: successfulScenarios.length,
+        numSuccessfulScenarios: successfulScenarios.length
     };
 }

@@ -18,7 +18,7 @@ import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { createReportCircle } from "./DonutChart";
-import React, { MouseEventHandler } from "react";
+import { PropsWithChildren } from "react";
 import { processWords } from "../../wordProcessor";
 import { useSearchParams } from "react-router-dom";
 import {
@@ -29,17 +29,15 @@ import {
     StyledLink
 } from "./ScenarioHead.styles";
 
+export enum HeaderIconType {}
+
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
-    targets: ActionButtonTargets;
+    onCollapseButtonClick: () => void;
+    onExpandButtonClick: () => void;
+    onPrintButtonClick: () => void;
+    onBookmarkButtonClick: () => void;
     headers: Headers;
-}
-
-interface ActionButtonTargets {
-    minusButtonTarget: MouseEventHandler;
-    plusButtonTarget: MouseEventHandler;
-    printButtonTarget: MouseEventHandler;
-    bookmarkButtonTarget: MouseEventHandler;
 }
 
 interface Headers {
@@ -49,6 +47,8 @@ interface Headers {
 }
 
 export function ScenarioHead(props: ScenarioOverviewProps) {
+    const { statistic, headers, ...iconClickHandlers } = props;
+
     return (
         <div style={{ display: "flex" }}>
             <StyledContent>
@@ -61,12 +61,12 @@ export function ScenarioHead(props: ScenarioOverviewProps) {
                             alignItems="flex-start"
                         >
                             <Grid item xs={12} sm={8}>
-                                <ScenarioTitles headers={props.headers} />
+                                <ScenarioTitles headers={headers} />
                             </Grid>
                             <Grid item sx={{ flexGrow: 1 }} />
                             <Grid item>{createReportCircle(props)}</Grid>
                             <Grid item>
-                                <ScenarioActionButtons targets={props.targets} />
+                                <ScenarioActionButtons {...iconClickHandlers} />
                             </Grid>
                         </Grid>
                     </ListItem>
@@ -147,26 +147,38 @@ function ScenarioTitles(props: { headers: Headers }) {
     );
 }
 
-function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
+interface ScenarioActionButtonsProps {
+    onCollapseButtonClick: () => void;
+    onExpandButtonClick: () => void;
+    onPrintButtonClick: () => void;
+    onBookmarkButtonClick: () => void;
+}
+
+function ScenarioActionButtons({
+    onCollapseButtonClick,
+    onExpandButtonClick,
+    onPrintButtonClick,
+    onBookmarkButtonClick
+}: ScenarioActionButtonsProps) {
     return (
         <Grid container>
             <Grid item>
-                <ScenarioHeaderIcon action={props.targets.minusButtonTarget}>
+                <ScenarioHeaderIcon onClick={onCollapseButtonClick}>
                     <RemoveIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioHeaderIcon action={props.targets.plusButtonTarget}>
+                <ScenarioHeaderIcon onClick={onExpandButtonClick}>
                     <AddIcon />
                 </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioHeaderIcon action={props.targets.printButtonTarget}>
+                <ScenarioHeaderIcon onClick={onPrintButtonClick}>
                     <PrintOutlinedIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioHeaderIcon action={props.targets.bookmarkButtonTarget}>
+                <ScenarioHeaderIcon onClick={onBookmarkButtonClick}>
                     <BookmarkOutlinedIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
@@ -174,11 +186,13 @@ function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
     );
 }
 
-function ScenarioHeaderIcon(props: { children: React.ReactNode; action: MouseEventHandler }) {
+type ScenarioHeaderIconProps = PropsWithChildren<{ onClick: () => void }>;
+
+function ScenarioHeaderIcon({ children, onClick }: ScenarioHeaderIconProps) {
     return (
         <StyledIconContainer>
-            <StyledIconButton className="actionPanelButton" onClick={props.action}>
-                {props.children}
+            <StyledIconButton className="actionPanelButton" onClick={onClick}>
+                {children}
             </StyledIconButton>
         </StyledIconContainer>
     );
