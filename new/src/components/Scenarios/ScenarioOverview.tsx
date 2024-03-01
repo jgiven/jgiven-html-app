@@ -1,17 +1,22 @@
-import { ReportStatistics, ScenarioModel } from "../../reportModel";
-import { MenuBar, ScenarioHead } from "../ScenarioOverview/ScenarioHead";
-import { Scenario } from "./Scenario";
-import { useState } from "react";
-import { Grid } from "@mui/material";
+import {ReportStatistics, ScenarioModel} from "../../reportModel";
+import {MenuBar, ScenarioHead} from "../ScenarioOverview/ScenarioHead";
+import {Scenario} from "./Scenario";
+import {useState} from "react";
+import {Grid} from "@mui/material";
 
-export function ScenarioOverview(props: { reportName: string, title: string, description: string, scenarios: ScenarioModel[] }) {
+export function ScenarioOverview(props: {
+    reportName: string,
+    title: string,
+    description: string,
+    scenarios: ScenarioModel[]
+}) {
     const [expanded, setExpanded] = useState(false);
     return (
         <>
             <Grid container>
                 <Grid item xs={12} md={1}>
-                    <div style={{ height: "100vh" }}>
-                        <MenuBar />
+                    <div style={{height: "100vh"}}>
+                        <MenuBar/>
                     </div>
                 </Grid>
                 <Grid item xs={12} md={11}>
@@ -19,7 +24,7 @@ export function ScenarioOverview(props: { reportName: string, title: string, des
                     {/* Workshop: Extract to new component.  */}
                     <Grid container direction="column">
                         <Grid item xs={12}>
-                            <div style={{ height: "20em" }}>
+                            <div style={{height: "20em"}}>
                                 <ScenarioHead
                                     headers={{
                                         aboveHeader: props.description,
@@ -48,9 +53,9 @@ export function ScenarioOverview(props: { reportName: string, title: string, des
                     </Grid>
                     <Grid item xs={12}>
 
-                        <div style={{ height: "40em" }}>
-                        {props.scenarios.map((scenario) => {
-                            return (
+                        <div style={{height: "40em"}}>
+                            {props.scenarios.map((scenario) => {
+                                return (
                                     <Scenario
                                         reportName={props.reportName}
                                         scenario={scenario}
@@ -59,8 +64,8 @@ export function ScenarioOverview(props: { reportName: string, title: string, des
                                             setExpanded: setExpanded
                                         }}
                                     ></Scenario>
-                            );
-                        })                        }
+                                );
+                            })}
 
                         </div>
                     </Grid>
@@ -87,7 +92,7 @@ function createStatistics(scenarios: ScenarioModel[]): ReportStatistics {
         //    findNumberOfCasesWithStatus(scenario.scenarioCases, "SCENARIO_PENDING")
         //),
         numSuccessfulScenarios: 1,
-            //Math.sign(
+        //Math.sign(
         //    findNumberOfCasesWithStatus(scenario.scenarioCases, "SUCCESS")
         //)
     };
