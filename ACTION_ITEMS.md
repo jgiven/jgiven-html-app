@@ -1,0 +1,9 @@
+- Refactor Application - SingleScenarioView l. 19ff
+- Refactor APplication - ScenarioOverview l. 123
+  --> involves extracting Items to new components
+- Fix width-problem
+- Implement Top bar with search bar
+- Create links between pages
+- Create Bookmark functionality
+- Provide a few more tests
+- Make sidebar inflatable 
