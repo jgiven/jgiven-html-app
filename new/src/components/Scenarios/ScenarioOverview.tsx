@@ -5,13 +5,14 @@ import { useState } from "react";
 import { Grid } from "@mui/material";
 import { filterByStatus } from "../../ReportFilter";
 import { useFilters } from "../../hooks/useFilters";
-import {repository} from "../../repository";
+import { repository } from "../../repository";
 
 export enum ExpansionState {
     COLLAPSED,
     INTERMEDIATE,
     EXPANDED
 }
+
 export function ScenarioOverview(props: {
     reportName: string;
     title: string;
@@ -62,18 +63,17 @@ export function ScenarioOverview(props: {
                             {filterByStatus(filters.status)
                                 .sort(compareByClassTitleAndDescriptionFn)
                                 .map(scenario => (
-                                <Scenario
-                                    reportName={props.reportName}
-                                    scenario={scenario}
-                                    globalExpansionState={allExpanded}
-                                    onCollapsionCallback={() => {
-                                        setAllExpanded(ExpansionState.INTERMEDIATE);
-                                    }}
-                                    onExpansionCallback={() => {
-                                        setAllExpanded(ExpansionState.INTERMEDIATE);
-                                    }}
-                                />
-                            ))}
+                                    <Scenario
+                                        scenario={scenario}
+                                        globalExpansionState={allExpanded}
+                                        onCollapsionCallback={() => {
+                                            setAllExpanded(ExpansionState.INTERMEDIATE);
+                                        }}
+                                        onExpansionCallback={() => {
+                                            setAllExpanded(ExpansionState.INTERMEDIATE);
+                                        }}
+                                    />
+                                ))}
                         </div>
                     </Grid>
                 </Grid>
@@ -106,4 +106,4 @@ const compareByClassTitleAndDescriptionFn = (a: ScenarioModel, b: ScenarioModel)
         return a.description.localeCompare(b.description);
     }
     return sortValueByClassTitle;
-}
+};

@@ -1,106 +1,88 @@
-import type {ScenarioCaseModel, ScenarioModel, StepModel} from "../../reportModel";
-import {Accordion, AccordionDetails, Box, Link, Typography} from "@mui/material";
-import {useCallback, useEffect, useState} from "react";
-import {processWords} from "../../wordProcessor";
-import {ExpansionState} from "./ScenarioOverview";
-import {ScenarioHead} from "./ScenarioHead";
-import {ScenarioCaption} from "./ScenarioCaption";
-import {addRuntimeInSeconds} from "../utils";
+import type { ScenarioModel } from "../../reportModel";
+import { Accordion, AccordionDetails } from "@mui/material";
+import { useCallback, useEffect, useState } from "react";
+import { ExpansionState } from "./ScenarioOverview";
+import { ScenarioHead } from "./ScenarioHead";
+import { ScenarioCase } from "./ScenarioCase";
+import { styled } from "@mui/material/styles";
+import MuiAccordionSummary, { AccordionSummaryProps } from "@mui/material/AccordionSummary";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
 export interface ScenarioProps {
     scenario: ScenarioModel;
     globalExpansionState: ExpansionState;
     onExpansionCallback: () => void;
     onCollapsionCallback: () => void;
-    reportName?: string;
 }
 
-export function Scenario(props: ScenarioProps) {
+const AccordionSummary = styled((props: AccordionSummaryProps) => (
+    <MuiAccordionSummary
+        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
+        {...props}
+    />
+))(({ theme }) => ({
+    backgroundColor:
+        theme.palette.mode === "dark" ? "rgba(255, 255, 255, .05)" : "rgba(0, 0, 0, .03)",
+    flexDirection: "row-reverse",
+    "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+        transform: "rotate(90deg)"
+    },
+    "& .MuiAccordionSummary-content": {
+        marginLeft: theme.spacing(1)
+    }
+}));
+
+export function Scenario({
+    scenario,
+    onExpansionCallback,
+    onCollapsionCallback,
+    globalExpansionState
+}: ScenarioProps) {
     const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
-        if (props.globalExpansionState === ExpansionState.COLLAPSED) {
+        if (globalExpansionState === ExpansionState.COLLAPSED) {
             setExpanded(false);
         }
-        if (props.globalExpansionState === ExpansionState.EXPANDED) {
+        if (globalExpansionState === ExpansionState.EXPANDED) {
             setExpanded(true);
         }
-    }, [props.globalExpansionState]);
+    }, [globalExpansionState]);
 
     const onExpansionChanged = useCallback(
         (isExpansion: boolean) => {
             setExpanded(isExpansion);
-            isExpansion ? props.onExpansionCallback() : props.onCollapsionCallback();
+            isExpansion ? onExpansionCallback() : onCollapsionCallback();
         },
-        [expanded]
+        [expanded, onExpansionCallback, onCollapsionCallback]
     );
 
     return (
         <div
-            id={`${props.scenario.className}#${props.scenario.testMethodName}`}
-            aria-label={`Scenario ${props.scenario.description}`}
+            id={`${scenario.className}#${scenario.testMethodName}`}
+            aria-label={`Scenario ${scenario.description}`}
         >
             <Accordion expanded={expanded}>
-                <ScenarioHead
-                    scenario={props.scenario}
-                    expanded={expanded}
-                    setExpanded={onExpansionChanged}
-                />
+                <AccordionSummary
+                    aria-label="Scenario Overview"
+                    onClick={() => {
+                        onExpansionChanged(!expanded);
+                    }}
+                >
+                    <ScenarioHead scenario={scenario} />
+                </AccordionSummary>
 
                 <AccordionDetails aria-label="Scenario Steps">
-                    {
-                        props.scenario.scenarioCases.map((scenarioCase) => {
-                                return <SingleCaseScenario
-                                    scenarioCase={scenarioCase}
-                                    reportName={props.reportName}
-                                    summary={props.scenario.description}
-                                    expanded={expanded}
-                                    setExpanded={onExpansionChanged}
-                                    className={props.scenario.className}
-                                />
-                            }
-                        )
-                    }
+                    {scenario.scenarioCases.map(scenarioCase => {
+                        return (
+                            <ScenarioCase
+                                scenarioCase={scenarioCase}
+                                className={scenario.className}
+                            />
+                        );
+                    })}
                 </AccordionDetails>
             </Accordion>
         </div>
     );
 }
-
-function SingleCaseScenario(props: {
-    scenarioCase: ScenarioCaseModel;
-    expanded: boolean;
-    setExpanded: (expanded: boolean) => void;
-    reportName?: string;
-    summary: string;
-    className: string;
-}) {
-    return (
-            <Box sx={{marginLeft: "2em"}}>
-                {props.scenarioCase.steps.map((step: StepModel, index) => (
-                    <ScenarioStep key={index} step={step}></ScenarioStep>
-                ))}
-                <Typography align="right" variant="body2">
-                    <Link
-                        href={`#class/${props.className}`}
-                        variant="inherit"
-                        color="inherit"
-                        underline="none"
-                    >
-                        {props.className}
-                    </Link>
-                </Typography>
-            </Box>
-    );
-}
-
-function ScenarioStep(props: { step: StepModel }) {
-    const stepDescription = processWords(props.step.words);
-    return (
-        <Typography align={"left"}>
-            {stepDescription} <ScenarioCaption>{addRuntimeInSeconds(props.step.durationInNanos)}</ScenarioCaption>
-        </Typography>
-    );
-}
-
-

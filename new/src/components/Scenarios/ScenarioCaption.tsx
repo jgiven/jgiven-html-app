@@ -1,5 +1,5 @@
-import {PropsWithChildren} from "react";
-import {Typography} from "@mui/material";
+import { PropsWithChildren } from "react";
+import { Typography } from "@mui/material";
 
 export function ScenarioCaption(props: PropsWithChildren) {
     return (
