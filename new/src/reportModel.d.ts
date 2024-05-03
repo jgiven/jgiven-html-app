@@ -126,4 +126,9 @@ export type ExecutionStatus = "SUCCESS" | "FAILED" | "PENDING";
 type CaseStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
 export type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
 export type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
-export type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING" |/*shows up in json file*/"SUCCESS";
+export type StepStatus =
+    | "PASSED"
+    | "FAILED"
+    | "SKIPPED"
+    | "PENDING"
+    | /*shows up in json file*/ "SUCCESS";

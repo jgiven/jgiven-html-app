@@ -1,5 +1,14 @@
-import type {ReportStatistics} from "../../reportModel";
-import {Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
+import type { ReportStatistics } from "../../reportModel";
+import {
+    Breadcrumbs,
+    Divider,
+    Grid,
+    Link,
+    List,
+    ListItem,
+    ListItemText,
+    Typography
+} from "@mui/material";
 import CheckIcon from "@mui/icons-material/CheckBox";
 import ErrorIcon from "@mui/icons-material/Error";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
@@ -7,12 +16,18 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import {createReportCircle} from "./DonutChart";
-import {PropsWithChildren} from "react";
-import {processWords} from "../../wordProcessor";
-import {StyledContent, StyledDrawer, StyledIconButton, StyledIconContainer, StyledLink} from "./ScenarioHead.styles";
-import {useFilters} from "../../hooks/useFilters";
-import {addRuntimeInSeconds} from "../utils";
+import { createReportCircle } from "./DonutChart";
+import { PropsWithChildren } from "react";
+import { processWords } from "../../wordProcessor";
+import {
+    StyledContent,
+    StyledDrawer,
+    StyledIconButton,
+    StyledIconContainer,
+    StyledLink
+} from "./ScenarioHead.styles";
+import { useFilters } from "../../hooks/useFilters";
+import { addRuntimeInSeconds } from "../utils";
 
 export enum HeaderIconType {}
 
@@ -222,7 +237,9 @@ function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
                 {props.statistic.numPendingScenarios} pending,
             </StyledLink>
             <Typography color="text.primary">{props.statistic.numScenarios} Total</Typography>
-            <Typography color={"text.primary"}>{addRuntimeInSeconds(props.statistic.durationInNanos)}</Typography>
+            <Typography color={"text.primary"}>
+                {addRuntimeInSeconds(props.statistic.durationInNanos)}
+            </Typography>
         </Breadcrumbs>
     );
 }
