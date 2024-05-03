@@ -1,41 +1,28 @@
-import type { ReportStatistics } from "../../reportModel";
-import {
-    Box,
-    Breadcrumbs,
-    Button,
-    Divider,
-    Drawer,
-    Grid,
-    Link,
-    List,
-    ListItem,
-    ListItemText,
-    Typography
-} from "@mui/material";
+import type {ReportStatistics} from "../../reportModel";
+import {Breadcrumbs, Divider, Grid, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
 import CheckIcon from "@mui/icons-material/CheckBox";
 import ErrorIcon from "@mui/icons-material/Error";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
-import { addRuntime } from "../utils";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import { createReportCircle } from "./DonutChart";
-import React, { MouseEventHandler } from "react";
-import { processWords } from "../../wordProcessor";
-import { styled } from "@mui/material/styles";
+import {createReportCircle} from "./DonutChart";
+import {PropsWithChildren} from "react";
+import {processWords} from "../../wordProcessor";
+import {StyledContent, StyledDrawer, StyledIconButton, StyledIconContainer, StyledLink} from "./ScenarioHead.styles";
+import {useFilters} from "../../hooks/useFilters";
+import {addRuntimeInSeconds} from "../utils";
+
+export enum HeaderIconType {}
 
 export interface ScenarioOverviewProps {
     statistic: ReportStatistics;
-    targets: ActionButtonTargets;
+    onCollapseButtonClick: () => void;
+    onExpandButtonClick: () => void;
+    onPrintButtonClick: () => void;
+    onBookmarkButtonClick: () => void;
     headers: Headers;
-}
-
-interface ActionButtonTargets {
-    minusButtonTarget: MouseEventHandler;
-    plusButtonTarget: MouseEventHandler;
-    printButtonTarget: MouseEventHandler;
-    bookmarkButtonTarget: MouseEventHandler;
 }
 
 interface Headers {
@@ -44,23 +31,12 @@ interface Headers {
     belowHeader?: string;
 }
 
-const StyledDrawer = styled(Drawer)({
-    // width: 240,
-    flexShrink: 0,
-    "& .MuiDrawer-paper": {
-        backgroundColor: "rgba(250,250,250,255)"
-    }
-});
+export function ScenarioCollectionHead(props: ScenarioOverviewProps) {
+    const { statistic, headers, ...iconClickHandlers } = props;
 
-const Content = styled("div")(({ theme }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3)
-}));
-
-export function ScenarioOverview(props: ScenarioOverviewProps) {
     return (
         <div style={{ display: "flex" }}>
-            <Content>
+            <StyledContent>
                 <List>
                     <ListItem>
                         <Grid
@@ -70,12 +46,12 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
                             alignItems="flex-start"
                         >
                             <Grid item xs={12} sm={8}>
-                                <ScenarioTitles headers={props.headers} />
+                                <ScenarioTitles headers={headers} />
                             </Grid>
                             <Grid item sx={{ flexGrow: 1 }} />
                             <Grid item>{createReportCircle(props)}</Grid>
                             <Grid item>
-                                <ScenarioActionButtons targets={props.targets} />
+                                <ScenarioActionButtons {...iconClickHandlers} />
                             </Grid>
                         </Grid>
                     </ListItem>
@@ -87,7 +63,7 @@ export function ScenarioOverview(props: ScenarioOverviewProps) {
                         <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
                     </ListItem>
                 </List>
-            </Content>
+            </StyledContent>
         </div>
     );
 }
@@ -156,81 +132,97 @@ function ScenarioTitles(props: { headers: Headers }) {
     );
 }
 
-function ScenarioActionButtons(props: { targets: ActionButtonTargets }) {
+interface ScenarioActionButtonsProps {
+    onCollapseButtonClick: () => void;
+    onExpandButtonClick: () => void;
+    onPrintButtonClick: () => void;
+    onBookmarkButtonClick: () => void;
+}
+
+function ScenarioActionButtons({
+    onCollapseButtonClick,
+    onExpandButtonClick,
+    onPrintButtonClick,
+    onBookmarkButtonClick
+}: ScenarioActionButtonsProps) {
     return (
         <Grid container>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.minusButtonTarget}>
+                <ScenarioHeaderIcon onClick={onCollapseButtonClick}>
                     <RemoveIcon fontSize="inherit" />
-                </ScenarioOverviewItem>
+                </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.plusButtonTarget}>
-                    <AddIcon></AddIcon>
-                </ScenarioOverviewItem>
+                <ScenarioHeaderIcon onClick={onExpandButtonClick}>
+                    <AddIcon />
+                </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.printButtonTarget}>
+                <ScenarioHeaderIcon onClick={onPrintButtonClick}>
                     <PrintOutlinedIcon fontSize="inherit" />
-                </ScenarioOverviewItem>
+                </ScenarioHeaderIcon>
             </Grid>
             <Grid item>
-                <ScenarioOverviewItem action={props.targets.bookmarkButtonTarget}>
+                <ScenarioHeaderIcon onClick={onBookmarkButtonClick}>
                     <BookmarkOutlinedIcon fontSize="inherit" />
-                </ScenarioOverviewItem>
+                </ScenarioHeaderIcon>
             </Grid>
         </Grid>
     );
 }
 
-function ScenarioOverviewItem(props: { children: React.ReactNode; action: MouseEventHandler }) {
-    const sx = {
-        width: "12px", // or some other value
-        height: "12px", // same as width
-        p: 0.01,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid grey",
-        borderRadius: 1,
-        marginRight: "5px"
-    };
+type ScenarioHeaderIconProps = PropsWithChildren<{ onClick: () => void }>;
+
+function ScenarioHeaderIcon({ children, onClick }: ScenarioHeaderIconProps) {
     return (
-        <Box sx={sx} component="span">
-            <Button
-                className="actionPanelButton"
-                color="inherit"
-                sx={{
-                    "&:hover": { textDecoration: "none", color: "inherit" },
-                    "min-width": "1px",
-                    "min-height": "1px",
-                    height: sx.height
-                }}
-                onClick={props.action}
-            >
-                {props.children}
-            </Button>
-        </Box>
+        <StyledIconContainer>
+            <StyledIconButton className="actionPanelButton" onClick={onClick}>
+                {children}
+            </StyledIconButton>
+        </StyledIconContainer>
     );
 }
 
+export enum ScenarioStatusFilter {
+    SUCCESS = "SUCCESS",
+    FAILED = "FAILED",
+    PENDING = "PENDING"
+}
+
 function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
+    const [_, setUrlSearchParams] = useFilters();
+
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">
-            <Link underline="hover" color={"black"} href={"/TODO"}>
+            <StyledLink
+                aria-label="filter-for-successful-tests"
+                underline="hover"
+                color={"black"}
+                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.SUCCESS })}
+            >
                 <CheckIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numSuccessfulScenarios} Successful,
-            </Link>
-            <Link underline="hover" color={"red"} href={"/TODO"}>
+            </StyledLink>
+            <StyledLink
+                aria-label="filter-for-failed-tests"
+                underline="hover"
+                color={"red"}
+                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.FAILED })}
+            >
                 <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numFailedScenarios} failed,
-            </Link>
-            <Link underline="hover" color={"grey"} href={"/"}>
+            </StyledLink>
+            <StyledLink
+                aria-label="filter-for-pending-tests"
+                underline="hover"
+                color={"grey"}
+                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.PENDING })}
+            >
                 <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 {props.statistic.numPendingScenarios} pending,
-            </Link>
+            </StyledLink>
             <Typography color="text.primary">{props.statistic.numScenarios} Total</Typography>
-            <Typography color={"text.primary"}>{addRuntime(props.statistic)}</Typography>
+            <Typography color={"text.primary"}>{addRuntimeInSeconds(props.statistic.durationInNanos)}</Typography>
         </Breadcrumbs>
     );
 }
