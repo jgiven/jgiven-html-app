@@ -1,19 +1,15 @@
-import {Box, Link, Typography} from "@mui/material";
-import {ScenarioCaseModel, StepModel} from "../../reportModel";
-import {ScenarioStep} from "./ScenarioStep";
+import { Box, Link, Typography } from "@mui/material";
+import { ScenarioCaseModel, StepModel } from "../../reportModel";
+import { ScenarioStep } from "./ScenarioStep";
 
 export interface ScenarioCaseProps {
-    className: string,
-    scenarioCase: ScenarioCaseModel,
+    className: string;
+    scenarioCase: ScenarioCaseModel;
 }
 
-export function ScenarioCase(
-    {
-        scenarioCase,
-        className,
-    }: ScenarioCaseProps) {
+export function ScenarioCase({ scenarioCase, className }: ScenarioCaseProps) {
     return (
-        <Box sx={{marginLeft: "2em"}}>
+        <Box sx={{ marginLeft: "2em" }}>
             {scenarioCase.steps.map((step: StepModel, index) => (
                 <ScenarioStep key={index} step={step}></ScenarioStep>
             ))}

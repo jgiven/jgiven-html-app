@@ -1,11 +1,11 @@
-import type {ScenarioModel} from "../../reportModel";
-import {Accordion, AccordionDetails} from "@mui/material";
-import {useCallback, useEffect, useState} from "react";
-import {ExpansionState} from "./ScenarioOverview";
-import {ScenarioHead} from "./ScenarioHead";
-import {ScenarioCase} from "./ScenarioCase";
-import {styled} from "@mui/material/styles";
-import MuiAccordionSummary, {AccordionSummaryProps} from "@mui/material/AccordionSummary";
+import type { ScenarioModel } from "../../reportModel";
+import { Accordion, AccordionDetails } from "@mui/material";
+import { useCallback, useEffect, useState } from "react";
+import { ExpansionState } from "./ScenarioOverview";
+import { ScenarioHead } from "./ScenarioHead";
+import { ScenarioCase } from "./ScenarioCase";
+import { styled } from "@mui/material/styles";
+import MuiAccordionSummary, { AccordionSummaryProps } from "@mui/material/AccordionSummary";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
 export interface ScenarioProps {
@@ -17,10 +17,10 @@ export interface ScenarioProps {
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
     <MuiAccordionSummary
-        expandIcon={<ArrowForwardIosSharpIcon sx={{fontSize: "0.9rem"}}/>}
+        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
         {...props}
     />
-))(({theme}) => ({
+))(({ theme }) => ({
     backgroundColor:
         theme.palette.mode === "dark" ? "rgba(255, 255, 255, .05)" : "rgba(0, 0, 0, .03)",
     flexDirection: "row-reverse",
@@ -32,7 +32,12 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     }
 }));
 
-export function Scenario({scenario, onExpansionCallback, onCollapsionCallback, globalExpansionState}: ScenarioProps) {
+export function Scenario({
+    scenario,
+    onExpansionCallback,
+    onCollapsionCallback,
+    globalExpansionState
+}: ScenarioProps) {
     const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
@@ -64,21 +69,18 @@ export function Scenario({scenario, onExpansionCallback, onCollapsionCallback, g
                         onExpansionChanged(!expanded);
                     }}
                 >
-                    <ScenarioHead
-                        scenario={scenario}
-                    />
+                    <ScenarioHead scenario={scenario} />
                 </AccordionSummary>
 
                 <AccordionDetails aria-label="Scenario Steps">
-                    {
-                        scenario.scenarioCases.map((scenarioCase) => {
-                                return <ScenarioCase
-                                    scenarioCase={scenarioCase}
-                                    className={scenario.className}
-                                />
-                            }
-                        )
-                    }
+                    {scenario.scenarioCases.map(scenarioCase => {
+                        return (
+                            <ScenarioCase
+                                scenarioCase={scenarioCase}
+                                className={scenario.className}
+                            />
+                        );
+                    })}
                 </AccordionDetails>
             </Accordion>
         </div>
