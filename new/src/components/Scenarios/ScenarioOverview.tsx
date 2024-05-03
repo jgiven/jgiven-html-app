@@ -1,10 +1,10 @@
-import { ReportStatistics, ScenarioModel } from "../../reportModel";
-import { MenuBar, ScenarioCollectionHead } from "../ScenarioOverview/ScenarioCollectionHead";
-import { Scenario } from "./Scenario";
-import { useState } from "react";
-import { Grid } from "@mui/material";
-import { filterByStatus } from "../../ReportFilter";
-import { useFilters } from "../../hooks/useFilters";
+import {ReportStatistics, ScenarioModel} from "../../reportModel";
+import {MenuBar, ScenarioCollectionHead} from "../ScenarioOverview/ScenarioCollectionHead";
+import {Scenario} from "./Scenario";
+import {useState} from "react";
+import {Grid} from "@mui/material";
+import {filterByStatus} from "../../ReportFilter";
+import {useFilters} from "../../hooks/useFilters";
 import {repository} from "../../repository";
 
 export enum ExpansionState {
@@ -12,6 +12,7 @@ export enum ExpansionState {
     INTERMEDIATE,
     EXPANDED
 }
+
 export function ScenarioOverview(props: {
     reportName: string;
     title: string;
@@ -25,8 +26,8 @@ export function ScenarioOverview(props: {
         <>
             <Grid container>
                 <Grid item xs={12} md={1}>
-                    <div style={{ height: "100vh" }}>
-                        <MenuBar />
+                    <div style={{height: "100vh"}}>
+                        <MenuBar/>
                     </div>
                 </Grid>
                 <Grid item xs={12} md={11}>
@@ -34,7 +35,7 @@ export function ScenarioOverview(props: {
                     {/* Workshop: Extract to new component.  */}
                     <Grid container direction="column">
                         <Grid item xs={12}>
-                            <div style={{ height: "20em" }}>
+                            <div style={{height: "20em"}}>
                                 <ScenarioCollectionHead
                                     headers={{
                                         aboveHeader: props.description,
@@ -58,22 +59,21 @@ export function ScenarioOverview(props: {
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <div style={{ height: "40em" }}>
+                        <div style={{height: "40em"}}>
                             {filterByStatus(filters.status)
                                 .sort(compareByClassTitleAndDescriptionFn)
                                 .map(scenario => (
-                                <Scenario
-                                    reportName={props.reportName}
-                                    scenario={scenario}
-                                    globalExpansionState={allExpanded}
-                                    onCollapsionCallback={() => {
-                                        setAllExpanded(ExpansionState.INTERMEDIATE);
-                                    }}
-                                    onExpansionCallback={() => {
-                                        setAllExpanded(ExpansionState.INTERMEDIATE);
-                                    }}
-                                />
-                            ))}
+                                    <Scenario
+                                        scenario={scenario}
+                                        globalExpansionState={allExpanded}
+                                        onCollapsionCallback={() => {
+                                            setAllExpanded(ExpansionState.INTERMEDIATE);
+                                        }}
+                                        onExpansionCallback={() => {
+                                            setAllExpanded(ExpansionState.INTERMEDIATE);
+                                        }}
+                                    />
+                                ))}
                         </div>
                     </Grid>
                 </Grid>
