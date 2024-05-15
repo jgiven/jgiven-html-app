@@ -35,7 +35,7 @@
     "karma-jasmine": "^1.1.0",
     "karma-mocha-reporter": "^2.2.1",
     "karma-phantomjs-launcher": "1.0.2",
-    "karma-webpack": "^1.8.1",
+    "karma-webpack": "^5.0.1",
     "node-sass": "^7.0.0",
     "phantomjs-prebuilt": "^2.1.7",
     "raw-loader": "^0.5.1",
@@ -44,7 +44,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-bundle-size-analyzer": "^2.2.0",
-    "webpack-dev-server": "^3.1.11"
+    "webpack-dev-server": "^5.0.4"
   },
   "keywords": [
     "jgiven",
