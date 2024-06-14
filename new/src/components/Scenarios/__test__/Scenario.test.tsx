@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import { ScenarioModel } from "../../reportModel";
-import { Scenario } from "./Scenario";
-import { processWords } from "../../wordProcessor";
-import { ExpansionState } from "./ScenarioOverview";
 import userEvent from "@testing-library/user-event";
+import { Scenario } from "../Scenario";
+import { ExpansionState } from "../ScenarioOverview";
+import { processWords } from "../../../wordProcessor";
+import { ScenarioModel } from "../../../reportModel";
 
 afterEach(() => {
     jest.resetAllMocks();
