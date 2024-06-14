@@ -1,15 +1,15 @@
 import { SetURLSearchParams, useSearchParams } from "react-router-dom";
 import { ScenarioStatusFilter } from "../components/ScenarioOverview/ScenarioCollectionHead";
 
-export interface Filters {
+export interface Filter {
     status: ScenarioStatusFilter | undefined;
 }
 
-export function useFilters(): [Filters, SetURLSearchParams] {
+export function useFilters(): {filter: Filter, setUrlSearchParams: SetURLSearchParams} {
     const [searchParams, setSearchParams] = useSearchParams();
     const status = searchParams.get("status");
 
-    return [{ status: parseScenarioStatus(status) }, setSearchParams];
+    return {filter: { status: parseScenarioStatus(status) }, setUrlSearchParams: setSearchParams};
 }
 
 function parseScenarioStatus(status: string | null): ScenarioStatusFilter | undefined {
