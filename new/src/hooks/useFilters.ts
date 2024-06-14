@@ -5,11 +5,11 @@ export interface Filter {
     status: ScenarioStatusFilter | undefined;
 }
 
-export function useFilters(): {filter: Filter, setUrlSearchParams: SetURLSearchParams} {
+export function useFilters(): { filter: Filter; setUrlSearchParams: SetURLSearchParams } {
     const [searchParams, setSearchParams] = useSearchParams();
     const status = searchParams.get("status");
 
-    return {filter: { status: parseScenarioStatus(status) }, setUrlSearchParams: setSearchParams};
+    return { filter: { status: parseScenarioStatus(status) }, setUrlSearchParams: setSearchParams };
 }
 
 function parseScenarioStatus(status: string | null): ScenarioStatusFilter | undefined {

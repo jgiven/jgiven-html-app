@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { createStepModel, createWord } from "./scenarioTestData";
 import { ScenarioStep } from "../ScenarioStep";
 
@@ -51,7 +51,7 @@ describe("ScenarioStep", () => {
                 />
             );
 
-            expect(screen.getByText(word).children[0]).toHaveTextContent("");
+            expect(within(screen.getByText(word)).getByText("")).toBeInTheDocument();
         }
     );
 });
