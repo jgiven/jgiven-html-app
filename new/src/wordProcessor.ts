@@ -14,7 +14,7 @@ export function processWords(words: Word[] | string | Word | undefined) {
 
 function processArray(array: Word[]) {
     if (array.length > 0) {
-        return processWordArray(array as Word[]);
+        return processWordArray(array);
     }
     return "";
 }
