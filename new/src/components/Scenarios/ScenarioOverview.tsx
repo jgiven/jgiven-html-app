@@ -19,7 +19,7 @@ export function ScenarioOverview(props: {
     description: string;
 }) {
     const [allExpanded, setAllExpanded] = useState<ExpansionState>(ExpansionState.COLLAPSED);
-    const [filters] = useFilters();
+    const {filter} = useFilters();
     const scenarios = repository.getAllScenarios();
 
     return (
@@ -60,7 +60,7 @@ export function ScenarioOverview(props: {
                     </Grid>
                     <Grid item xs={12}>
                         <div style={{ height: "40em" }}>
-                            {filterByStatus(filters.status)
+                            {filterByStatus(filter.status)
                                 .sort(compareByClassTitleAndDescriptionFn)
                                 .map(scenario => (
                                     <Scenario
