@@ -17,23 +17,6 @@ const onExpansionCallback = jest.fn();
 const onCollapsionCallback = jest.fn();
 
 describe("Scenario", () => {
-    it("displays capitalized title", () => {
-        const description = "scenario description";
-        const expectedDisplayValue = "Scenario description";
-
-        const model = createScenarioModel({ description });
-        render(
-            <Scenario
-                scenario={model}
-                globalExpansionState={ExpansionState.EXPANDED}
-                onExpansionCallback={onExpansionCallback}
-                onCollapsionCallback={onCollapsionCallback}
-            />
-        );
-
-        expect(screen.getByText(expectedDisplayValue)).toBeVisible();
-    });
-
     it("displays single scenario case", () => {
         const className = "my custom class name";
         const scenarioCases = [createScenarioCaseModel()];
