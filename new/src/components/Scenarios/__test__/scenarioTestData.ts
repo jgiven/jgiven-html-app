@@ -1,4 +1,4 @@
-import { ScenarioCaseModel, StepModel, Word } from "../../../reportModel";
+import { ScenarioCaseModel, ScenarioModel, StepModel, Word } from "../../../reportModel";
 
 export function createWord(props?: Partial<Word>): Word {
     return {
@@ -35,5 +35,23 @@ export function createScenarioCaseModel(props?: Partial<ScenarioCaseModel>): Sce
         stackTrace: props?.stackTrace,
         durationInNanos: props?.durationInNanos ?? 0,
         description: props?.description
+    };
+}
+
+export function createScenarioModel(props?: Partial<ScenarioModel>): ScenarioModel {
+    return {
+        className: props?.className ?? "class name",
+        classTitle: props?.classTitle ?? "class title",
+        testMethodName: props?.testMethodName ?? "test method name",
+        description: props?.description ?? "scenario description",
+        extendedDescription: props?.extendedDescription,
+        tagIds: props?.tagIds ?? [],
+        explicitParameters: props?.explicitParameters ?? [],
+        derivedParameters: props?.derivedParameters ?? [],
+        scenarioCases: props?.scenarioCases ?? [],
+        casesAsTable: props?.casesAsTable ?? false,
+        durationInNanos: props?.durationInNanos ?? 0,
+        executionStatus: props?.executionStatus ?? "SUCCESS",
+        tags: props?.tags ?? []
     };
 }

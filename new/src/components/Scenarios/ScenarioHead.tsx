@@ -23,7 +23,9 @@ export function ScenarioHead({ scenario }: ScenarioHeadProps) {
             </Grid>
             <Grid>
                 <ScenarioCaption>
-                    {addRuntimeInMilliseconds(scenario.scenarioCases[0].durationInNanos)}
+                    {scenario.scenarioCases.length > 0
+                        ? addRuntimeInMilliseconds(scenario.scenarioCases[0].durationInNanos)
+                        : ""}
                 </ScenarioCaption>
             </Grid>
         </Grid>

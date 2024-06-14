@@ -2,8 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Scenario } from "../Scenario";
 import { ExpansionState } from "../ScenarioOverview";
-import { processWords } from "../../../wordProcessor";
-import { ScenarioModel } from "../../../reportModel";
+import {
+    createScenarioCaseModel,
+    createScenarioModel,
+    createStepModel,
+    createWord
+} from "./scenarioTestData";
 
 afterEach(() => {
     jest.resetAllMocks();
@@ -12,21 +16,12 @@ afterEach(() => {
 const onExpansionCallback = jest.fn();
 const onCollapsionCallback = jest.fn();
 
-describe("Scenario accordion behavior", () => {
-    test("accordion details are not visible when globalExpansionState is COLLAPSED", async () => {
-        render(
-            <Scenario
-                scenario={model}
-                globalExpansionState={ExpansionState.COLLAPSED}
-                onExpansionCallback={onExpansionCallback}
-                onCollapsionCallback={onCollapsionCallback}
-            />
-        );
-        const accordion = await screen.findByLabelText("Scenario Overview");
-        expect(accordion.attributes.getNamedItem("aria-expanded")?.value).toBe("false");
-    });
+describe("Scenario", () => {
+    it("displays capitalized title", () => {
+        const description = "scenario description";
+        const expectedDisplayValue = "Scenario description";
 
-    test("accordion details are visible when globalExpansionState is EXPANDED", async () => {
+        const model = createScenarioModel({ description });
         render(
             <Scenario
                 scenario={model}
@@ -35,25 +30,15 @@ describe("Scenario accordion behavior", () => {
                 onCollapsionCallback={onCollapsionCallback}
             />
         );
-        const accordion = await screen.findByLabelText("Scenario Overview");
-        expect(accordion.attributes.getNamedItem("aria-expanded")?.value).toBe("true");
+
+        expect(screen.getByText(expectedDisplayValue)).toBeVisible();
     });
 
-    test("onExpansionCallback is invoked when clicking on the header of a collapsed scenario", async () => {
-        render(
-            <Scenario
-                scenario={model}
-                globalExpansionState={ExpansionState.COLLAPSED}
-                onExpansionCallback={onExpansionCallback}
-                onCollapsionCallback={onCollapsionCallback}
-            />
-        );
-        const scenarioOverview = await screen.findByLabelText("Scenario Overview");
-        userEvent.click(scenarioOverview);
-        expect(onExpansionCallback).toHaveBeenCalled();
-    });
+    it("displays single scenario case", () => {
+        const className = "my custom class name";
+        const scenarioCases = [createScenarioCaseModel()];
+        const model = createScenarioModel({ className, scenarioCases });
 
-    test("onCollapsionCallback is invoked when clicking on the header of an expanded scenario", async () => {
         render(
             <Scenario
                 scenario={model}
@@ -62,71 +47,81 @@ describe("Scenario accordion behavior", () => {
                 onCollapsionCallback={onCollapsionCallback}
             />
         );
-        const scenarioOverview = await screen.findByLabelText("Scenario Overview");
-        userEvent.click(scenarioOverview);
-        expect(onCollapsionCallback).toHaveBeenCalled();
+
+        expect(screen.getByText(className)).toBeVisible();
+    });
+
+    describe("Scenario accordion behavior", () => {
+        it("accordion details are not visible when globalExpansionState is COLLAPSED", async () => {
+            const details = "some details";
+            const model = createScenarioModel({
+                scenarioCases: [
+                    createScenarioCaseModel({
+                        steps: [createStepModel({ words: [createWord({ value: details })] })]
+                    })
+                ]
+            });
+            render(
+                <Scenario
+                    scenario={model}
+                    globalExpansionState={ExpansionState.COLLAPSED}
+                    onExpansionCallback={onExpansionCallback}
+                    onCollapsionCallback={onCollapsionCallback}
+                />
+            );
+            const accordion = screen.getByLabelText("Scenario Overview");
+            expect(accordion.attributes.getNamedItem("aria-expanded")?.value).toBe("false");
+            expect(screen.queryByText(details)).not.toBeVisible();
+        });
+
+        it("accordion details are visible when globalExpansionState is EXPANDED", async () => {
+            const details = "some details";
+            const model = createScenarioModel({
+                scenarioCases: [
+                    createScenarioCaseModel({
+                        steps: [createStepModel({ words: [createWord({ value: details })] })]
+                    })
+                ]
+            });
+            render(
+                <Scenario
+                    scenario={model}
+                    globalExpansionState={ExpansionState.EXPANDED}
+                    onExpansionCallback={onExpansionCallback}
+                    onCollapsionCallback={onCollapsionCallback}
+                />
+            );
+            const accordion = screen.getByLabelText("Scenario Overview");
+            expect(accordion.attributes.getNamedItem("aria-expanded")?.value).toBe("true");
+            expect(screen.queryByText(details)).toBeVisible();
+        });
+
+        it("onExpansionCallback is invoked when clicking on the header of a collapsed scenario", async () => {
+            render(
+                <Scenario
+                    scenario={createScenarioModel()}
+                    globalExpansionState={ExpansionState.COLLAPSED}
+                    onExpansionCallback={onExpansionCallback}
+                    onCollapsionCallback={onCollapsionCallback}
+                />
+            );
+            const scenarioOverview = await screen.findByLabelText("Scenario Overview");
+            userEvent.click(scenarioOverview);
+            expect(onExpansionCallback).toHaveBeenCalled();
+        });
+
+        it("onCollapsionCallback is invoked when clicking on the header of an expanded scenario", async () => {
+            render(
+                <Scenario
+                    scenario={createScenarioModel()}
+                    globalExpansionState={ExpansionState.EXPANDED}
+                    onExpansionCallback={onExpansionCallback}
+                    onCollapsionCallback={onCollapsionCallback}
+                />
+            );
+            const scenarioOverview = await screen.findByLabelText("Scenario Overview");
+            userEvent.click(scenarioOverview);
+            expect(onCollapsionCallback).toHaveBeenCalled();
+        });
     });
 });
-
-test("Scenario displays steps", async () => {
-    render(
-        <Scenario
-            scenario={model}
-            globalExpansionState={ExpansionState.EXPANDED}
-            onExpansionCallback={onExpansionCallback}
-            onCollapsionCallback={onCollapsionCallback}
-        />
-    );
-    const textElement = await screen.findByText(
-        model.scenarioCases[0].steps[0].words.flatMap(word => word.value).join(" ")
-    );
-    expect(textElement).toBeInTheDocument();
-});
-
-test("Scenario capitalizes title", async () => {
-    render(
-        <Scenario
-            scenario={model}
-            globalExpansionState={ExpansionState.EXPANDED}
-            onExpansionCallback={onExpansionCallback}
-            onCollapsionCallback={onCollapsionCallback}
-        />
-    );
-    const textElement = await screen.findByText(processWords(model.description));
-    expect(textElement).toBeInTheDocument();
-});
-
-const model: ScenarioModel = {
-    classTitle: "classTitle",
-    executionStatus: "SUCCESS",
-    tags: [],
-    className: "testClass",
-    testMethodName: "testMethod",
-    description: "this is a description",
-    extendedDescription: "this is an extended description",
-    tagIds: ["tag1", "tag2"],
-    explicitParameters: [],
-    derivedParameters: [],
-    scenarioCases: [
-        {
-            caseNr: 1,
-            description: "case1",
-            derivedArguments: [],
-            explicitArguments: [],
-            durationInNanos: 2001000,
-            status: "SUCCESS",
-            steps: [
-                {
-                    status: "PASSED",
-                    durationInNanos: 2000000,
-                    name: "Step1",
-                    words: [{ value: "Step1", isIntroWord: true }],
-                    depth: 0,
-                    parentFailed: false
-                }
-            ]
-        }
-    ],
-    casesAsTable: false,
-    durationInNanos: 0
-};
