@@ -19,7 +19,7 @@ export function ScenarioOverview(props: {
     description: string;
 }) {
     const [allExpanded, setAllExpanded] = useState<ExpansionState>(ExpansionState.COLLAPSED);
-    const {filter} = useFilters();
+    const { filter } = useFilters();
     const scenarios = repository.getAllScenarios();
 
     return (
