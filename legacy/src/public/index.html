@@ -117,6 +117,7 @@
           <i ng-if="step.status === 'SKIPPED'" class="skipped fa fa-ban"></i>
           <i ng-if="step.status === 'PENDING'" title="Pending"
              class="skipped fa fa-ban"></i>
+          <i ng-if="step.status === 'ABORTED'" class="aborted fa fa-exclamation-circle"></i>
         </span>
   <span ng-if="step.durationInNanos > 10000000"
         class="duration"> ({{ ::nanosToReadableUnit(step.durationInNanos) }})</span>
