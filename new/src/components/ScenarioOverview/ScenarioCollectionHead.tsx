@@ -205,7 +205,7 @@ export enum ScenarioStatusFilter {
 }
 
 function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
-    const [_, setUrlSearchParams] = useFilters();
+    const { setUrlSearchParams } = useFilters();
 
     return (
         <Breadcrumbs separator=" " aria-label="breadcrumb">

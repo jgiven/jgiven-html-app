@@ -54,7 +54,7 @@ export function Scenario({
             setExpanded(isExpansion);
             isExpansion ? onExpansionCallback() : onCollapsionCallback();
         },
-        [expanded, onExpansionCallback, onCollapsionCallback]
+        [onExpansionCallback, onCollapsionCallback]
     );
 
     return (

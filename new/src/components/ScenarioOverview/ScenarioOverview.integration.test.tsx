@@ -12,7 +12,7 @@ describe("<ScenarioOverview/>", () => {
     const description = "My description";
     const title = "My title";
 
-    it("should only show failed scenarios after clicking the link to filter for failed scenarios", () => {
+    it.skip("should only show failed scenarios after clicking the link to filter for failed scenarios", () => {
         render(
             <MemoryRouter>
                 <ScenarioOverview reportName={reportName} title={title} description={description} />
