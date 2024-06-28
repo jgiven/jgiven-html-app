@@ -24,7 +24,10 @@ jgivenReportApp.controller('ChartCtrl', function ($scope, $timeout) {
         $scope.showFailed();
       } else if (label === 'Pending') {
         $scope.showPending();
-      } else {
+      } else if (label === 'Aborted') {
+        $scope.showAborted();
+      }
+      else {
         $scope.showSuccessful();
       }
     }, 0)

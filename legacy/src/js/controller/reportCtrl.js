@@ -598,6 +598,27 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
     }
   };
 
+  $scope.getNumberOfAbortedCases = function (scenario) {
+    var nCases = scenario.scenarioCases.length;
+    if (nCases === 1) {
+      return '';
+    }
+
+    var abortedCases = 0;
+
+    _.forEach(scenario.scenarioCases, function (aCase) {
+      if (aCase.status === 'ABORTED') {
+        abortedCases++;
+      }
+    });
+
+    if (abortedCases < nCases) {
+      return " " + abortedCases + " OF " + nCases + " CASES ";
+    } else {
+      return " ALL CASES";
+    }
+  }
+
   $scope.getNumberOfFailedCases = function (scenario) {
     var nCases = scenario.scenarioCases.length;
     if (nCases === 1) {
@@ -662,6 +683,14 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
       $location.search('status', 'pending');
     }
   };
+
+  $scope.showAborted = function () {
+    if (isRootPath($location)) {
+      $location.path('/aborted');
+    } else {
+      $location.search('status', 'aborted');
+    }
+  }
 
   $scope.showSuccessful = function () {
     $scope.updatingLocation = true;
