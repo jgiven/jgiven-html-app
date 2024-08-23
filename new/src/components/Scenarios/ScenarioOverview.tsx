@@ -1,4 +1,4 @@
-import { ReportStatistics, ScenarioModel } from "../../reportModel";
+import { ScenarioModel } from "../../reportModel";
 import { MenuBar, ScenarioCollectionHead } from "../ScenarioOverview/ScenarioCollectionHead";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
@@ -41,7 +41,7 @@ export function ScenarioOverview(props: {
                                         aboveHeader: props.description,
                                         header: props.title
                                     }}
-                                    statistic={createStatistics(scenarios)}
+                                    scenarios={scenarios}
                                     onCollapseButtonClick={() => {
                                         setAllExpanded(ExpansionState.COLLAPSED);
                                     }}
@@ -80,24 +80,6 @@ export function ScenarioOverview(props: {
             </Grid>
         </>
     );
-}
-
-function createStatistics(scenarios: ScenarioModel[]): ReportStatistics {
-    const allCases = scenarios.flatMap(scenario => scenario.scenarioCases);
-    const failedScenarios = scenarios.filter(scenario => scenario.executionStatus === "FAILED");
-    const pendingScenarios = scenarios.filter(scenario => scenario.executionStatus === "PENDING");
-    const successfulScenarios = scenarios.filter(
-        scenario => scenario.executionStatus === "SUCCESS"
-    );
-    return {
-        numScenarios: scenarios.length,
-        numFailedScenarios: failedScenarios.length,
-        durationInNanos: allCases
-            .map(scenarioCase => scenarioCase.durationInNanos)
-            .reduce((totalDuration, current) => totalDuration + current),
-        numPendingScenarios: pendingScenarios.length,
-        numSuccessfulScenarios: successfulScenarios.length
-    };
 }
 
 const compareByClassTitleAndDescriptionFn = (a: ScenarioModel, b: ScenarioModel) => {

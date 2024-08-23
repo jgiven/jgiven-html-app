@@ -8,11 +8,11 @@ import { addRuntimeInSeconds } from "../utils";
 import { ScenarioStatusFilter } from "../ScenarioOverview/ScenarioCollectionHead";
 import { ReportStatistics } from "../../reportModel";
 
-export interface statisticsBreadcrumbProps {
+export interface StatisticsBreadcrumbProps {
     statistic: ReportStatistics;
 }
 
-export function StatisticBreadcrumbs({ statistic }: statisticsBreadcrumbProps) {
+export function StatisticBreadcrumbs({ statistic }: StatisticsBreadcrumbProps) {
     const { setUrlSearchParams } = useFilters();
 
     return (
