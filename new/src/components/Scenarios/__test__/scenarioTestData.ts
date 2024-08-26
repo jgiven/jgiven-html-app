@@ -1,4 +1,20 @@
-import { ScenarioCaseModel, ScenarioModel, StepModel, Word } from "../../../reportModel";
+import {
+    ReportStatistics,
+    ScenarioCaseModel,
+    ScenarioModel,
+    StepModel,
+    Word
+} from "../../../reportModel";
+
+export function createReportStatistics(props?: Partial<ReportStatistics>): ReportStatistics {
+    return {
+        numScenarios: props?.numScenarios ?? 1,
+        numFailedScenarios: props?.numFailedScenarios ?? 2,
+        durationInNanos: props?.durationInNanos ?? 1000,
+        numPendingScenarios: props?.numPendingScenarios ?? 3,
+        numSuccessfulScenarios: props?.numSuccessfulScenarios ?? 4
+    };
+}
 
 export function createWord(props?: Partial<Word>): Word {
     return {
