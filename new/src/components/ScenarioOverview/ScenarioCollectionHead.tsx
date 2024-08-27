@@ -1,38 +1,22 @@
-import type { ReportStatistics } from "../../reportModel";
-import {
-    Breadcrumbs,
-    Divider,
-    Grid,
-    Link,
-    List,
-    ListItem,
-    ListItemText,
-    Typography
-} from "@mui/material";
-import CheckIcon from "@mui/icons-material/CheckBox";
-import ErrorIcon from "@mui/icons-material/Error";
-import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
+import type { ReportStatistics, ScenarioModel } from "../../reportModel";
+import { Divider, Grid, Link, List, ListItem, ListItemText, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { createReportCircle } from "./DonutChart";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useMemo } from "react";
 import { processWords } from "../../wordProcessor";
 import {
     StyledContent,
     StyledDrawer,
     StyledIconButton,
-    StyledIconContainer,
-    StyledLink
+    StyledIconContainer
 } from "./ScenarioHead.styles";
-import { useFilters } from "../../hooks/useFilters";
-import { addRuntimeInSeconds } from "../utils";
+import { StatisticBreadcrumbs } from "../Scenarios/StatisticsBreadcrumbs";
 
-export enum HeaderIconType {}
-
-export interface ScenarioOverviewProps {
-    statistic: ReportStatistics;
+export interface ScenarioCollectionHeadProps {
+    scenarios: ScenarioModel[];
     onCollapseButtonClick: () => void;
     onExpandButtonClick: () => void;
     onPrintButtonClick: () => void;
@@ -46,8 +30,10 @@ interface Headers {
     belowHeader?: string;
 }
 
-export function ScenarioCollectionHead(props: ScenarioOverviewProps) {
-    const { statistic, headers, ...iconClickHandlers } = props;
+export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
+    const { scenarios, headers, ...iconClickHandlers } = props;
+
+    const statistic = useMemo(() => createStatistics(scenarios), [scenarios]);
 
     return (
         <div style={{ display: "flex" }}>
@@ -64,7 +50,7 @@ export function ScenarioCollectionHead(props: ScenarioOverviewProps) {
                                 <ScenarioTitles headers={headers} />
                             </Grid>
                             <Grid item sx={{ flexGrow: 1 }} />
-                            <Grid item>{createReportCircle(props)}</Grid>
+                            <Grid item>{createReportCircle({ statistic })}</Grid>
                             <Grid item>
                                 <ScenarioActionButtons {...iconClickHandlers} />
                             </Grid>
@@ -72,7 +58,7 @@ export function ScenarioCollectionHead(props: ScenarioOverviewProps) {
                     </ListItem>
                     <Divider />
                     <ListItem>
-                        <ListItemText primary={StatisticBreadcrumbs(props)} />
+                        <ListItemText primary={StatisticBreadcrumbs({ statistic })} />
                     </ListItem>
                     <ListItem>
                         <canvas id={"symbol-canvas"} width={"50"} height={"2"} />
@@ -204,42 +190,20 @@ export enum ScenarioStatusFilter {
     PENDING = "PENDING"
 }
 
-function StatisticBreadcrumbs(props: { statistic: ReportStatistics }) {
-    const { setUrlSearchParams } = useFilters();
-
-    return (
-        <Breadcrumbs separator=" " aria-label="breadcrumb">
-            <StyledLink
-                aria-label="filter-for-successful-tests"
-                underline="hover"
-                color={"black"}
-                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.SUCCESS })}
-            >
-                <CheckIcon sx={{ mr: 0.5 }} fontSize={"small"} />
-                {props.statistic.numSuccessfulScenarios} Successful,
-            </StyledLink>
-            <StyledLink
-                aria-label="filter-for-failed-tests"
-                underline="hover"
-                color={"red"}
-                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.FAILED })}
-            >
-                <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
-                {props.statistic.numFailedScenarios} failed,
-            </StyledLink>
-            <StyledLink
-                aria-label="filter-for-pending-tests"
-                underline="hover"
-                color={"grey"}
-                onClick={() => setUrlSearchParams({ status: ScenarioStatusFilter.PENDING })}
-            >
-                <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
-                {props.statistic.numPendingScenarios} pending,
-            </StyledLink>
-            <Typography color="text.primary">{props.statistic.numScenarios} Total</Typography>
-            <Typography color={"text.primary"}>
-                {addRuntimeInSeconds(props.statistic.durationInNanos)}
-            </Typography>
-        </Breadcrumbs>
+function createStatistics(scenarios: ScenarioModel[]): ReportStatistics {
+    const allCases = scenarios.flatMap(scenario => scenario.scenarioCases);
+    const failedScenarios = scenarios.filter(scenario => scenario.executionStatus === "FAILED");
+    const pendingScenarios = scenarios.filter(scenario => scenario.executionStatus === "PENDING");
+    const successfulScenarios = scenarios.filter(
+        scenario => scenario.executionStatus === "SUCCESS"
     );
+    return {
+        numScenarios: scenarios.length,
+        numFailedScenarios: failedScenarios.length,
+        durationInNanos: allCases
+            .map(scenarioCase => scenarioCase.durationInNanos)
+            .reduce((totalDuration, current) => totalDuration + current),
+        numPendingScenarios: pendingScenarios.length,
+        numSuccessfulScenarios: successfulScenarios.length
+    };
 }
