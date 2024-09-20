@@ -1,7 +1,20 @@
 import { createReportStatistics } from "./scenarioTestData";
 import { StatisticBreadcrumbs } from "../StatisticsBreadcrumbs";
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import * as useFilters from "../../../hooks/useFilters";
+import { ScenarioStatusFilter } from "../../ScenarioOverview/ScenarioCollectionHead";
+
+const setUrlSearchParamsMock = jest.fn();
+
+beforeEach(() => {
+    jest.resetAllMocks();
+    jest.spyOn(useFilters, "useFilters").mockReturnValue({
+        filter: { status: undefined },
+        setUrlSearchParams: setUrlSearchParamsMock
+    });
+});
 
 describe("StatisticsBreadcrumbs", () => {
     it("should display statistics", () => {
@@ -58,6 +71,31 @@ describe("StatisticsBreadcrumbs", () => {
 
             expect(screen.queryByText("(", { exact: false })).not.toBeInTheDocument();
             expect(screen.queryByText(")", { exact: false })).not.toBeInTheDocument();
+        }
+    );
+
+    it.each([
+        ["Successful", ScenarioStatusFilter.SUCCESS],
+        ["failed", ScenarioStatusFilter.FAILED],
+        ["pending", ScenarioStatusFilter.PENDING]
+    ])(
+        "Pressing %s link should filter for status %s",
+        (label: string, status: ScenarioStatusFilter) => {
+            const statistic = createReportStatistics();
+
+            render(
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<StatisticBreadcrumbs statistic={statistic} />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+
+            userEvent.click(screen.getByText(label, { exact: false }));
+
+            expect(setUrlSearchParamsMock).toHaveBeenCalledWith({
+                status
+            });
         }
     );
 });
