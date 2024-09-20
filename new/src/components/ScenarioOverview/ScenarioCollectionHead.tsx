@@ -4,7 +4,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import { createReportCircle } from "./DonutChart";
+import { DonutChart } from "./DonutChart";
 import { PropsWithChildren, useMemo } from "react";
 import { processWords } from "../../wordProcessor";
 import {
@@ -50,7 +50,7 @@ export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
                                 <ScenarioTitles headers={headers} />
                             </Grid>
                             <Grid item sx={{ flexGrow: 1 }} />
-                            <Grid item>{createReportCircle({ statistic })}</Grid>
+                            <Grid item>{DonutChart({ statistic })}</Grid>
                             <Grid item>
                                 <ScenarioActionButtons {...iconClickHandlers} />
                             </Grid>
