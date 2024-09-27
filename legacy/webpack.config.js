@@ -1,108 +1,94 @@
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-var ENV = process.env.npm_lifecycle_event;
-var isTest = ENV === 'test' || ENV === 'test-watch';
-var isRelease = ENV === 'build';
+const ENV = process.env.npm_lifecycle_event;
+const isTest = ENV === 'test' || ENV === 'test-watch';
+const isRelease = ENV === 'build';
 
-module.exports = function webPackConfig() {
-    var config = {}
-
-    config.entry =  {
+module.exports = {
+    entry: {
         styles: './src/css/styles.scss',
         app: './src/js/app.js'
-    }
-
-    config.output = {
-        path: __dirname + '/dist',
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js'
-    }
-
-    config.module = {
-        preLoaders: [],
-        loaders: [
+    },
+    module: {
+        rules: [
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
+                use: [
+                    isRelease ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    autoprefixer({
+                                        overrideBrowserslist: ['last 2 versions']
+                                    })
+                                ]
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                      presets: ['es2015']
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
                 }
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', 'css!sass')
+                use: [
+                    isRelease ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
-            { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
-            { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
-            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/octet-stream'},
-            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'}
+            {
+                test: /\.(svg|woff|woff2|ttf|eot)$/,
+                type: 'asset/resource'
+            }
         ]
-    }
-
-    config.postcss = [
-        autoprefixer({
-            browsers: ['last 2 version']
-        })
-    ];
-
-    if (isTest) {
-        config.devtool = 'inline-source-map';
-    } else if (isRelease) {
-        //config.devtool = 'source-map';
-    } else {
-        config.devtool = 'eval-source-map';
-    }
-
-    config.resolve = {
-        moduleDirectories: ['node_modules']
-    }
-
-    config.plugins = []
-
-    if (!isTest) {
-        // https://github.com/ampedandwired/html-webpack-plugin
-        config.plugins.push(
-            new HtmlWebpackPlugin({
-                template: __dirname + '/src/public/index.html',
-                inject: false,
-                version: require("./package.json").version
-            }),
-
-            new ExtractTextPlugin('[name].css', {disable: !isRelease}),
-
-            // moment.js is used by Chart.js, but actually not needed by JGiven
-            // ignoring all locales except for english saves 500KB
-            new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
-        )
-    }
-
-    if (isRelease) {
-        config.plugins.push(
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
-            // Only emit files when there are no errors
-//            new webpack.NoErrorsPlugin(),
-
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-            // Dedupe modules in the output
-  //          new webpack.optimize.DedupePlugin(),
-
-           // new webpack.optimize.UglifyJsPlugin(),
-        )
-    }
-
-    config.devServer = {
-        contentBase: './src/public',
+    },
+    resolve: {
+        modules: ['node_modules']
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src/public/index.html'),
+            inject: 'body',
+            version: require("./package.json").version
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false
+        }),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
+    ],
+    devtool: isTest ? 'inline-source-map' : isRelease ? 'source-map' : 'eval-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'src/public'),
+        compress: true,
+        port: 9000,
         stats: 'minimal'
-    };
-
-    return config;
-}();
+    },
+    stats: {
+        colors: true,
+        reasons: true,
+        chunks: true
+    }
+};
