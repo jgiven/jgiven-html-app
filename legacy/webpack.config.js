@@ -81,10 +81,9 @@ module.exports = {
     ],
     devtool: isTest ? 'inline-source-map' : isRelease ? 'source-map' : 'eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'src/public'),
+        static: path.join(__dirname, 'src/public'),
         compress: true,
         port: 9000,
-        stats: 'minimal'
     },
     stats: {
         colors: true,

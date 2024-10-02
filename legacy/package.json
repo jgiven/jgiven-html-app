@@ -11,8 +11,8 @@
     "webpack.config.js"
   ],
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --port 8085",
-    "debug": "webpack-dev-server -d --progress --colors",
+    "start": "webpack-dev-server --progress --port 8085",
+    "debug": "webpack-dev-server -d --progress",
     "test": "karma start --debug --single-run --browsers jsdom",
     "test-watch": "karma start --debug",
     "build": "mkdir dist && webpack --progress",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.25.4",
+    "@types/webpack": "^5.28.5",
     "angular-mocks": "1.5.8",
     "autoprefixer": "^10.4.20",
     "babel-loader": "^8.0.0",
