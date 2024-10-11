@@ -117,6 +117,7 @@
           <i ng-if="step.status === 'SKIPPED'" class="skipped fa fa-ban"></i>
           <i ng-if="step.status === 'PENDING'" title="Pending"
              class="skipped fa fa-ban"></i>
+          <i ng-if="step.status === 'ABORTED'" class="aborted fa fa-exclamation-circle"></i>
         </span>
   <span ng-if="step.durationInNanos > 10000000"
         class="duration"> ({{ ::nanosToReadableUnit(step.durationInNanos) }})</span>
@@ -368,7 +369,8 @@
                         <span class="{{currentPage.statistics.failed > 0 ? 'red' : 'gray'}} toggle" ng-click="showFailed()"><i
                             class=" fa fa-exclamation-circle"></i> {{currentPage.statistics.failed}} Failed</span>,
             <span class="{{currentPage.statistics.pending > 0 ? 'bold' : 'gray'}} toggle" ng-click="showPending()"><i class="fa fa-ban"></i> {{currentPage.statistics.pending}} Pending</span>,
-            <span class="{{currentPage.statistics.count === 0 ? 'gray' : ''}}">{{currentPage.statistics.count}} Total ({{nanosToReadableUnit(currentPage.statistics.totalNanos)}})</span>
+            <span class="{{currentPage.statistics.count === 0 ? 'gray' : ''}}">{{currentPage.statistics.count}} Total ({{nanosToReadableUnit(currentPage.statistics.totalNanos)}})</span>,
+            <span class="{{currentPage.statistics.aborted > 0 ? 'bold' : 'gray'}} toggle" ng-click="showAborted()"><i class="fa fa-ban"></i> {{currentPage.statistics.aborted}} Aborted</span>
             <span ng-if="currentPage.filtered > 0" class="bold toggle" ng-click="clearFilter()">({{ currentPage.filtered }} Filtered)</span>
           </div>
 
@@ -450,6 +452,8 @@
                   <span class="secondary radius label group-count total">{{::scenarioGroup.values.length}}</span>
                   <span class="radius label group-count alert failed" ng-if="scenarioGroup.counts.failed > 0"><i
                       class="fa fa-exclamation-circle"></i> {{::scenarioGroup.counts.failed}} FAILED</span>
+                  <span class="radius label group-count alert aborted" ng-if="scenarioGroup.counts.aborted > 0"><i
+                          class="fa fa-exclamation-circle"></i> {{::scenarioGroup.counts.aborted}} ABORTED</span>
                   <span class="secondary radius label group-count pending" ng-if="scenarioGroup.counts.pending > 0">
                     <i class="fa fa-ban"></i> {{::scenarioGroup.counts.pending}} PENDING</span>
                     <span class="duration"> ({{ ::nanosToReadableUnit(scenarioGroup.counts.durationInNanos) }})</span>
@@ -487,6 +491,8 @@
                        class="check fa fa-check-square"></i>
                     <span ng-if="scenario.executionStatus === 'FAILED'"
                           class="failed label radius alert"><i class="fa fa-exclamation-circle"></i>{{getNumberOfFailedCases(scenario)}} FAILED</span>
+                    <span ng-if="scenario.executionStatus === 'ABORTED'"
+                          class="failed label radius alert"><i class="fa fa-exclamation-circle"></i>{{getNumberOfAbortedCases(scenario)}} ABORTED</span>
                     <span
                         ng-if="scenario.executionStatus === 'SCENARIO_PENDING' || scenario.executionStatus === 'SOME_STEPS_PENDING'"
                         class="pending label radius secondary"><i class="fa fa-ban"></i> PENDING</span>
@@ -679,7 +685,6 @@
 
   </div>
 </div>
-<script type="text/javascript" src="app.bundle.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/custom.js" charset="utf-8"></script>
 <script type="text/javascript" src="data/metaData.js" charset="utf-8"></script>
 <script type="text/javascript" src="data/tags.js" charset="utf-8"></script>
