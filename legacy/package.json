@@ -15,7 +15,7 @@
     "debug": "webpack-dev-server -d --progress",
     "test": "karma start --debug --single-run --browsers jsdom",
     "test-watch": "karma start --debug",
-    "build": "mkdir dist && webpack --progress",
+    "build": "mkdir dist && webpack --progress --mode=development",
     "integration-test": "yarn build && rm -rf integration && cp -r dist integration && cp -r data integration",
     "analyze-bundle": "webpack --json | webpack-bundle-size-analyzer"
   },
@@ -87,6 +87,6 @@
     "jquery": "3.5.0",
     "lodash": "4.17.21",
     "modernizr": "^3.8.0",
-    "pako": "^1.0.3"
+    "pako": "^2.1.0"
   }
 }
