@@ -69,7 +69,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/public/index.html'),
-            inject: 'body',
+            scriptLoading: 'blocking',
+            inject: false,
             version: require("./package.json").version
         }),
         new MiniCssExtractPlugin({
