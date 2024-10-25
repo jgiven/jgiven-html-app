@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        run: yarn install
+        run: npm install
       - name: Build
-        run: yarn build
+        run: npm run build
       - name: Test
-        run: yarn test
+        run: npm run test
 #  Sample CI for react apps
   react:
     defaults:

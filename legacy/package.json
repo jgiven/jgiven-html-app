@@ -13,7 +13,7 @@
   "scripts": {
     "start": "webpack-dev-server --progress --port 8085",
     "debug": "webpack-dev-server -d --progress",
-    "test": "karma start --debug --single-run --browsers jsdom",
+    "test": "karma start --debug --single-run",
     "test-watch": "karma start --debug",
     "build": "mkdir dist && webpack --progress --mode=development",
     "integration-test": "yarn build && rm -rf integration && cp -r dist integration && cp -r data integration",
