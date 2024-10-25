@@ -13,8 +13,8 @@
   "scripts": {
     "start": "webpack-dev-server --progress --port 8085",
     "debug": "webpack-dev-server -d --progress",
-    "test": "karma start --debug --single-run",
-    "test-watch": "karma start --debug",
+    "test": "vitest run --watch=false",
+    "test-watch": "vitest run",
     "build": "mkdir dist && webpack --progress --mode=development",
     "integration-test": "yarn build && rm -rf integration && cp -r dist integration && cp -r data integration",
     "analyze-bundle": "webpack --json | webpack-bundle-size-analyzer"
@@ -32,13 +32,7 @@
     "html-webpack-plugin": "^5.6.2",
     "jasmine-core": "^2.3.4",
     "jsdom": "^24.0.0",
-    "karma": "^6.0.0",
-    "karma-babel-preprocessor": "^6.0.1",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.1.0",
     "karma-jsdom-launcher": "^17.0.0",
-    "karma-mocha-reporter": "^2.2.1",
-    "karma-webpack": "^5.0.1",
     "mini-css-extract-plugin": "^2.9.1",
     "phantomjs-prebuilt": "^2.1.7",
     "raw-loader": "^0.5.1",
@@ -87,6 +81,7 @@
     "jquery": "3.5.0",
     "lodash": "4.17.21",
     "modernizr": "^3.8.0",
-    "pako": "^2.1.0"
+    "pako": "^2.1.0",
+    "vitest": "^2.1.3"
   }
 }
