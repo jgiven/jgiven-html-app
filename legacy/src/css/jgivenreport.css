@@ -495,7 +495,6 @@ table.steps tr.steps:hover .nested-step .step-expand-icon {
 
 .aborted {
     color: #aaa;
-    font-size: 0.7rem;
 }
 
 .collapsed {

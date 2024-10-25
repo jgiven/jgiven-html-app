@@ -125,6 +125,8 @@ export function getReadableExecutionStatus (status) {
       return 'Successful';
     case 'FAILED':
       return 'Failed';
+    case 'ABORTED':
+      return 'Aborted'
     default:
       return 'Pending';
   }
