@@ -360,7 +360,7 @@ export default function OptionService(dataService) {
     _.forEach(scenarios, function (scenario) {
       if (scenario.executionStatus === 'FAILED') {
         counts.failed++;
-      } else if (scenario.executionStatus !== 'SUCCESS') {
+      } else if (scenario.executionStatus === 'PENDING') {
         counts.pending++;
       }
       counts.durationInNanos += scenario.durationInNanos;

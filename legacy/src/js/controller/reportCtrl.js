@@ -114,6 +114,8 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
       $scope.showFailedScenarios(selectedOptions);
     } else if (part[1] === 'pending') {
       $scope.showPendingScenarios(selectedOptions);
+    } else if (part[1] === 'aborted') {
+      $scope.showAbortedScenarios(selectedOptions);
     } else if (part[1] === 'search') {
       $scope.search(part[2], selectedOptions);
     }
@@ -288,6 +290,18 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
     $scope.applyOptions();
   };
 
+  $scope.showAbortedScenarios = function (options) {
+    scenarios = dataService.getAbortedScenarios();
+    var description = getDescription(scenarios.length, "aborted");
+    $scope.currentPage = {
+      title: "Aborted Scenarios",
+      description: description,
+      breadcrumbs: ['ABORTED SCENARIOS'],
+      options: optionService.getOptions(scenarios, options)
+    };
+    $scope.applyOptions();
+  };
+
   $scope.applyOptions = function applyOptions () {
     var page = $scope.currentPage;
     var selectedSortOption = getSelectedSortOption(page);
@@ -412,6 +426,7 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
       failed: 0,
       pending: 0,
       success: 0,
+      aborted: 0,
       totalNanos: 0
     };
 
@@ -421,13 +436,15 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
         statistics.success++;
       } else if (x.executionStatus === 'FAILED') {
         statistics.failed++;
+      } else if (x.executionStatus === 'ABORTED') {
+        statistics.aborted++;
       } else {
         statistics.pending++;
       }
     });
 
     $timeout(function () {
-      statistics.chartData = [statistics.success, statistics.failed, statistics.pending];
+      statistics.chartData = [statistics.success, statistics.failed, statistics.pending,statistics.aborted];
     }, 0);
 
     return statistics;
@@ -593,10 +610,33 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
         return '';
       case 'FAILED':
         return 'failed';
+      case 'ABORTED':
+        return 'aborted';
       default:
         return 'pending';
     }
   };
+
+  $scope.getNumberOfAbortedCases = function (scenario) {
+    var nCases = scenario.scenarioCases.length;
+    if (nCases === 1) {
+      return '';
+    }
+
+    var abortedCases = 0;
+
+    _.forEach(scenario.scenarioCases, function (aCase) {
+      if (aCase.status === 'ABORTED') {
+        abortedCases++;
+      }
+    });
+
+    if (abortedCases < nCases) {
+      return " " + abortedCases + " OF " + nCases + " CASES ";
+    } else {
+      return " ALL CASES";
+    }
+  }
 
   $scope.getNumberOfFailedCases = function (scenario) {
     var nCases = scenario.scenarioCases.length;
@@ -662,6 +702,14 @@ jgivenReportApp.controller('JGivenReportCtrl', function ($scope, $rootScope, $do
       $location.search('status', 'pending');
     }
   };
+
+  $scope.showAborted = function () {
+    if (isRootPath($location)) {
+      $location.path('/aborted');
+    } else {
+      $location.search('status', 'aborted');
+    }
+  }
 
   $scope.showSuccessful = function () {
     $scope.updatingLocation = true;

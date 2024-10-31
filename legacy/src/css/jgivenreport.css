@@ -474,6 +474,10 @@ table.steps tr.steps:hover .nested-step .step-expand-icon {
     color: #aaa !important;
 }
 
+.ABORTED {
+    color: #aaa;
+}
+
 .PASSED {
 }
 
@@ -487,6 +491,10 @@ table.steps tr.steps:hover .nested-step .step-expand-icon {
 .skipped {
     color: #aaa;
     font-size: 0.7rem !important;
+}
+
+.aborted {
+    color: #aaa;
 }
 
 .collapsed {
@@ -503,6 +511,10 @@ table.steps tr.steps:hover .nested-step .step-expand-icon {
 
 .word.SKIPPED {
     color: gray !important;
+}
+
+.word.ABORTED {
+    color: gray;
 }
 
 .argument {
