@@ -12,7 +12,7 @@ jgivenReportApp.controller('ChartCtrl', function ($scope, $timeout) {
     pointBackgroundColor: "rgba(77,83,96,1)"
   }
 
-  var gray = {
+  var silver = {
     backgroundColor: "rgba(192,192,192,0.5)",
     pointBackgroundColor: "rgba(192,192,192,1)"
   }

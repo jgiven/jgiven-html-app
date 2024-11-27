@@ -24,7 +24,7 @@ export default function DataService () {
 
   function getPendingScenarios () {
     return getScenariosWhere(function (x) {
-      return x.executionStatus === "PENDING"
+      return x.executionStatus !== "SUCCESS" && x.executionStatus !== "FAILED" && x.executionStatus !== "ABORTED";
     });
   }
 
