@@ -4,7 +4,15 @@
   "private": true,
   "devDependencies": {
     "@amcharts/amcharts5": "^5.3.7",
-    "parcel": "^2.6.2"
+    "babel-jest": "^27.4.2",
+    "babel-preset-react-app": "^10.0.1",
+    "eslint": "^8.3.0",
+    "eslint-config-react-app": "^7.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.3",
+    "jest-watch-typeahead": "^1.0.0",
+    "parcel": "^2.6.2",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "@cubejs-client/core": "^0.31.0",
@@ -35,10 +43,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "bash -c \"tsc && react-scripts test\"",
-    "eject": "react-scripts eject"
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html",
+    "test": "tsc && jest",
+    "clean": "rm -rf dist .parcel-cache"
   },
   "prettier": {
     "printWidth": 100,
