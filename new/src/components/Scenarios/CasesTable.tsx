@@ -2,7 +2,6 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useTranslation } from "react-i18next";
 import { ScenarioCaseModel } from "../../reportModel";
 import { Box } from "@mui/material";
-import { TFunction } from "i18next";
 
 interface CasesTableProps {
     cases: ScenarioCaseModel[];
@@ -28,7 +27,7 @@ export interface Column {
 //Also use MUI elements https://mui.com/
 //Consider making t typesafe: https://react.i18next.com/latest/typescript
 export function CasesTable(props: CasesTableProps) {
-    const { t } = useTranslation();
+    const { t }: { t: (key: string) => string } = useTranslation();
     const columns: GridColDef[] = createColumnsFromArguments(props.cases[0], t);
     return (
         <div>
@@ -45,7 +44,7 @@ export function CasesTable(props: CasesTableProps) {
 
 function createColumnsFromArguments(
     cases: ScenarioCaseModel,
-    t: TFunction<"translation", undefined>
+    t: (key: string) => string
 ): GridColDef[] {
     return [
         {

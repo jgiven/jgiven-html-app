@@ -46,12 +46,12 @@ export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
                             justifyContent="flex-end"
                             alignItems="flex-start"
                         >
-                            <Grid item xs={12} sm={8}>
+                            <Grid size={{ xs: 12, sm: 8 }}>
                                 <ScenarioTitles headers={headers} />
                             </Grid>
-                            <Grid item sx={{ flexGrow: 1 }} />
-                            <Grid item>{DonutChart({ statistic })}</Grid>
-                            <Grid item>
+                            <Grid sx={{ flexGrow: 1 }} />
+                            <Grid>{DonutChart({ statistic })}</Grid>
+                            <Grid>
                                 <ScenarioActionButtons {...iconClickHandlers} />
                             </Grid>
                         </Grid>
@@ -115,16 +115,16 @@ export function MenuBar() {
 function ScenarioTitles(props: { headers: Headers }) {
     return (
         <Grid container>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
                 {/*TODO: may there be cases, where we should capitalize?*/}
                 <Typography variant="h6" color="grey">
                     {props.headers.aboveHeader}
                 </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
                 <Typography variant="h4">{processWords(props.headers.header)}</Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
                 <Typography variant="h6" color="grey">
                     {processWords(props.headers.belowHeader)}
                 </Typography>
@@ -148,22 +148,22 @@ function ScenarioActionButtons({
 }: ScenarioActionButtonsProps) {
     return (
         <Grid container>
-            <Grid item>
+            <Grid>
                 <ScenarioHeaderIcon onClick={onCollapseButtonClick}>
                     <RemoveIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
-            <Grid item>
+            <Grid>
                 <ScenarioHeaderIcon onClick={onExpandButtonClick}>
                     <AddIcon />
                 </ScenarioHeaderIcon>
             </Grid>
-            <Grid item>
+            <Grid>
                 <ScenarioHeaderIcon onClick={onPrintButtonClick}>
                     <PrintOutlinedIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
-            <Grid item>
+            <Grid>
                 <ScenarioHeaderIcon onClick={onBookmarkButtonClick}>
                     <BookmarkOutlinedIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
