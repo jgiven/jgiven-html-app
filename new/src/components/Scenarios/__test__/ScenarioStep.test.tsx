@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { createStepModel, createWord } from "./scenarioTestData";
 import { ScenarioStep } from "../ScenarioStep";
+import { describe, it, expect } from "vitest";
 
 describe("ScenarioStep", () => {
     it("should display words in scenario step description separated by space", () => {

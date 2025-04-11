@@ -12,7 +12,6 @@
         "@testing-library/jest-dom": "^6.6.3",
         "@testing-library/react": "^16.3.0",
         "@testing-library/user-event": "^14.6.1",
-        "@types/jest": "^29.5.14",
         "@types/node": "^22.14.0",
         "@types/react": "^19.1.0",
         "@types/react-dom": "^19.1.2",
@@ -30,7 +29,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "vitest",
         "eject": "react-scripts eject",
         "format": "prettier --write ."
     },
@@ -74,6 +73,8 @@
     },
     "devDependencies": {
         "react-scripts": "5.0.1",
-        "prettier": "3.5.3"
+        "prettier": "3.5.3",
+        "vitest": "^0.25.1",
+        "jsdom": "^20.0.3"
     }
 }
