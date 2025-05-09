@@ -90,7 +90,7 @@ describe("Scenario", () => {
                 />
             );
             const scenarioOverview = await screen.findByLabelText("Scenario Overview");
-            userEvent.click(scenarioOverview);
+            await userEvent.click(scenarioOverview);
             expect(onExpansionCallback).toHaveBeenCalled();
         });
 
@@ -104,7 +104,7 @@ describe("Scenario", () => {
                 />
             );
             const scenarioOverview = await screen.findByLabelText("Scenario Overview");
-            userEvent.click(scenarioOverview);
+            await userEvent.click(scenarioOverview);
             expect(onCollapsionCallback).toHaveBeenCalled();
         });
     });

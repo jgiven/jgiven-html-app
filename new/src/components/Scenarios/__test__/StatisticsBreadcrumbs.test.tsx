@@ -81,7 +81,7 @@ describe("StatisticsBreadcrumbs", () => {
         ["pending", ScenarioStatusFilter.PENDING]
     ])(
         "Pressing %s link should filter for status %s",
-        (label: string, status: ScenarioStatusFilter) => {
+        async (label: string, status: ScenarioStatusFilter) => {
             const statistic = createReportStatistics();
 
             render(
@@ -92,7 +92,7 @@ describe("StatisticsBreadcrumbs", () => {
                 </MemoryRouter>
             );
 
-            userEvent.click(screen.getByText(label, { exact: false }));
+            await userEvent.click(screen.getByText(label, { exact: false }));
 
             expect(setUrlSearchParamsMock).toHaveBeenCalledWith({
                 status
