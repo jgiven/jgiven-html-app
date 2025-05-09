@@ -46,8 +46,7 @@
     },
     "eslintConfig": {
         "extends": [
-            "react-app",
-            "react-app/jest"
+            "vite"
         ]
     },
     "browserslist": {
@@ -70,6 +69,7 @@
         "@testing-library/jest-dom": "^6.6.3",
         "@vitejs/plugin-react": "^4.4.1",
         "vitest": "^0.25.1",
-        "jsdom": "^22.1.0"
+        "jsdom": "^22.1.0",
+        "typescript-eslint": "^8.32.0"
     }
 }
