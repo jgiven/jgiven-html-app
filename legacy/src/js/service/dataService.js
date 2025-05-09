@@ -24,13 +24,19 @@ export default function DataService () {
 
   function getPendingScenarios () {
     return getScenariosWhere(function (x) {
-      return x.executionStatus !== "FAILED" && x.executionStatus !== "SUCCESS";
+      return x.executionStatus !== "SUCCESS" && x.executionStatus !== "FAILED" && x.executionStatus !== "ABORTED";
     });
   }
 
   function getFailedScenarios () {
     return getScenariosWhere(function (x) {
       return x.executionStatus === "FAILED";
+    });
+  }
+
+  function getAbortedScenarios () {
+    return getScenariosWhere(function (x) {
+      return x.executionStatus === "ABORTED";
     });
   }
 
@@ -55,6 +61,7 @@ export default function DataService () {
     getAllScenarios: getAllScenarios,
     getPendingScenarios: getPendingScenarios,
     getFailedScenarios: getFailedScenarios,
+    getAbortedScenarios: getAbortedScenarios
 
   };
 }

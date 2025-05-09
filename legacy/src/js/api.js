@@ -7,39 +7,49 @@ var pako = require('pako')
  * This variable can also be used by the custom Javascript file.
  */
 window.jgivenReport = {
-  scenarios: [],
-  customNavigationLinks: [],
+    scenarios: [],
+    customNavigationLinks: [],
 
-  setTags: function setTags (tagFile) {
-    this.tagFile = tagFile;
-  },
+    setTags: function setTags(tagFile) {
+        this.tagFile = tagFile;
+    },
 
-  setMetaData: function setMetaData (metaData) {
-    this.metaData = metaData;
-    _.forEach(metaData.data, function (x) {
-      document.writeln("<script src='data/" + x + "'></script>");
-    });
-  },
+    setMetaData: function setMetaData(metaData) {
+        this.metaData = metaData;
+        _.forEach(metaData.data, function (x) {
+            document.writeln("<script src='data/" + x + "'></script>");
+        });
+    },
 
-  addZippedScenarios: function addZippedScenarios (zip) {
-    var string = pako.ungzip(atob(zip), {to: 'string'})
-    var unzipped = JSON.parse(string);
-    this.addScenarios(unzipped.scenarios);
-  },
+    addZippedScenarios: function addZippedScenarios(zip) {
+        var string = pako.inflate(this.base64ToUint8Array(zip), {to: 'string'})
+        var unzipped = JSON.parse(string);
+        this.addScenarios(unzipped.scenarios);
+    },
 
-  addScenarios: function addScenarios (scenarios) {
-    this.scenarios = this.scenarios.concat(scenarios);
-  },
+    base64ToUint8Array(base64) {
+        const binaryString = window.atob(base64);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes;
+    },
 
-  setAllScenarios: function setAllScenarios (allScenarios) {
-    this.scenarios = allScenarios;
-  },
+    addScenarios: function addScenarios(scenarios) {
+        this.scenarios = this.scenarios.concat(scenarios);
+    },
 
-  addNavigationLink: function addNavigationLink (link) {
-    this.customNavigationLinks.push(link);
-  },
+    setAllScenarios: function setAllScenarios(allScenarios) {
+        this.scenarios = allScenarios;
+    },
 
-  setTitle: function setTitle (title) {
-    this.metaData.title = title;
-  }
+    addNavigationLink: function addNavigationLink(link) {
+        this.customNavigationLinks.push(link);
+    },
+
+    setTitle: function setTitle(title) {
+        this.metaData.title = title;
+    }
 };

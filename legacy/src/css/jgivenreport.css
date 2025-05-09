@@ -471,22 +471,37 @@ table.steps tr.steps:hover .nested-step .step-expand-icon {
 }
 
 .SKIPPED, .PENDING {
-    color: #aaa !important;
+    color: #c0c0c0!important;
+}
+
+.ABORTED {
+    color: #4D5360;
 }
 
 .PASSED {
 }
 
+.label.aborted{
+    vertical-align: middle;
+    margin-bottom: 0.1rem;
+    background-color: #4D5360;
+    color: white;
+}
+
 .label.pending {
     vertical-align: middle;
     margin-bottom: 0.1rem;
-    background-color: #555;
+    background-color: #c0c0c0;
     color: white;
 }
 
 .skipped {
-    color: #aaa;
+    color: #c0c0c0;
     font-size: 0.7rem !important;
+}
+
+.aborted {
+    color: #4D5360;
 }
 
 .collapsed {
@@ -503,6 +518,10 @@ table.steps tr.steps:hover .nested-step .step-expand-icon {
 
 .word.SKIPPED {
     color: gray !important;
+}
+
+.word.ABORTED {
+    color: gray;
 }
 
 .argument {
