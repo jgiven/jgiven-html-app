@@ -1,12 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import en from "./i18n/en.json";
-import reportWebVitals from "./reportWebVitals";
+import React from "react";
 import { RouterProvider } from "react-router";
-import { router } from "./router";
+import { router } from "./router.tsx";
+import reportWebVitals from "./reportWebVitals.ts";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
