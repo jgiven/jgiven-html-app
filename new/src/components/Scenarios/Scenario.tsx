@@ -52,7 +52,11 @@ export function Scenario({
     const onExpansionChanged = useCallback(
         (isExpansion: boolean) => {
             setExpanded(isExpansion);
-            isExpansion ? onExpansionCallback() : onCollapsionCallback();
+            if (isExpansion) {
+                onExpansionCallback();
+            } else {
+                onCollapsionCallback();
+            }
         },
         [onExpansionCallback, onCollapsionCallback]
     );

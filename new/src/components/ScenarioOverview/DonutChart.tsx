@@ -56,7 +56,10 @@ export function DonutChart(props: DonutChartProps) {
             intersect: true,
             mode: "nearest",
             callbacks: {
-                label: (tooltipItem: any, data: any) => {
+                label: (
+                    tooltipItem: { index: number; datasetIndex: number },
+                    data: { labels: string[]; datasets: { data: number[] }[] }
+                ) => {
                     const label = data.labels[tooltipItem.index];
                     const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
                     return `${label}: ${value}`;
