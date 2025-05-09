@@ -25,16 +25,16 @@ export function ScenarioOverview(props: {
     return (
         <>
             <Grid container>
-                <Grid item xs={12} md={1}>
+                <Grid size={{ xs: 12, md: 1 }}>
                     <div style={{ height: "100vh" }}>
                         <MenuBar />
                     </div>
                 </Grid>
-                <Grid item xs={12} md={11}>
+                <Grid size={{ xs: 12, md: 11 }}>
                     {" "}
                     {/* Workshop: Extract to new component.  */}
                     <Grid container direction="column">
-                        <Grid item xs={12}>
+                        <Grid size={{ xs: 12 }}>
                             <div style={{ height: "20em" }}>
                                 <ScenarioCollectionHead
                                     headers={{
@@ -58,7 +58,7 @@ export function ScenarioOverview(props: {
                             </div>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 12 }}>
                         <div style={{ height: "40em" }}>
                             {filterByStatus(filter.status)
                                 .sort(compareByClassTitleAndDescriptionFn)

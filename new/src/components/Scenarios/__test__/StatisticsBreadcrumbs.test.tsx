@@ -1,16 +1,17 @@
 import { createReportStatistics } from "./scenarioTestData";
 import { StatisticBreadcrumbs } from "../StatisticsBreadcrumbs";
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router";
 import userEvent from "@testing-library/user-event";
 import * as useFilters from "../../../hooks/useFilters";
 import { ScenarioStatusFilter } from "../../ScenarioOverview/ScenarioCollectionHead";
+import { vitest, beforeEach, describe, it, expect } from "vitest";
 
-const setUrlSearchParamsMock = jest.fn();
+const setUrlSearchParamsMock = vitest.fn();
 
 beforeEach(() => {
-    jest.resetAllMocks();
-    jest.spyOn(useFilters, "useFilters").mockReturnValue({
+    vitest.resetAllMocks();
+    vitest.spyOn(useFilters, "useFilters").mockReturnValue({
         filter: { status: undefined },
         setUrlSearchParams: setUrlSearchParamsMock
     });

@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { ScenarioOverview } from "../Scenarios/ScenarioOverview";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
+import { vitest, describe, it, expect } from "vitest";
 
-jest.mock("./DonutChart", () => ({
+vitest.mock("./DonutChart", () => ({
     createReportCircle: () => null
 }));
 
