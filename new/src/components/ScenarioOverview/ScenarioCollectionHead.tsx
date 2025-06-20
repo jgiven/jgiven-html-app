@@ -116,7 +116,6 @@ function ScenarioTitles(props: { headers: Headers }) {
     return (
         <Grid container>
             <Grid item xs={12}>
-                {/*TODO: may there be cases, where we should capitalize?*/}
                 <Typography variant="h6" color="grey">
                     {props.headers.aboveHeader}
                 </Typography>
