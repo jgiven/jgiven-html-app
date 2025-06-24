@@ -3,7 +3,7 @@ export default interface ReportModel {
     name: string;
     description?: string;
     scenarios: ScenarioModel[];
-    tagMap: Map<string, Tag>;
+    tagMap?: Map<string, Tag>;
 }
 interface ArgumentInfo {
     parameterName?: string;
@@ -37,7 +37,7 @@ interface ExecutionStatusCalculator {
     failedCount: number;
     pendingCount: number;
     totalCount: number;
-    status: ExecutionStatus;
+    status: CaseStatus;
 }
 interface NamedArgument {
     name: string;
@@ -48,12 +48,8 @@ interface ReportModelFile {
     file: File;
 }
 interface ReportStatistics {
-    numClasses: number;
     numScenarios: number;
     numFailedScenarios: number;
-    numCases: number;
-    numFailedCases: number;
-    numSteps: number;
     durationInNanos: number;
     numPendingScenarios: number;
     numSuccessfulScenarios: number;
@@ -63,23 +59,27 @@ interface ScenarioCaseModel {
     steps: StepModel[];
     explicitArguments: string[];
     derivedArguments: string[];
-    status: ExecutionStatus;
+    status: CaseStatus;
     errorMessage?: string;
     stackTrace?: string[];
     durationInNanos: number;
     description?: string;
 }
-interface ScenarioModel {
+
+export interface ScenarioModel {
     className: string;
+    classTitle: string;
     testMethodName: string;
     description: string;
-    extendedDescription: string;
+    extendedDescription?: string;
     tagIds: string[];
     explicitParameters: string[];
     derivedParameters: string[];
     scenarioCases: ScenarioCaseModel[];
     casesAsTable: boolean;
     durationInNanos: number;
+    executionStatus: ExecutionStatus;
+    tags: TagModel[];
 }
 
 interface StepFormatter {
@@ -90,17 +90,18 @@ interface StepFormatter {
 interface StepModel {
     name: string;
     words: Word[];
-    nestedSteps?: StepModel[];
     status: StepStatus;
     durationInNanos: number;
+    depth: number;
+    parentFailed: boolean;
+    nestedSteps?: StepModel[];
     extendedDescription?: string;
     attachments?: AttachmentModel[];
     isSectionTitle?: boolean;
     comment?: string;
-    depth: number;
-    parentFailed: boolean;
 }
-interface Tag {
+
+export interface Tag {
     fullType: string;
     type: string;
     name: string;
@@ -114,12 +115,20 @@ interface Tag {
     href?: string;
     hideInNav?: boolean;
 }
-interface Word {
+
+export interface Word {
     value: string;
     isIntroWord?: boolean;
     argumentInfo?: ArgumentInfo;
 }
-type ExecutionStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
-type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
-type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
-type StepStatus = "PASSED" | "FAILED" | "SKIPPED" | "PENDING";
+
+export type ExecutionStatus = "SUCCESS" | "FAILED" | "PENDING";
+type CaseStatus = "SCENARIO_PENDING" | "SUCCESS" | "FAILED" | "SOME_STEPS_PENDING";
+export type HeaderType = "NONE" | "HORIZONTAL" | "VERTICAL" | "BOTH";
+export type InvocationMode = "NORMAL" | "NESTED" | "FAILED" | "SKIPPED" | "PENDING";
+export type StepStatus =
+    | "PASSED"
+    | "FAILED"
+    | "SKIPPED"
+    | "PENDING"
+    | /*shows up in json file*/ "SUCCESS";

@@ -3,16 +3,15 @@ import { FontSizes, GreenCheckbox } from "./Icons/CheckMarks";
 import React from "react";
 import ErrorIcon from "@mui/icons-material/Error";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
-import { ExecutionStatus, StepStatus } from "../reportModel";
+import { ExecutionStatus } from "../reportModel";
 
 export function StatusIcon(props: {
-    model: { status: StepStatus | ExecutionStatus };
+    executionStatus: ExecutionStatus;
     sx?: SxProps<Theme>;
     fontSize?: FontSizes;
 }) {
-    switch (props.model.status) {
+    switch (props.executionStatus) {
         case "SUCCESS":
-        case "PASSED":
             return (
                 <React.Fragment>
                     <GreenCheckbox
@@ -27,15 +26,13 @@ export function StatusIcon(props: {
                     <ErrorIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 </React.Fragment>
             );
-        case "SCENARIO_PENDING":
-        case "SOME_STEPS_PENDING":
         case "PENDING":
             return (
                 <React.Fragment>
                     <DoNotDisturbAltIcon sx={{ mr: 0.5 }} fontSize={"small"} />
                 </React.Fragment>
             );
-        case "SKIPPED":
+        default:
             return null;
     }
 }
