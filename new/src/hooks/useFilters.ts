@@ -1,4 +1,4 @@
-import { SetURLSearchParams, useSearchParams } from "react-router-dom";
+import { SetURLSearchParams, useSearchParams } from "react-router";
 import { ScenarioStatusFilter } from "../components/ScenarioOverview/ScenarioCollectionHead";
 
 export interface Filter {
