@@ -6,11 +6,13 @@ import userEvent from "@testing-library/user-event";
 import * as useFilters from "../../../hooks/useFilters";
 import { ScenarioStatusFilter } from "../../ScenarioOverview/ScenarioCollectionHead";
 
-const setUrlSearchParamsMock = jest.fn();
+import { describe, it, expect, beforeEach, vitest } from "vitest";
+
+const setUrlSearchParamsMock = vitest.fn();
 
 beforeEach(() => {
-    jest.resetAllMocks();
-    jest.spyOn(useFilters, "useFilters").mockReturnValue({
+    vitest.resetAllMocks();
+    vitest.spyOn(useFilters, "useFilters").mockReturnValue({
         filter: { status: undefined },
         setUrlSearchParams: setUrlSearchParamsMock
     });
@@ -80,7 +82,7 @@ describe("StatisticsBreadcrumbs", () => {
         ["pending", ScenarioStatusFilter.PENDING]
     ])(
         "Pressing %s link should filter for status %s",
-        (label: string, status: ScenarioStatusFilter) => {
+        async (label: string, status: ScenarioStatusFilter) => {
             const statistic = createReportStatistics();
 
             render(
@@ -91,7 +93,7 @@ describe("StatisticsBreadcrumbs", () => {
                 </MemoryRouter>
             );
 
-            userEvent.click(screen.getByText(label, { exact: false }));
+            await userEvent.click(screen.getByText(label, { exact: false }));
 
             expect(setUrlSearchParamsMock).toHaveBeenCalledWith({
                 status

@@ -2,6 +2,7 @@ import { repository } from "./repository";
 import { filterByStatus } from "./ReportFilter";
 import { ScenarioStatusFilter } from "./components/ScenarioOverview/ScenarioCollectionHead";
 import { createSampleScenario } from "./components/Scenarios/__test__/scenarioTestData";
+import { describe, test, vitest, expect } from "vitest";
 
 describe("Report filter status filter", () => {
     const fullReport = {
@@ -23,7 +24,7 @@ describe("Report filter status filter", () => {
         ]
     };
     test("should filter by status", () => {
-        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+        vitest.spyOn(repository, "getReport").mockReturnValue(fullReport);
 
         expect(filterByStatus(ScenarioStatusFilter.SUCCESS)).toEqual([
             fullReport.scenarios[0].scenarios[0]
@@ -31,7 +32,7 @@ describe("Report filter status filter", () => {
     });
 
     test("should ignore undefined status", () => {
-        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+        vitest.spyOn(repository, "getReport").mockReturnValue(fullReport);
 
         expect(filterByStatus(ScenarioStatusFilter.SUCCESS, undefined)).toEqual([
             fullReport.scenarios[0].scenarios[0]
@@ -39,13 +40,13 @@ describe("Report filter status filter", () => {
     });
 
     test("should return the full report if no status is provided", () => {
-        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+        vitest.spyOn(repository, "getReport").mockReturnValue(fullReport);
 
         expect(filterByStatus()).toEqual(fullReport.scenarios.flatMap(s => s.scenarios));
     });
 
     test("should return the full report if null is provided", () => {
-        jest.spyOn(repository, "getReport").mockReturnValue(fullReport);
+        vitest.spyOn(repository, "getReport").mockReturnValue(fullReport);
 
         expect(filterByStatus(undefined)).toEqual(fullReport.scenarios.flatMap(s => s.scenarios));
     });
