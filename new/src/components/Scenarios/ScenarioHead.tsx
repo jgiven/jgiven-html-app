@@ -12,10 +12,10 @@ export interface ScenarioHeadProps {
 export function ScenarioHead({ scenario }: ScenarioHeadProps) {
     return (
         <Grid container columnSpacing={1}>
-            <Grid item>
+            <Grid>
                 <Typography color={"grey"}>{scenario.classTitle}</Typography>
             </Grid>
-            <Grid item>
+            <Grid>
                 <Typography>{processWords(scenario.description)}</Typography>
             </Grid>
             <Grid>
