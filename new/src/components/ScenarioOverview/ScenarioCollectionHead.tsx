@@ -69,49 +69,6 @@ export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
     );
 }
 
-export function MenuBar() {
-    return (
-        <StyledDrawer variant="permanent">
-            <List>
-                <List>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
-                    </ListItem>
-                    <List>
-                        {["All Scenarios", "Failed Scenarios", "Pending Scenarios"].map(
-                            (scenario, index) => (
-                                <ListItem key={index} sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                                    <ListItemText
-                                        primary={
-                                            <Link
-                                                href="http://localhost:3000"
-                                                underline="none"
-                                                sx={{ color: "inherit" }}
-                                            >
-                                                {scenario}
-                                            </Link>
-                                        }
-                                    />
-                                </ListItem>
-                            )
-                        )}
-                    </List>
-                </List>
-                {/* Workshop: Use forEach to implement missing subitems. */}
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
-                </ListItem>
-            </List>
-        </StyledDrawer>
-    );
-}
-
 function ScenarioTitles(props: { headers: Headers }) {
     return (
         <Grid container>
