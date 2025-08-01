@@ -42,12 +42,6 @@ export function ScenarioOverview(props: {
                                 onExpandButtonClick={() => {
                                     setAllExpanded(ExpansionState.EXPANDED);
                                 }}
-                                onBookmarkButtonClick={() => {
-                                    /* not implemented yet */
-                                }}
-                                onPrintButtonClick={() => {
-                                    /* not implemented yet */
-                                }}
                             />
                         </div>
                     </Grid>
