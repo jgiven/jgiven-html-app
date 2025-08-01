@@ -31,19 +31,17 @@ export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
             <StyledContent>
                 <List>
                     <ListItem>
-                        <Grid
-                            container
-                            direction={"row"}
-                            justifyContent="flex-end"
-                            alignItems="flex-start"
-                        >
-                            <Grid size={12}>
+                        <Grid container direction={"row"}>
+                            <Grid sx={{ flexGrow: 10, mb: 2 }}>
                                 <ScenarioTitles headers={headers} />
                             </Grid>
-                            <Grid sx={{ flexGrow: 1 }} />
-                            <Grid>{DonutChart({ statistic })}</Grid>
-                            <Grid>
-                                <ScenarioActionButtons {...iconClickHandlers} />
+                            <Grid container direction={"column"} alignItems="center">
+                                <Grid sx={{ flexGrow: 10, mb: 2 }}>
+                                    {DonutChart({ statistic })}
+                                </Grid>
+                                <Grid sx={{ flexGrow: 1 }}>
+                                    <ScenarioActionButtons {...iconClickHandlers} />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </ListItem>
