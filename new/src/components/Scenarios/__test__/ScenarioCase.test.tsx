@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { ScenarioCase } from "../ScenarioCase";
 import { createScenarioCaseModel, createStepModel, createWord } from "./scenarioTestData";
+import { describe, it, expect } from "vitest";
 
 describe("ScenarioCase", () => {
     it("should display class name", () => {

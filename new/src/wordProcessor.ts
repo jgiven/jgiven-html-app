@@ -24,7 +24,7 @@ function processWordArray(wordArray: Word[]) {
 }
 
 function processWord(word: Word) {
-    let value = word.value;
+    const value = word.value;
     return word.isIntroWord ? capitaliseFirstLetter(value) : value;
 }
 

@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import { ScenarioHead } from "../ScenarioHead";
 import { createScenarioModel } from "./scenarioTestData";
 import { screen } from "../../../testUtils/enhancedScreen";
+import { describe, it, expect } from "vitest";
 
 describe("Scenario Head", () => {
     it("displays class title", () => {

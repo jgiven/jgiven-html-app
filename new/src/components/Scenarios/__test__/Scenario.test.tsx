@@ -8,13 +8,14 @@ import {
     createStepModel,
     createWord
 } from "./scenarioTestData";
+import { describe, it, expect, afterEach, vitest } from "vitest";
 
 afterEach(() => {
-    jest.resetAllMocks();
+    vitest.resetAllMocks();
 });
 
-const onExpansionCallback = jest.fn();
-const onCollapsionCallback = jest.fn();
+const onExpansionCallback = vitest.fn();
+const onCollapsionCallback = vitest.fn();
 
 describe("Scenario", () => {
     it("displays single scenario case", () => {
@@ -89,7 +90,7 @@ describe("Scenario", () => {
                 />
             );
             const scenarioOverview = await screen.findByLabelText("Scenario Overview");
-            userEvent.click(scenarioOverview);
+            await userEvent.click(scenarioOverview);
             expect(onExpansionCallback).toHaveBeenCalled();
         });
 
@@ -103,7 +104,7 @@ describe("Scenario", () => {
                 />
             );
             const scenarioOverview = await screen.findByLabelText("Scenario Overview");
-            userEvent.click(scenarioOverview);
+            await userEvent.click(scenarioOverview);
             expect(onCollapsionCallback).toHaveBeenCalled();
         });
     });
