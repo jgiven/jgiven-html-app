@@ -1,5 +1,5 @@
 import { ScenarioModel } from "../../reportModel";
-import { MenuBar, ScenarioCollectionHead } from "../ScenarioOverview/ScenarioCollectionHead";
+import { ScenarioCollectionHead } from "../ScenarioOverview/ScenarioCollectionHead";
 import { Scenario } from "./Scenario";
 import { useState } from "react";
 import { Grid } from "@mui/material";
@@ -23,62 +23,50 @@ export function ScenarioOverview(props: {
     const scenarios = repository.getAllScenarios();
 
     return (
-        <>
-            <Grid container>
-                <Grid item xs={12} md={1}>
-                    <div style={{ height: "100vh" }}>
-                        <MenuBar />
-                    </div>
-                </Grid>
-                <Grid item xs={12} md={11}>
-                    {" "}
-                    {/* Workshop: Extract to new component.  */}
-                    <Grid container direction="column">
-                        <Grid item xs={12}>
-                            <div style={{ height: "20em" }}>
-                                <ScenarioCollectionHead
-                                    headers={{
-                                        aboveHeader: props.description,
-                                        header: props.title
-                                    }}
-                                    scenarios={scenarios}
-                                    onCollapseButtonClick={() => {
-                                        setAllExpanded(ExpansionState.COLLAPSED);
-                                    }}
-                                    onExpandButtonClick={() => {
-                                        setAllExpanded(ExpansionState.EXPANDED);
-                                    }}
-                                    onBookmarkButtonClick={() => {
-                                        /* not implemented yet */
-                                    }}
-                                    onPrintButtonClick={() => {
-                                        /* not implemented yet */
-                                    }}
-                                />
-                            </div>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <div style={{ height: "40em" }}>
-                            {filterByStatus(filter.status)
-                                .sort(compareByClassTitleAndDescriptionFn)
-                                .map(scenario => (
-                                    <Scenario
-                                        scenario={scenario}
-                                        globalExpansionState={allExpanded}
-                                        onCollapsionCallback={() => {
-                                            setAllExpanded(ExpansionState.INTERMEDIATE);
-                                        }}
-                                        onExpansionCallback={() => {
-                                            setAllExpanded(ExpansionState.INTERMEDIATE);
-                                        }}
-                                    />
-                                ))}
+        <Grid container>
+            <Grid size={12}>
+                {" "}
+                {/* Workshop: Extract to new component.  */}
+                <Grid container direction="column">
+                    <Grid size={12}>
+                        <div style={{ height: "20em" }}>
+                            <ScenarioCollectionHead
+                                headers={{
+                                    aboveHeader: props.description,
+                                    header: props.title
+                                }}
+                                scenarios={scenarios}
+                                onCollapseButtonClick={() => {
+                                    setAllExpanded(ExpansionState.COLLAPSED);
+                                }}
+                                onExpandButtonClick={() => {
+                                    setAllExpanded(ExpansionState.EXPANDED);
+                                }}
+                            />
                         </div>
                     </Grid>
                 </Grid>
+                <Grid size={12}>
+                    <div style={{ height: "40em" }}>
+                        {filterByStatus(filter.status)
+                            .sort(compareByClassTitleAndDescriptionFn)
+                            .map(scenario => (
+                                <Scenario
+                                    key={scenario.className + "." + scenario.testMethodName}
+                                    scenario={scenario}
+                                    globalExpansionState={allExpanded}
+                                    onCollapsionCallback={() => {
+                                        setAllExpanded(ExpansionState.INTERMEDIATE);
+                                    }}
+                                    onExpansionCallback={() => {
+                                        setAllExpanded(ExpansionState.INTERMEDIATE);
+                                    }}
+                                />
+                            ))}
+                    </div>
+                </Grid>
             </Grid>
-        </>
+        </Grid>
     );
 }
 

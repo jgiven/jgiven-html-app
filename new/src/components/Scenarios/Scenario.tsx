@@ -80,6 +80,7 @@ export function Scenario({
                     {scenario.scenarioCases.map(scenarioCase => {
                         return (
                             <ScenarioCase
+                                key={scenarioCase.caseNr}
                                 scenarioCase={scenarioCase}
                                 className={scenario.className}
                             />

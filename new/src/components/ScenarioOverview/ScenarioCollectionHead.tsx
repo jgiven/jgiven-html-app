@@ -1,26 +1,17 @@
 import type { ReportStatistics, ScenarioModel } from "../../reportModel";
-import { Divider, Grid, Link, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Divider, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
-import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { DonutChart } from "./DonutChart";
 import { PropsWithChildren, useMemo } from "react";
 import { processWords } from "../../wordProcessor";
-import {
-    StyledContent,
-    StyledDrawer,
-    StyledIconButton,
-    StyledIconContainer
-} from "./ScenarioHead.styles";
+import { StyledContent, StyledIconButton, StyledIconContainer } from "./ScenarioHead.styles";
 import { StatisticBreadcrumbs } from "../Scenarios/StatisticsBreadcrumbs";
 
 export interface ScenarioCollectionHeadProps {
     scenarios: ScenarioModel[];
     onCollapseButtonClick: () => void;
     onExpandButtonClick: () => void;
-    onPrintButtonClick: () => void;
-    onBookmarkButtonClick: () => void;
     headers: Headers;
 }
 
@@ -40,19 +31,17 @@ export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
             <StyledContent>
                 <List>
                     <ListItem>
-                        <Grid
-                            container
-                            direction={"row"}
-                            justifyContent="flex-end"
-                            alignItems="flex-start"
-                        >
-                            <Grid item xs={12} sm={8}>
+                        <Grid container direction={"row"}>
+                            <Grid sx={{ flexGrow: 10, mb: 2 }}>
                                 <ScenarioTitles headers={headers} />
                             </Grid>
-                            <Grid item sx={{ flexGrow: 1 }} />
-                            <Grid item>{DonutChart({ statistic })}</Grid>
-                            <Grid item>
-                                <ScenarioActionButtons {...iconClickHandlers} />
+                            <Grid container direction={"column"} alignItems="center">
+                                <Grid sx={{ flexGrow: 10, mb: 2 }}>
+                                    {DonutChart({ statistic })}
+                                </Grid>
+                                <Grid sx={{ flexGrow: 1 }}>
+                                    <ScenarioActionButtons {...iconClickHandlers} />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </ListItem>
@@ -69,61 +58,18 @@ export function ScenarioCollectionHead(props: ScenarioCollectionHeadProps) {
     );
 }
 
-export function MenuBar() {
-    return (
-        <StyledDrawer variant="permanent">
-            <List>
-                <List>
-                    <ListItem sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                        <ListItemText primary={<Typography variant="h6">SUMMARY</Typography>} />
-                    </ListItem>
-                    <List>
-                        {["All Scenarios", "Failed Scenarios", "Pending Scenarios"].map(
-                            (scenario, index) => (
-                                <ListItem key={index} sx={{ paddingTop: 0.1, paddingBottom: 0.1 }}>
-                                    <ListItemText
-                                        primary={
-                                            <Link
-                                                href="http://localhost:3000"
-                                                underline="none"
-                                                sx={{ color: "inherit" }}
-                                            >
-                                                {scenario}
-                                            </Link>
-                                        }
-                                    />
-                                </ListItem>
-                            )
-                        )}
-                    </List>
-                </List>
-                {/* Workshop: Use forEach to implement missing subitems. */}
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">TAGS</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">CLASSES</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary={<Typography variant="h6">BOOKMARKS</Typography>} />
-                </ListItem>
-            </List>
-        </StyledDrawer>
-    );
-}
-
 function ScenarioTitles(props: { headers: Headers }) {
     return (
         <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
                 <Typography variant="h6" color="grey">
                     {props.headers.aboveHeader}
                 </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={12}>
                 <Typography variant="h4">{processWords(props.headers.header)}</Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={12}>
                 <Typography variant="h6" color="grey">
                     {processWords(props.headers.belowHeader)}
                 </Typography>
@@ -135,36 +81,22 @@ function ScenarioTitles(props: { headers: Headers }) {
 interface ScenarioActionButtonsProps {
     onCollapseButtonClick: () => void;
     onExpandButtonClick: () => void;
-    onPrintButtonClick: () => void;
-    onBookmarkButtonClick: () => void;
 }
 
 function ScenarioActionButtons({
     onCollapseButtonClick,
-    onExpandButtonClick,
-    onPrintButtonClick,
-    onBookmarkButtonClick
+    onExpandButtonClick
 }: ScenarioActionButtonsProps) {
     return (
         <Grid container>
-            <Grid item>
+            <Grid>
                 <ScenarioHeaderIcon onClick={onCollapseButtonClick}>
                     <RemoveIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
-            <Grid item>
+            <Grid>
                 <ScenarioHeaderIcon onClick={onExpandButtonClick}>
                     <AddIcon />
-                </ScenarioHeaderIcon>
-            </Grid>
-            <Grid item>
-                <ScenarioHeaderIcon onClick={onPrintButtonClick}>
-                    <PrintOutlinedIcon fontSize="inherit" />
-                </ScenarioHeaderIcon>
-            </Grid>
-            <Grid item>
-                <ScenarioHeaderIcon onClick={onBookmarkButtonClick}>
-                    <BookmarkOutlinedIcon fontSize="inherit" />
                 </ScenarioHeaderIcon>
             </Grid>
         </Grid>

@@ -10,8 +10,8 @@ export interface ScenarioCaseProps {
 export function ScenarioCase({ scenarioCase, className }: ScenarioCaseProps) {
     return (
         <Box sx={{ marginLeft: "2em" }}>
-            {scenarioCase.steps.map((step: StepModel, index) => (
-                <ScenarioStep key={index} step={step}></ScenarioStep>
+            {scenarioCase.steps.map((step: StepModel) => (
+                <ScenarioStep key={step.name + "." + step.status} step={step}></ScenarioStep>
             ))}
             <Typography align="right" variant="body2">
                 <Link
