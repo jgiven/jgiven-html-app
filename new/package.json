@@ -63,12 +63,12 @@
         ]
     },
     "devDependencies": {
-        "vite": "^6.4.2",
+        "vite": "^8.0.16",
         "prettier": "3.2.5",
         "@testing-library/react": "^16.3.0",
         "@testing-library/user-event": "^14.6.1",
         "@testing-library/jest-dom": "^6.6.3",
-        "@vitejs/plugin-react": "^4.4.1",
+        "@vitejs/plugin-react": "^6.0.2",
         "vitest": "^4.1.0",
         "jsdom": "^22.1.0",
         "@eslint/js": "^9.31.0",
