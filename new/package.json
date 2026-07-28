@@ -72,6 +72,6 @@
         "vitest": "^4.1.0",
         "jsdom": "^22.1.0",
         "@eslint/js": "^9.31.0",
-        "typescript-eslint": "^8.38.0"
+        "typescript-eslint": "^8.65.0"
     }
 }
