@@ -1,33 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import en from "./i18n/en.json";
-import reportWebVitals from "./reportWebVitals";
-import { RouterProvider } from "react-router";
-import { router } from "./router";
+import { loadSampleReport } from "./dev/loadSampleReport";
+import "./i18n";
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+if (import.meta.env.VITE_LOAD_SAMPLE_REPORT === "true") {
+    loadSampleReport();
+}
+import "./styles/jgivenreport.css";
+import "./styles/tooltip.css";
+import App from "./App";
 
-i18n.use(initReactI18next).init({
-    resources: {
-        en: { translation: en }
-    },
-    lng: "en",
-    fallbackLng: "en",
-    interpolation: {
-        escapeValue: false
-    }
-});
-
-root.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <App />
     </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

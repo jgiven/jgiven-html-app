@@ -1,0 +1,17 @@
+{
+    "name": "jgiven-golden-tests",
+    "private": true,
+    "scripts": {
+        "build:apps": "npm run build --prefix ../../legacy && npm run build --prefix ../../new",
+        "prepare:legacy": "node scripts/prepare-fixture.mjs",
+        "pretest": "npm run build:apps && npm run prepare:legacy",
+        "test": "playwright test",
+        "test:legacy": "playwright test --project=legacy",
+        "test:new": "playwright test --project=new"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.52.0",
+        "@types/node": "^22.15.3",
+        "typescript": "^5.8.3"
+    }
+}
