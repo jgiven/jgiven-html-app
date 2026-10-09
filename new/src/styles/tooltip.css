@@ -1,0 +1,66 @@
+.has-tip {
+    position: relative;
+    cursor: help;
+}
+
+.has-tip .tooltip {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    background: #333;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    max-width: 300px;
+    white-space: pre-wrap;
+    top: 100%;
+    left: 0;
+}
+
+.f-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 120px;
+}
+
+.f-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.f-dropdown li a:hover {
+    background: #eee;
+}
+
+.fa-check.selected {
+    visibility: visible;
+}
+
+.fa-check:not(.selected) {
+    visibility: hidden;
+}
+
+.pagination {
+    list-style: none;
+    display: inline-flex;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.pagination li a {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.pagination li.current a {
+    background-color: green;
+    color: white;
+}

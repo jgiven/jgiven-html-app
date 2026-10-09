@@ -206,13 +206,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 525725382
+                            "status": "FAILED",
+                            "durationInNanos": 525725382,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 525725382,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "J Unit 5 Executor"
                 },
@@ -288,13 +290,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 91778960
+                            "status": "FAILED",
+                            "durationInNanos": 91778960,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 91778960,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "J Unit 5 Executor"
                 },
@@ -367,13 +371,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 30877622
+                            "status": "FAILED",
+                            "durationInNanos": 30877622,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 30877622,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "J Unit 5 Executor"
                 },
@@ -553,13 +559,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 12169888
+                            "status": "FAILED",
+                            "durationInNanos": 12169888,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 12169888,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "J Unit 5 Executor"
                 },
@@ -645,13 +653,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 18005730
+                            "status": "FAILED",
+                            "durationInNanos": 18005730,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 18005730,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {
@@ -820,13 +830,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 27159096
+                            "status": "FAILED",
+                            "durationInNanos": 27159096,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 27159096,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "J Unit 5 Executor"
                 },
@@ -902,13 +914,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 65271169
+                            "status": "FAILED",
+                            "durationInNanos": 65271169,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 65271169,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {
@@ -954,13 +968,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 356203
+                            "status": "FAILED",
+                            "durationInNanos": 356203,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 356203,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {
                             "value": "testValue"
@@ -1232,13 +1248,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 8255559
+                            "status": "FAILED",
+                            "durationInNanos": 8255559,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 8255559,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "J Unit 5 After Method"
                 }
@@ -1377,13 +1395,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 7318053
+                            "status": "FAILED",
+                            "durationInNanos": 7318053,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 7318053,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "Report Configuration"
                 },
@@ -1516,13 +1536,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 3318923
+                            "status": "FAILED",
+                            "durationInNanos": 3318923,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 3318923,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "Report Configuration"
                 }
@@ -1723,21 +1745,25 @@
                             ],
                             "explicitArguments": ["true", "0"],
                             "derivedArguments": ["true", "0"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 62639251
+                            "status": "FAILED",
+                            "durationInNanos": 62639251,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["false", "1"],
                             "derivedArguments": ["false", "1"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 19401140
+                            "status": "FAILED",
+                            "durationInNanos": 19401140,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 82040391,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "Report Generator"
                 },
@@ -1962,21 +1988,25 @@
                             ],
                             "explicitArguments": ["true", "1"],
                             "derivedArguments": ["true", "1"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 18750835
+                            "status": "FAILED",
+                            "durationInNanos": 18750835,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["false", "2"],
                             "derivedArguments": ["false", "2"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 10725677
+                            "status": "FAILED",
+                            "durationInNanos": 10725677,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 29476512,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "Report Generator"
                 }
@@ -2030,13 +2060,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 1258209
+                            "status": "FAILED",
+                            "durationInNanos": 1258209,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 1258209,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "Lambda Generating Step"
                 }
@@ -2109,13 +2141,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 408103
+                            "status": "FAILED",
+                            "durationInNanos": 408103,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 408103,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [],
                     "classTitle": "Test Class With Description"
                 }
@@ -2376,13 +2410,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 950393019
+                            "status": "FAILED",
+                            "durationInNanos": 950393019,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 950393019,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}],
                     "classTitle": "HTML App"
                 },
@@ -2626,9 +2662,11 @@
                                 "1"
                             ],
                             "derivedArguments": ["$1", "{a=1, b=2}", "1"],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1372439046,
-                            "description": "Placeholder with index"
+                            "description": "Placeholder with index",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
@@ -2852,9 +2890,11 @@
                                 "1"
                             ],
                             "derivedArguments": ["$", "{a=1, b=2}", "1"],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1276945562,
-                            "description": "Placeholder without index"
+                            "description": "Placeholder without index",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
@@ -3078,9 +3118,11 @@
                                 "$"
                             ],
                             "derivedArguments": ["$$", "{a=1, b=2}", "$"],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1246449143,
-                            "description": "Escaped placeholder"
+                            "description": "Escaped placeholder",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 4,
@@ -3304,9 +3346,11 @@
                                 "2 + 1"
                             ],
                             "derivedArguments": ["$2 + $1", "{a=1, b=2}", "2 + 1"],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1214738015,
-                            "description": "Multiple placeholders with switch order"
+                            "description": "Multiple placeholders with switch order",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 5,
@@ -3534,9 +3578,11 @@
                                 "{a=1, b=2}",
                                 "a = 1 and b = 2"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1210780487,
-                            "description": "Placeholders with additional text"
+                            "description": "Placeholders with additional text",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 6,
@@ -3764,9 +3810,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "int = 1 and str = some string and bool = true"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1239772143,
-                            "description": "Placeholders references by argument names in order"
+                            "description": "Placeholders references by argument names in order",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 7,
@@ -3994,9 +4042,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "str = some string and int = 1 and bool = true"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1199404609,
-                            "description": "Placeholders references by argument names in mixed order"
+                            "description": "Placeholders references by argument names in mixed order",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 8,
@@ -4224,9 +4274,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "str = some string and int = 1 and bool = true"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1215565216,
-                            "description": "Placeholders references by argument names and enumeration"
+                            "description": "Placeholders references by argument names and enumeration",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 9,
@@ -4454,9 +4506,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "bool = true and str = some string and int = 1"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1218626936,
-                            "description": "Placeholders references by argument names and enumerations "
+                            "description": "Placeholders references by argument names and enumerations ",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 10,
@@ -4684,9 +4738,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "bool = true and int = 1 and str = some string"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1228791003,
-                            "description": "Placeholder without index mixed with names"
+                            "description": "Placeholder without index mixed with names",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 11,
@@ -4914,9 +4970,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "bool = true and str = some string and int = 1 and str = some string and bool = true"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1241979954,
-                            "description": "Placeholder without index mixed with names and index"
+                            "description": "Placeholder without index mixed with names and index",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 12,
@@ -5144,9 +5202,11 @@
                                 "{int=1, str=some string, bool=true}",
                                 "bool = true and not known = 1 and unknown = some string"
                             ],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1212468686,
-                            "description": "Placeholder with unknown argument names get erased"
+                            "description": "Placeholder with unknown argument names get erased",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 13,
@@ -5370,14 +5430,16 @@
                                 "1 ]"
                             ],
                             "derivedArguments": ["$]", "{int=1}", "1 ]"],
-                            "status": "SUCCESS",
+                            "status": "FAILED",
                             "durationInNanos": 1228704298,
-                            "description": "Non-Java-Identifier char does trigger a space after a placeholder"
+                            "description": "Non-Java-Identifier char does trigger a space after a placeholder",
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 16106665098,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -5575,13 +5637,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 661261734
+                            "status": "FAILED",
+                            "durationInNanos": 661261734,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 661261734,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -5711,13 +5775,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 540024066
+                            "status": "FAILED",
+                            "durationInNanos": 540024066,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 540024066,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}],
                     "classTitle": "HTML App"
                 },
@@ -5959,13 +6025,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 700520815
+                            "status": "FAILED",
+                            "durationInNanos": 700520815,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 700520815,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -6161,13 +6229,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 604436927
+                            "status": "FAILED",
+                            "durationInNanos": 604436927,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 604436927,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}],
                     "classTitle": "HTML App",
                     "expanded": false,
@@ -6368,13 +6438,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 550235739
+                            "status": "FAILED",
+                            "durationInNanos": 550235739,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 550235739,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -6567,13 +6639,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 666160769
+                            "status": "FAILED",
+                            "durationInNanos": 666160769,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 666160769,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}],
                     "classTitle": "HTML App",
                     "expanded": false,
@@ -6768,8 +6842,10 @@
                                 "JGIVEN DOCUMENTATION",
                                 "http://jgiven.org/docs"
                             ],
-                            "status": "SUCCESS",
-                            "durationInNanos": 519931923
+                            "status": "FAILED",
+                            "durationInNanos": 519931923,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
@@ -6948,13 +7024,15 @@
                                 "BACK",
                                 "javascript:window.history.back()"
                             ],
-                            "status": "SUCCESS",
-                            "durationInNanos": 555928380
+                            "status": "FAILED",
+                            "durationInNanos": 555928380,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 1075860303,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -7077,13 +7155,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 467277746
+                            "status": "FAILED",
+                            "durationInNanos": 467277746,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 467277746,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}],
                     "classTitle": "HTML App"
                 },
@@ -7296,8 +7376,10 @@
                             ],
                             "explicitArguments": ["true", "testtag-#42"],
                             "derivedArguments": ["true", "testtag-#42"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 700055312
+                            "status": "FAILED",
+                            "durationInNanos": 700055312,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
@@ -7495,13 +7577,15 @@
                             ],
                             "explicitArguments": ["false", "#42"],
                             "derivedArguments": ["false", "#42"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 693897168
+                            "status": "FAILED",
+                            "durationInNanos": 693897168,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 1393952480,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -7725,8 +7809,10 @@
                             ],
                             "explicitArguments": ["true"],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 1060658493
+                            "status": "FAILED",
+                            "durationInNanos": 1060658493,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
@@ -7905,13 +7991,15 @@
                             ],
                             "explicitArguments": ["false"],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 780051284
+                            "status": "FAILED",
+                            "durationInNanos": 780051284,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 1840709777,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -8107,13 +8195,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 834530674
+                            "status": "FAILED",
+                            "durationInNanos": 834530674,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 834530674,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -8399,13 +8489,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 607583749
+                            "status": "FAILED",
+                            "durationInNanos": 607583749,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 607583749,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}],
                     "classTitle": "HTML App",
                     "expanded": false,
@@ -8525,29 +8617,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 12428689
+                            "status": "FAILED",
+                            "durationInNanos": 12428689,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 14912707
+                            "status": "FAILED",
+                            "durationInNanos": 14912707,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 46271931
+                            "status": "FAILED",
+                            "durationInNanos": 46271931,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 73613327,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -8666,29 +8764,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 7640154
+                            "status": "FAILED",
+                            "durationInNanos": 7640154,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 9046765
+                            "status": "FAILED",
+                            "durationInNanos": 9046765,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 65127566
+                            "status": "FAILED",
+                            "durationInNanos": 65127566,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 81814485,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}],
                     "classTitle": "Test Framework Execution",
                     "expanded": false,
@@ -8785,29 +8889,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 3072422
+                            "status": "FAILED",
+                            "durationInNanos": 3072422,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 10636676
+                            "status": "FAILED",
+                            "durationInNanos": 10636676,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 62145845
+                            "status": "FAILED",
+                            "durationInNanos": 62145845,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 75854943,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}, {}],
                     "classTitle": "Test Framework Execution",
                     "expanded": false,
@@ -8903,29 +9013,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 8485261
+                            "status": "FAILED",
+                            "durationInNanos": 8485261,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 11512682
+                            "status": "FAILED",
+                            "durationInNanos": 11512682,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 82237489
+                            "status": "FAILED",
+                            "durationInNanos": 82237489,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 102235432,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}],
                     "classTitle": "Test Framework Execution",
                     "expanded": false,
@@ -9077,29 +9193,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 9748070
+                            "status": "FAILED",
+                            "durationInNanos": 9748070,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 12073186
+                            "status": "FAILED",
+                            "durationInNanos": 12073186,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 85057908
+                            "status": "FAILED",
+                            "durationInNanos": 85057908,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 106879164,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}],
                     "classTitle": "Test Framework Execution",
                     "expanded": false,
@@ -9196,29 +9318,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 8930164
+                            "status": "FAILED",
+                            "durationInNanos": 8930164,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 12805991
+                            "status": "FAILED",
+                            "durationInNanos": 12805991,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 39764484
+                            "status": "FAILED",
+                            "durationInNanos": 39764484,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 61500639,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}, {}],
                     "classTitle": "Test Framework Execution",
                     "expanded": false,
@@ -9339,29 +9467,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 8336259
+                            "status": "FAILED",
+                            "durationInNanos": 8336259,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 11254380
+                            "status": "FAILED",
+                            "durationInNanos": 11254380,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 49742656
+                            "status": "FAILED",
+                            "durationInNanos": 49742656,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 69333295,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -9483,29 +9617,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 3141722
+                            "status": "FAILED",
+                            "durationInNanos": 3141722,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 11048279
+                            "status": "FAILED",
+                            "durationInNanos": 11048279,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 46086930
+                            "status": "FAILED",
+                            "durationInNanos": 46086930,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 60276931,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}, {}, {}, {}],
                     "classTitle": "Test Framework Execution",
                     "expanded": false,
@@ -9616,29 +9756,35 @@
                             ],
                             "explicitArguments": ["JUnit"],
                             "derivedArguments": ["JUnit"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 3787827
+                            "status": "FAILED",
+                            "durationInNanos": 3787827,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 2,
                             "steps": [],
                             "explicitArguments": ["JUnit5"],
                             "derivedArguments": ["JUnit5"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 11783785
+                            "status": "FAILED",
+                            "durationInNanos": 11783785,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         },
                         {
                             "caseNr": 3,
                             "steps": [],
                             "explicitArguments": ["TestNG"],
                             "derivedArguments": ["TestNG"],
-                            "status": "SUCCESS",
-                            "durationInNanos": 53718284
+                            "status": "FAILED",
+                            "durationInNanos": 53718284,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": true,
                     "durationInNanos": 69289896,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [
                         {},
                         {},
@@ -10124,13 +10270,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 8318459
+                            "status": "FAILED",
+                            "durationInNanos": 8318459,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 8318459,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "Difference Analyzer",
                     "expanded": false,
@@ -10445,13 +10593,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 3032021
+                            "status": "FAILED",
+                            "durationInNanos": 3032021,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 3032021,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "Difference Analyzer",
                     "expanded": false,
@@ -10799,13 +10949,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 17969330
+                            "status": "FAILED",
+                            "durationInNanos": 17969330,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 17969330,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "Difference Analyzer",
                     "expanded": false,
@@ -11120,13 +11272,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 2341117
+                            "status": "FAILED",
+                            "durationInNanos": 2341117,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 2341117,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "Difference Analyzer",
                     "expanded": false,
@@ -11356,13 +11510,15 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
-                            "durationInNanos": 126571010
+                            "status": "FAILED",
+                            "durationInNanos": 126571010,
+                            "errorMessage": "Sample assertion failed",
+                            "stackTrace": ["at SampleTest.run(SampleTest.java:1)"]
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 126571010,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "FAILED",
                     "tags": [{}],
                     "classTitle": "Ascii Doc Report Generator"
                 },
@@ -11523,13 +11679,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 115058328
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 115058328,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [{}],
                     "classTitle": "Ascii Doc Report Generator"
                 }
@@ -11701,13 +11857,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 40164489
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 40164489,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [],
                     "classTitle": "Repeated Stage Use"
                 },
@@ -11881,13 +12037,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 4888935
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 4888935,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [],
                     "classTitle": "Repeated Stage Use"
                 }
@@ -12099,13 +12255,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 135850177
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 135850177,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [{}],
                     "classTitle": "J Unit Executor",
                     "expanded": false,
@@ -12193,13 +12349,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 11680684
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 11680684,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [
                         {},
                         {
@@ -12324,13 +12480,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 81940189
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 81940189,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [{}],
                     "classTitle": "J Unit Executor",
                     "expanded": false,
@@ -12512,13 +12668,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 5513840
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 5513840,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [{}],
                     "classTitle": "J Unit Executor",
                     "expanded": false,
@@ -12684,13 +12840,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 15509911
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 15509911,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [{}],
                     "classTitle": "J Unit Executor",
                     "expanded": false,
@@ -12768,13 +12924,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 14999308
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 14999308,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [
                         {},
                         {
@@ -12854,13 +13010,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 4417131
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 4417131,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [],
                     "classTitle": "Lifecycle Ordering"
                 }
@@ -12968,13 +13124,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 9219067
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 9219067,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [],
                     "classTitle": "Simple Stage Repetition Use"
                 }
@@ -13447,13 +13603,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "ABORTED",
                             "durationInNanos": 12902992
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 12902992,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "ABORTED",
                     "tags": [
                         {
                             "value": "#163",
@@ -13812,13 +13968,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "PENDING",
                             "durationInNanos": 2952121
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 2952121,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "SCENARIO_PENDING",
                     "tags": [
                         {
                             "value": "#163",
@@ -14250,13 +14406,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "PENDING",
                             "durationInNanos": 4819435
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 4819435,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "SCENARIO_PENDING",
                     "tags": [
                         {
                             "value": "#32",
@@ -14349,13 +14505,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "PENDING",
                             "durationInNanos": 4559333
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 4559333,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "SCENARIO_PENDING",
                     "tags": [{}],
                     "classTitle": "De Einfacher Szenario",
                     "expanded": false,
@@ -14625,13 +14781,13 @@
                             ],
                             "explicitArguments": [],
                             "derivedArguments": [],
-                            "status": "SUCCESS",
+                            "status": "PENDING",
                             "durationInNanos": 55119094
                         }
                     ],
                     "casesAsTable": false,
                     "durationInNanos": 55119094,
-                    "executionStatus": "SUCCESS",
+                    "executionStatus": "SCENARIO_PENDING",
                     "tags": [
                         {},
                         {

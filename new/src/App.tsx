@@ -1,20 +1,15 @@
-import "./App.css";
-import ReportModel from "./reportModel";
-import * as guaranteedStateScenario from "./sampleData/GuaranteedStateTestScenario.json";
-import { ScenarioOverview } from "./components/Scenarios/ScenarioOverview";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AppProvider } from "./context/AppProvider";
+import { Page } from "./components/layout/Page";
 
-const guaranteedStateReport: ReportModel = guaranteedStateScenario as unknown as ReportModel;
-
-function App() {
+export default function App() {
     return (
-        <div className="App" aria-label="App">
-            <ScenarioOverview
-                title={"Mein Titel"}
-                description={"Meine Description"}
-                reportName={guaranteedStateReport.name}
-            />
-        </div>
+        <BrowserRouter>
+            <AppProvider>
+                <Routes>
+                    <Route path="*" element={<Page />} />
+                </Routes>
+            </AppProvider>
+        </BrowserRouter>
     );
 }
-
-export default App;

@@ -1,1 +1,16 @@
 .idea
+node_modules/
+**/node_modules/
+
+# Golden tests (Playwright) — output and artifacts only; not specs/fixtures/snapshots
+tests/golden/test-results/
+tests/golden/playwright-report/
+tests/golden/blob-report/
+tests/golden/.last-run.json
+
+# Golden gap metrics and parity loop (local / CI artifacts only)
+reports/golden-gap/
+
+# AI tooling
+.cursor/
+AGENTS.md
